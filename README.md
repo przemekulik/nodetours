@@ -5,3 +5,22 @@
 [![GitHub issues open](https://img.shields.io/github/issues/przemekulik/nodetours)]()
 
 Sample API implementation for fictional NodeTours tour operator company
+
+## Docker deployment
+Build an inage
+```zsh
+% cd /nodetours
+% docker build -t nodetours:1.0 -f deploy/docker/Dockerfile .
+```
+Start the container using the docker run command
+```zsh
+% docker run -d --name nodetours -p 7777:7777 nodetours:1.0
+```
+
+## Kubernetes deployment
+Make sure you have a docker image created for the deployment (see docker instructions above)
+Deploy the app and service to kubernetes cluster
+```zsh
+% cd /nodetours
+% kubectl apply -f deploy/kubernetes
+```
