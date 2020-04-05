@@ -1,0 +1,192 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "You found the perfect cruise, now lets get it booked.\nBefore a cruise can be booked, the customer must sign-up to the NodeTours site if they have not already done so.  Once signed-up, use the Bookings API can be used to book a cruise.  You need the credentials you gave during sign-up to book the cruise.  The credentials should be sent to the API using HTTP Basic Authentication (the HTTP header Authorization: BASIC <base64 encoded user:password>).\n\nIf an error occurs while booking a trip, the API will give back an HTTP status code and where appropriate the message body will contain a plain text message giving the reason for the error.",
+    "version" : "1.0",
+    "title" : "NodeTours Bookings API"
+  },
+  "host" : "nodetours:7777",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "summary": "GET header info",
+        "description": "Prints version number and host information",
+        "produces": [ "application/json" ],
+        "responses": {
+          "200": {
+            "description": "Server running. Version and host info printed"
+          }
+        }
+      }
+    },
+    "/bookings/{bookingID}" : {
+      "get" : {
+        "summary" : "GET",
+        "description" : "Retrieve details about a specific booking",
+        "operationId" : "GET",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "bookingID",
+          "in" : "path",
+          "description" : "The ID of an existing booking",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "authorizaton",
+          "in" : "header",
+          "description" : "BASIC Auth is needed to login for booking",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "BASIC authorization is neeeded to get a customer profile.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return a specific booking in JSON format"
+          },
+          "401" : {
+            "description" : "Invalid session (sign-on)"
+          },
+          "404" : {
+            "description" : "Given bookingID is not known by the system"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "PUT",
+        "description" : "Update a booking",
+        "operationId" : "PUT",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "bookingID",
+          "in" : "path",
+          "description" : "The ID of an existing booking",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "authorizaton",
+          "in" : "header",
+          "description" : "BASIC Auth is needed to login for booking",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "BASIC authorization is neeeded to get a customer profile.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Booking has been successful updated"
+          },
+          "400" : {
+            "description" : "Update was unsucessful a JSON response will contain the error details."
+          },
+          "401" : {
+            "description" : "Session is invalid"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "DELETE",
+        "description" : "Cancel the given booking.",
+        "operationId" : "DELETE",
+        "parameters" : [ {
+          "name" : "bookingID",
+          "in" : "path",
+          "description" : "The ID of an existing booking",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "authorizaton",
+          "in" : "header",
+          "description" : "BASIC Auth is needed to login for booking",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "BASIC authorization is neeeded to get a customer profile.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Booking can not be cancelled.  A JSON response will give details why"
+          },
+          "401" : {
+            "description" : "Invalid session (sign-on)"
+          },
+          "204" : {
+            "description" : "Booking has been successfully cancelled"
+          }
+        }
+      }
+    },
+    "/bookings" : {
+      "get" : {
+        "summary" : "GET",
+        "description" : "List all bookings made by the signed-in user in the last 12 months",
+        "operationId" : "GET",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "authorizaton",
+          "in" : "header",
+          "description" : "BASIC Auth is needed to login for booking",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "BASIC authorization is neeeded to get a customer profile.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns a list of all booking made by the signed-in user in the last 12 months"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "POST",
+        "description" : "Create a new booking for the customer. Input must be in JSON and the result when successful will be a JSON response with the booking.",
+        "operationId" : "POST",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "authorizaton",
+          "in" : "header",
+          "description" : "BASIC Auth is needed to login for booking",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "BASIC authorization is neeeded to get a customer profile.",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Booking was successfully created. The response will be a JSON message with the bookingID that may be used later."
+          },
+          "400" : {
+            "description" : "Booking failed - a JSON response will give details of why the booking failed."
+          },
+          "401" : {
+            "description" : "Invalid session (sign-on)"
+          }
+        }
+      }
+    }
+  }
+}

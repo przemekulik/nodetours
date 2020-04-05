@@ -1,0 +1,141 @@
+[ {
+    "cruiseID" : "00001",
+    "title" : "Alaska Whale Watching Photo Expedition",
+    "description" : "Photographying the Whale in Alaska is a unique experience.  Join us on this tour to this unique area.  The cruise is a luxury tour for this that what to spend time with others with a like for see these unique animals of the sea.  The tour will be conducted by a pro photography who will work with each of the members of the tour as needed.",
+    "startDate" : 20150820,
+    "endDate" : 20150827,
+    "numDays" : 8,
+    "startPort" : "Juneau, Alaska",
+    "roomTypes" : [ {
+      "roomID" : "IPD",
+      "roomDetails" : {
+        "roomType" : "Inside Premier Double",
+        "title" : "Inside Premier Double cabin",
+        "description" : "An Eco-friendly double room with desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 3
+      },
+      "numRoomsAvailable" : 3
+    }, {
+      "roomID" : "OPD",
+      "roomDetails" : {
+        "roomType" : "Seaview Premier Double",
+        "title" : "Premier Double cabin with seaview",
+        "description" : "An Eco-friendly double room with seaview, desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 3
+      },
+      "numRoomsAvailable" : 3
+    }, {
+      "roomID" : "SDD",
+      "roomDetails" : {
+        "roomType" : "Seaview Deluxe Room",
+        "title" : "Deluxe cabin with seaview",
+        "description" : "For those wanting that extra bit of luxury. The Deluxe cabins come with a private balcony, desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 2
+      },
+      "numRoomsAvailable" : 2
+    }, {
+      "roomID" : "SDDD",
+      "roomDetails" : {
+        "roomType" : "Seaview Double Deluxe Room",
+        "title" : "Deluxe cabin with 2 double beds and a seaview",
+        "description" : "For those wanting that extra bit of luxury. The Double Deluxe cabins come with 2 double beds a private balcony, desk, Tv and Shower",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 5
+      },
+      "numRoomsAvailable" : 5
+    }, {
+      "roomID" : "SJS",
+      "roomDetails" : {
+        "roomType" : "Seaview Junior Suite",
+        "title" : "2 bedroom suite with seaview",
+        "description" : "The Junior suite cabins come with 2 bedrooms, a separate sitting area, a private balcony, Tvs in each room and Shower",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 5
+      },
+      "numRoomsAvailable" : 5
+    }, {
+      "roomID" : "SDS",
+      "roomDetails" : {
+        "roomType" : "Seaview Deluxe Suite",
+        "title" : "3 bedroom suite with seaview",
+        "description" : "The Deluxe suite cabins come with 3 bedrooms, a spacious entertaining room, a private balcony with hot tub, Tvs in each room and Bath with Jacuzzi",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 1
+      },
+      "numRoomsAvailable" : 1
+    } ]
+  }, {
+    "cruiseID" : "00002",
+    "title" : "Panama canal",
+    "description" : "Cruise from San Diego to Mexico and on to the canal, then up to Miami. The canal is 77.1 Km (48 miles) long and connects the Atlantic Ocean with the Pacific Ocean.  This cruise shows a side of the canal that is unique for those that what to see it in luxury.",
+    "startDate" : 20150710,
+    "endDate" : 20150724,
+    "numDays" : 14,
+    "startPort" : "San Diego",
+    "roomTypes" : [ {
+      "roomID" : "IPD",
+      "roomDetails" : {
+        "roomType" : "Inside Premier Double",
+        "title" : "Inside Premier Double cabin",
+        "description" : "An Eco-friendly double room with desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 100
+      },
+      "numRoomsAvailable" : 100
+    }, {
+      "roomID" : "OPD",
+      "roomDetails" : {
+        "roomType" : "Seaview Premier Double",
+        "title" : "Premier Double cabin with seaview",
+        "description" : "An Eco-friendly double room with seaview, desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 100
+      },
+  
+      "numRoomsAvailable" : 100
+    }, {
+      "roomID" : "SDD",
+      "roomDetails" : {
+        "roomType" : "Seaview Deluxe Room",
+        "title" : "Deluxe cabin with seaview",
+        "description" : "For those wanting that extra bit of luxury. The Deluxe cabins come with a private balcony, desk, Tv and Shower",
+        "maxOccupants" : 2,
+        "totalRoomsOfType" : 100
+      },
+      "numRoomsAvailable" : 100
+    }, {
+      "roomID" : "SDDD",
+      "roomDetails" : {
+        "roomType" : "Seaview Double Deluxe Room",
+        "title" : "Deluxe cabin with 2 double beds and a seaview",
+        "description" : "For those wanting that extra bit of luxury. The Double Deluxe cabins come with 2 double beds a private balcony, desk, Tv and Shower",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 50
+      },
+      "numRoomsAvailable" : 50
+    }, {
+      "roomID" : "SJS",
+      "roomDetails" : {
+        "roomType" : "Seaview Junior Suite",
+        "title" : "2 bedroom suite with seaview",
+        "description" : "The Junior suite cabins come with 2 bedrooms, a separate sitting area, a private balcony, Tvs in each room and Shower",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 25
+      },
+      "numRoomsAvailable" : 25
+    }, {
+      "roomID" : "SDS",
+      "roomDetails" : {
+        "roomType" : "Seaview Deluxe Suite",
+        "title" : "3 bedroom suite with seaview",
+        "description" : "The Deluxe suite cabins come with 3 bedrooms, a spacious entertaining room, a private balcony with hot tub, Tvs in each room and Bath with Jacuzzi",
+        "maxOccupants" : 4,
+        "totalRoomsOfType" : 10
+      },
+      "numRoomsAvailable" : 10
+    } ]
+  } ]
+  

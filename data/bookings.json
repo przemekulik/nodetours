@@ -1,0 +1,48 @@
+[
+   {
+      "bookingID": 1,
+      "cruiseID": "00001",
+      "customerID": "adam.apple@email.com",
+      "room": [
+         {
+            "roomID": "JDS",
+            "numRooms": 1
+         }
+      ],
+      "person": [
+         {
+            "firstname": "Adam",
+            "surname": "Apple",
+            "title": "Mr.",
+            "emailAddress": "adam.apple@email.com",
+            "passportID": "1220123456789",
+            "passportExpiration": "2022.07.01",
+            "passportOrgin": "USA",
+            "dob": "1992.09.01"
+         }
+      ]
+   },
+   {
+      "bookingID": 2,
+      "cruiseID": "00001",
+      "customerID": "adam.apple@email.com",
+      "room": [
+         {
+            "roomID": "JDS",
+            "numRooms": 1
+         }
+      ],
+      "person": [
+         {
+            "firstname": "Adam",
+            "surname": "Apple",
+            "title": "Mr.",
+            "emailAddress": "adam.apple@email.com",
+            "passportID": "1220123456789",
+            "passportExpiration": "2022.07.01",
+            "passportOrgin": "USA",
+            "dob": "1992.09.01"
+         }
+      ]
+   }
+]

@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodetours
+  labels:
+    app: nodetours
+    version: "1.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodetours
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: nodetours
+        version: "1.0"
+    spec:
+      containers:
+      - name: nodetours
+        image: nodetours:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: 7777http
+          containerPort: 7777
+          protocol: TCP
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          tcpSocket:
+            port: 7777
+          timeoutSeconds: 2
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 7777
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  nodetours
+  labels:
+    app: nodetours
+    service: nodetours
+spec:
+  selector:
+    app: nodetours
+  type:  NodePort
+  ports:
+  - name:  7777http
+    port:  7777
+    protocol: TCP

@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/przemekulik/nodetours/issues"
   },
-  "homepage": "https://github.com/przemekulik/nodetours#readme"
+  "homepage": "https://github.com/przemekulik/nodetours#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "express": "^4.17.1"
+  }
 }

@@ -1,0 +1,96 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This API enables site visitors to search for tours offered by NodeTours. Once a tour is found and the visitor wants to book the tour, the visitor must do the following:\n\n1. Sign up for an account, if the visitor has not already done so, using the functionality provided in the Sign-up API.\n\n2. Book the tour using the functionality provided in the Bookings API. \n\nThe Search API provides the following search options:\n\n- Show all available cruises.\n- Show cruises based on filter criteria.\n- Show a specific cruise based on its cruise ID.\n\nIf an error occurs, the API returns an HTTP status code and, where appropriate, a plain text message in the message body providing the reason for the error.",
+    "version" : "1.0",
+    "title" : "NodeTours Search API"
+  },
+  "host" : "nodetours:7777",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "summary": "GET header info",
+        "description": "Prints version number and host information",
+        "produces": [ "application/json" ],
+        "responses": {
+          "200": {
+            "description": "Server running. Version and host info printed"
+          }
+        }
+      }
+    },
+    "/cruises" : {
+      "get" : {
+        "summary" : "Search for cruises",
+        "description" : "Searches for all cruises, or searches for a cruise that matches the specified criteria.\n\nThe GET method has two forms:\n- GET /cruises returns all cruises that are currently available.\n- GET /cruises?<criteria> returns all cruises that match the specified criteria.\nIn both cases, the returned result is a list of cruises returned in JSON format.\n\nThe following criteria can be specified to filter the list of returned cruises:\n- startDate - Start date of cruise. Cruises prior to this date will not be shown.\n- endDate - End date of cruise. Limits cruises returned to those completing on or before this date. For example: Seattle: 8:11 am Denver: 9:11 am Reston: 11:11 am UK: 4:11 pm\n- startPort - Port where the cruise begins.\n- numDays - Maximum cruise duration, in days.\nAll dates are in the format YYYYMMDD.",
+        "operationId" : "Search for cruises",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "startDate",
+          "in" : "query",
+          "description" : "Cruise start date, in the format YYYYMMDD. Selects cruises that start on this date. Combined with endDate, this parameter filters cruises that take place within a specified date range.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "endDate",
+          "in" : "query",
+          "description" : "Cruise end date, in the format YYYYMMDD. Selects cruises that end on or before this date. Combined with startDate, this parameter filters cruises that take place within a specified date range.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "startPort",
+          "in" : "query",
+          "description" : "Port where the cruise begins.",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "numDays",
+          "in" : "query",
+          "description" : "Cruise length, in days.",
+          "required" : false,
+          "type" : "number",
+          "format" : "double"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Search (with filter) was successful. GET method returned a list of all cruises that match the specified criteria, in JSON format."
+          },
+		      "204" : {
+            "description" : "Search (with filter) was successful. GET method returned a empty response."
+          },
+          "400" : {
+            "description" : "Query failed because the filter parameters are not valid. Check the resulting message for details."
+          }
+        }
+      }
+    },
+    "/cruises/{cruiseID}" : {
+      "get" : {
+        "summary" : "GET a specific Cruise",
+        "description" : "Returns a specific cruise based on the specified cruise ID.",
+        "operationId" : "GET a specific Cruise",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "cruiseID",
+          "in" : "path",
+          "description" : "Cruise identifier.  Given back as unique identifier when searching across all cruises.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Specified cruise was retrieved successfully. GET method returned cruise details in JSON format."
+          },
+		  "204" : {
+            "description" : "Search (with filter) was successful. GET method returned a empty response."
+          },
+          "400" : {
+            "description" : "Cruise ID is not valid: <cruiseID>"
+          }
+        }
+      }
+    }
+  }
+}
