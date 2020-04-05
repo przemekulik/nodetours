@@ -27,7 +27,7 @@ Deploy the app and service to kubernetes cluster
 Check the port through which APIs can be accessed
 ```zsh
 % kubectl get services nodetours
-NAME       TYPE  _    CLUSTER-IP   EXTERNAL-IP   PORT(S)           AGE
-nodetours  NodePort  {your-IP}    <none>        7777:$port/TCP  1m
+NAME      TYPE      CLUSTER-IP  EXTERNAL-IP PORT(S)         AGE
+nodetours NodePort  {your-IP}   <none>      7777:$port/TCP  1m
 ```
 $port is the kubernetes ingress port through which NodeTours APIs are reachable
