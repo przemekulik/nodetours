@@ -15,7 +15,7 @@
     "REST"
   ],
   "author": "Przemek Kulik",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/przemekulik/nodetours/issues"
   },
