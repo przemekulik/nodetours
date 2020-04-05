@@ -9,4 +9,4 @@ COPY package*.json ./
 RUN npm install --only=production
 COPY . .
 EXPOSE 7777
-CMD [ "npm", "start" ]
+CMD [ "node", "server.js" ]
