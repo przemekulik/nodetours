@@ -1,0 +1,23 @@
+{
+  "name": "nodetours",
+  "version": "1.0.0",
+  "description": "Sample API implementation for fictional NodeTours tour operator company",
+  "main": "server.js",
+  "scripts": {
+    "test": "tbd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/przemekulik/nodetours.git"
+  },
+  "keywords": [
+    "API",
+    "REST"
+  ],
+  "author": "Przemek Kulik",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/przemekulik/nodetours/issues"
+  },
+  "homepage": "https://github.com/przemekulik/nodetours#readme"
+}
