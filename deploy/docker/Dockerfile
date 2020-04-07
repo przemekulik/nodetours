@@ -1,4 +1,4 @@
-# Build app container image
+# Build application container image
 FROM alpine:latest as container
 RUN apk add --update --no-cache npm
 
