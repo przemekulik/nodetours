@@ -4,7 +4,8 @@
   "description": "Sample API implementation for fictional NodeTours tour operator company",
   "main": "server.js",
   "scripts": {
-    "test": "tbd"
+    "build": "npm ci",
+    "test": "echo Tests not available"
   },
   "repository": {
     "type": "git",
