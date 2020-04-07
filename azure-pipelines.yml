@@ -24,7 +24,7 @@ stages:
       displayName: Build an image and push to Docker Hub
       inputs:
         containerRegistry: 'Docker Hub'
-        repository: 'przemekulik'
+        repository: 'przemekulik/nodetours'
         command: buildAndPush
         dockerfile: '$(Build.SourcesDirectory)/deploy/docker/Dockerfile'
         buildContext: .
