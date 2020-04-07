@@ -9,7 +9,7 @@ Sample API implementation for fictional NodeTours tour operator company
 
 ## Docker deployment
 
-Build an inage
+Build an image
 
 ```zsh
 % cd /nodetours
