@@ -5,7 +5,6 @@ RUN apk add --update --no-cache npm
 # Install on the container
 FROM container
 WORKDIR /usr/src/app
-RUN pwd
 COPY package*.json ./
 RUN npm ci --only=production
 COPY . .
