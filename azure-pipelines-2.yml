@@ -15,23 +15,25 @@ variables:
 stages:
 - stage: Build App
   displayName: Build App
-  steps: 
-  - task: NodeTool@0
-    inputs:
-      ersionSpec: '10.x'
-    displayName: 'Install Node.js'
-  - script: |
-      npm install
-      npm run build
-    displayName: 'npm install and build'
+  jobs:
+  - job: BubildApp
+    displayName: Build App
+    steps: 
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+        checkLatest: true
+      displayName: 'Install Node.js'
+    - script: |
+        npm install
+        npm run build
+      displayName: 'npm install and build'
 
 - stage: Build and push docker image
-  displayName: Build buld and push docker image
+  displayName: Build and push docker image
   jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
+  - job: BuildAndPush
+    displayName: Build and push docker image
     steps:
     - task: Docker@2
       displayName: Build an image and push to Docker Hub
@@ -46,26 +48,29 @@ stages:
 
 - stage: Pull, run and test nodetours container
   displayName: Pull, run and test nodetours container
-  steps: 
-  - task: DockerInstaller@0
-    inputs:
-      dockerVersion: '17.09.0-ce'
-  - task: Bash@3
-    inputs:
-      targetType: 'inline'
-      script: |
-        # pull image
-        docker pull przemekulik/nodetours:1.0
-  - task: Bash@3
-    inputs:
-      targetType: 'inline'
-      script: |
-        # run container
-        docker run -d --name nodetours -p 7777:7777 przemekulik/nodetours:1.0
-  - task: Bash@3
-    inputs:
-      targetType: 'inline'
-      script: |
-        # call the API
-        curl -I  http://localhost:7777
+  jobs:
+  - job: PullRunAndTest
+    displayName: Pull, run and test nodetours container
+    steps: 
+    - task: DockerInstaller@0
+      inputs:
+        dockerVersion: '17.09.0-ce'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # pull image
+          docker pull przemekulik/nodetours:1.0
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # run container
+          docker run -d --name nodetours -p 7777:7777 przemekulik/nodetours:1.0
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # call the API
+          curl -I  http://localhost:7777
       
