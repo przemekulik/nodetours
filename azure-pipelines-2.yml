@@ -13,7 +13,7 @@ variables:
   tag: '1.0'
 
 stages:
-- stage: Build App
+- stage: BuildApp
   displayName: Build App
   jobs:
   - job: BubildApp
@@ -29,7 +29,7 @@ stages:
         npm run build
       displayName: 'npm install and build'
 
-- stage: Build and push docker image
+- stage: BuildAndPushDockerImage
   displayName: Build and push docker image
   jobs:  
   - job: BuildAndPush
@@ -46,7 +46,7 @@ stages:
         tags: |
           $(tag)
 
-- stage: Pull, run and test nodetours container
+- stage: PullRunAndTest
   displayName: Pull, run and test nodetours container
   jobs:
   - job: PullRunAndTest
