@@ -11,7 +11,7 @@ pool:
 
 steps:
 - script: Pull and run the container
-  displayName: Pull and run the container
+  displayName: 'Pull and run the container'
 
 - task: DockerInstaller@0
   inputs:
