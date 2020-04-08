@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licensesMIT)
 [![Contributors](https://img.shields.io/github/contributors/przemekulik/nodetours)](https://github.com/przemekulik/nodetours/graphs/contributors)
 [![GitHub issues open](https://img.shields.io/github/issues/przemekulik/nodetours)](https://img.shields.io/github/issues/przemekulik/nodetours)
-[![Build Status](https://dev.azure.com/przemekulik/nodetours/_apis/build/status/Build%20node%20app?branchName=master)](https://dev.azure.com/przemekulik/nodetours/_build/latest?definitionId=5&branchName=master)
+[![Build Status](https://dev.azure.com/przemekulik/nodetours/_apis/build/status/przemekulik.nodetours?branchName=master)](https://dev.azure.com/przemekulik/nodetours/_build/latest?definitionId=15&branchName=master)
 
 Sample API implementation for fictional NodeTours tour operator company
 
