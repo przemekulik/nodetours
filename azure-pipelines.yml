@@ -10,8 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: Pull and run the container
+  displayName: Pull and run the container
 
 - task: DockerInstaller@0
   inputs:
@@ -35,6 +35,5 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Write your commands here
-      curl localhost:7777
-      
+      # call the API
+      curl -I  http://localhost:7777
