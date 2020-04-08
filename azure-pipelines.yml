@@ -34,7 +34,7 @@ steps:
     targetType: 'inline'
     script: |
       # run container
-      docker run -d --name nodetours:test -p 7777:7777 przemekulik/nodetours:1.0
+      docker run -d --name nodetours -p 7777:7777 przemekulik/nodetours:1.0
 
 - task: Bash@3
   inputs:
