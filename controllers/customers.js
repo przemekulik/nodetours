@@ -5,10 +5,10 @@ exports.customers_get = function(req, res) {
   const dbo = req.app.locals.dbo;
   customers.getCustomers(dbo, function(err, customersRes) {
     if (err) {
-      console.log("GET /customers : Error reading bookings db");
+      console.log("GET /customers : Error reading customers db");
       console.log(err);
     } else {
-      if (typeof bookingsRes !== 'undefined') {
+      if (typeof customersRes !== 'undefined') {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customersRes, null, 3));
       } else {
