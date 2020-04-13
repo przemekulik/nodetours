@@ -55,10 +55,23 @@ exports.bookings_get_id = function(req, res) {
   });
 }
 
-// bookings_put_id = function(req, res) {
-//   const dbo = req.app.locals.dbo;
-//   //TODO: implement
-// }
+exports.bookings_put_id = function(req, res) {
+  const dbo = req.app.locals.dbo;
+  bookings.putBooking(dbo, req, function(err, bookingRes) {
+    if (err) {
+      console.log("PUT /booking/{bookingID} : Error writing to bookings db");
+      console.log(err);
+    } else {
+      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(bookingRes, null, 3));
+      } else {
+        res.writeHead(204);
+      };
+      res.end();
+    }
+  });
+}
 
 exports.bookings_delete_id = function(req, res) {
   const dbo = req.app.locals.dbo;

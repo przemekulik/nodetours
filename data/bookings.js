@@ -51,9 +51,24 @@ var Bookings = function() {
   }
 
   // PUT by {id}
-  //this.putBooking
-  //TODO: implement
-
+  this.putBooking = function (dbo, req, callback) {
+    dbo.collection("bookings").findOneAndUpdate(
+      {'bookingID': parseInt(req.params.id)},
+      {$set: JSON.parse(JSON.stringify(req.body))},
+      function(err, res) {
+        if (err) {
+          // FIXME: cancel processing in case of error
+          console.log("putBooking : Error writing to bookings db");
+          console.log(err);
+          callback(err, null);
+        } else {
+          // FIXME: set proper response body
+          // FIXME: handle cases where bookings doesn't exist
+          var result = res;
+          callback(null, result);
+        }
+    });
+  }
   // DELETE by {id}
   this.deleteBooking = function(dbo, id, callback) {
     dbo.collection("bookings").findOneAndDelete({'bookingID': parseInt(id)}, function(err, res) {
@@ -63,6 +78,7 @@ var Bookings = function() {
         callback(err, null);
       } else {
         // FIXME: set proper response body
+        // FIXME: handles cases when booking doesn't exist
         var result = res;
         callback(null, result);
       }
