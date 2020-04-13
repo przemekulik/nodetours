@@ -60,7 +60,20 @@ exports.bookings_get_id = function(req, res) {
 //   //TODO: implement
 // }
 
-// bookings_delete_id = function(req, res) {
-//   const dbo = req.app.locals.dbo;
-//   //TODO: implement
-// }
+exports.bookings_delete_id = function(req, res) {
+  const dbo = req.app.locals.dbo;
+  bookings.deleteBooking(dbo, req.params.id, function(err, bookingRes) {
+    if (err) {
+      console.log("DLETE /booking/{bookingID} : Error writing to bookings db");
+      console.log(err);
+    } else {
+      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(bookingRes, null, 3));
+      } else {
+        res.writeHead(204);
+      };
+      res.end();
+    }
+  });
+}

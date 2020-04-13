@@ -55,9 +55,20 @@ var Bookings = function() {
   //TODO: implement
 
   // DELETE by {id}
-  //this.deleteBooking
-  //TODO: implement
-  
+  this.deleteBooking = function(dbo, id, callback) {
+    dbo.collection("bookings").findOneAndDelete({'bookingID': parseInt(id)}, function(err, res) {
+      if (err) {
+        console.log("deleteBooking : Error writing to bookings db");
+        console.log(err);
+        callback(err, null);
+      } else {
+        // FIXME: set proper response body
+        var result = res;
+        callback(null, result);
+      }
+    });
+  }
+
 }
 
 module.exports = Bookings;

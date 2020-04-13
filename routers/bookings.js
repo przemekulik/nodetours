@@ -13,6 +13,6 @@ router
    .route('/:id')
    .get(bookingsController.bookings_get_id)
 //   .put(bookingsController.bookings_put_id)
-//   .delete(bookingsController.bookings_delete_id)
+   .delete(bookingsController.bookings_delete_id)
 
 module.exports = router;
