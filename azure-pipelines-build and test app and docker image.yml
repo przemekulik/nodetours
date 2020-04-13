@@ -71,5 +71,5 @@ stages:
         targetType: 'inline'
         script: |
           # call the API
-          curl -I  http://localhost:7777
+          sleep 10s && curl -I  http://localhost:7777
       
