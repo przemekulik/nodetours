@@ -18,3 +18,21 @@ exports.customers_get = function(req, res) {
     }
   });
 }
+
+exports.customers_get_id = function(req, res) {
+  const dbo = req.app.locals.dbo;
+  customers.getCustomer(dbo, req.params.id, function(err, customerRes) {
+    if (err) {
+      console.log("GET /customers/{customerID} : Error reading customers db");
+      console.log(err);
+    } else {
+      if (typeof customerRes !== 'undefined' && customerRes !== null) {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(customerRes, null, 3));
+      } else {
+        res.writeHead(204);
+      };
+      res.end();
+    }
+  });
+}

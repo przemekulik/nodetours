@@ -15,6 +15,21 @@ var Customers = function() {
     });
   }
 
+  // GET by {id}
+  this.getCustomer = function(dbo, id, callback) {
+    dbo.collection("customers").findOne({'customer.emailAddress': id}, function(err, data) {
+      // TODO: filter out _id
+      if (err) {
+        console.log("getCustomer : Error reading customers db");
+        console.log(err);
+        callback(err, null);
+      } else {
+        var customerData = data;
+        callback(null, customerData);
+      }
+    });
+  }
+
 }
 
 module.exports = Customers;
