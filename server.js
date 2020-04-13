@@ -30,6 +30,7 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
   // check if db anc collections exists and create if needed
   init.initCruises(dbo);
   init.initBookings(dbo);
+  init.initCustomers(dbo);
   
   // make connection available
   app.locals.dbo = dbo;

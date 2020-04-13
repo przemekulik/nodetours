@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var customersController = require ("../controllers/customers");
+
 router
   .route('/')
-  .get((req, res, next) => {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.write(JSON.stringify({"Casdasdasdas": "reached"}));
-    res.end();  
-  });
-
-  // other routes
+  //.post(customersController.customers_post) TODO: implement
+  .get(customersController.customers_get)
+  //.route('/:id')
+  //.get(customersController.customers_get_id) TODO: implement
+  //.put(customersController.customers_put_id) TODO: implement
+  //.delete(customersController.customers_delete_id) TODO: implement
   
 module.exports = router;
