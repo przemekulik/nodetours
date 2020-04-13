@@ -18,13 +18,11 @@ exports.cruises_get = function(req, res) {
         // Find matching cruise
         return cruise.numDays <= numDays && cruise.startDate >= startDate && cruise.endDate <= endDate && cruise.startPort.includes(startPort);
       });
-      // If no cruises found return HTTP 400 Bad request
       if (typeof cruisesRes !== 'undefined') {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(cruisesRes, null, 3));
       } else {
-        res.writeHead(204, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify({"Status": "Success", "Message": "No cruises"}, null, 3));
+        res.writeHead(204);
       };
       res.end();
     }
@@ -38,13 +36,11 @@ exports.cruises_get_id = function(req, res) {
       console.log("GET /cruises/{cruiseID} : Error reading cruise db");
       console.log(err);
     } else {
-      // If no cruises found return HTTP 400 Bad request
-      if (typeof cruisesRes !== 'undefined') {
+      if (typeof cruisesRes !== 'undefined' && cruisesRes !== null) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(cruisesRes, null, 3));
       } else {
-        res.writeHead(204, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify({"Invalid or not existing cruise ID": req.params.cruiseID}, null, 3));
+        res.writeHead(204);
       };
       res.end();
     }

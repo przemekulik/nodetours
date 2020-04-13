@@ -1,4 +1,5 @@
 var fs = require('fs');
+var functions = require("./functions.js");
 
 exports.initCruises = function(dbo) {
   dbo.collection("cruises").findOne({}, function(err, result) {
@@ -14,8 +15,11 @@ exports.initCruises = function(dbo) {
   });
 }
 
+// global maxBookingID variable
+maxBookingID = -1;
+// initilize bookings collection and get max booking od
 exports.initBookings = function(dbo) {
-  dbo.collection("bookings").findOne({}, function(err, result) {
+  dbo.collection("bookings").find({}).toArray(function(err, result) {
     if (result == null) {
       var bookingsFile = fs.readFileSync(__dirname + "/data/init/" + "bookings.json", "utf8")
       dbo.collection("bookings").insertMany(JSON.parse(bookingsFile), function(err, res) {
@@ -24,6 +28,9 @@ exports.initBookings = function(dbo) {
       });
     } else {
       console.log("Startup: found existing bookings collection - not touching it")
+      // get max booking id
+      maxBookingIdElement = functions.getMax(result, "bookingID");
+      maxBookingID = maxBookingIdElement.bookingID;
     }
   });
 }

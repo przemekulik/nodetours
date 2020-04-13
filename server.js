@@ -1,6 +1,7 @@
 // npm pacakages
 var express = require('express');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 
 // app imports
 var { rootRouter } = require('./routers');
@@ -11,6 +12,7 @@ var init = require('./main');
 
 //globals
 app = express();
+app.use(bodyParser.json());
 app.use('/', rootRouter);
 app.use('/cruises', cruisesRouter);
 app.use('/bookings', bookingsRouter);
@@ -36,7 +38,7 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
   app.listen(process.env.PORT || 1977, function () {
     host = require('os').hostname();
     port = "1977";
-    console.log("NodeTours listening at http://%s:%s", host, port)  
+    console.log("Startup: NodeTours listening at http://%s:%s", host, port)
   });
 }).catch(error => console.error(error));
 
