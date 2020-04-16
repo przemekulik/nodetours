@@ -19,12 +19,12 @@ spec:
         version: "2.0"
     spec:
       containers:
-      - name: nodetours-app
-        image: nodetours:2.0
+      - name: nodetours-db
+        image: mongo:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - name: 7777http
-          containerPort: 7777
+        - name: 27017http
+          containerPort: 27017
           protocol: TCP
         livenessProbe:
           failureThreshold: 3
@@ -32,13 +32,13 @@ spec:
           periodSeconds: 5
           successThreshold: 1
           tcpSocket:
-            port: 7777
+            port: 27017
           timeoutSeconds: 2
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /
-            port: 7777
+            port: 27017
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -49,15 +49,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name:  nodetours-app
+  name:  nodetours-db
   labels:
-    app: nodetours-app
-    service: nodetours-app
+    app: nodetours-db
+    service: nodetours-db
 spec:
   selector:
-    app: nodetours-app
-  type:  NodePort
+    app: nodetours-db
+  type:  ClusterIP
   ports:
-  - name:  7777http
-    port:  7777
+  - name:  27017http
+    port:  27017
     protocol: TCP

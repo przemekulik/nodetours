@@ -45,17 +45,43 @@ spec:
           successThreshold: 2
           timeoutSeconds: 2
         resources: {}
+      - name: nodetours-db
+        image: mongo:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: 27017http
+          containerPort: 27017
+          protocol: TCP
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          tcpSocket:
+            port: 27017
+          timeoutSeconds: 2
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 27017
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name:  nodetours-app
+  name:  nodetours
   labels:
-    app: nodetours-app
-    service: nodetours-app
+    app: nodetours
+    service: nodetours
 spec:
   selector:
-    app: nodetours-app
+    app: nodetours
   type:  NodePort
   ports:
   - name:  7777http
