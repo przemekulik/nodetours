@@ -15,6 +15,21 @@ var Customers = function() {
     });
   }
 
+  // POST customers
+  this.postCustomers = function(dbo, customers, callback) {
+    dbo.collection("customers").insertOne(customers, function(err, res) {
+      if (err) {
+        console.log("postCustomer : Error writing to customers db");
+        console.log(err);
+        callback(err, null);
+      } else {
+        var result = res;
+        // FIXME: set proper 204 response
+        callback(null, result);
+      }
+    });
+  }
+
   // GET by {id}
   this.getCustomer = function(dbo, id, callback) {
     dbo.collection("customers").findOne({'customer.emailAddress': id}, function(err, data) {

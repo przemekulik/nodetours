@@ -5,9 +5,9 @@ var customersController = require ("../controllers/customers");
 
 router
   .route('/')
-  //.post(customersController.customers_post) TODO: implement
   .get(customersController.customers_get)
-
+  .post(customersController.customers_post)
+  
 router
   .route('/:id')
   .get(customersController.customers_get_id)
