@@ -72,6 +72,24 @@ exports.customers_get_id = function(req, res) {
   });
 }
 
+exports.customers_put_id = function(req, res) {
+  const dbo = req.app.locals.dbo;
+  customers.putCustomer(dbo, req, function(err, customersRes) {
+    if (err) {
+      console.log("PUT /customers/{customerID} : Error writing to customers db");
+      console.log(err);
+    } else {
+      if (typeof customersRes !== 'undefined' && customersRes !== null) {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify(customersRes, null, 3));
+      } else {
+        res.writeHead(204);
+      };
+      res.end();
+    }
+  });
+}
+
 exports.customers_delete_id = function(req, res) {
   const dbo = req.app.locals.dbo;
   customers.deleteCustomer(dbo, req.params.id, function(err, customersRes) {

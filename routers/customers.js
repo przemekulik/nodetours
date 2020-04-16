@@ -11,7 +11,7 @@ router
 router
   .route('/:id')
   .get(customersController.customers_get_id)
-  //.put(customersController.customers_put_id) TODO: implement
+  .put(customersController.customers_put_id)
   .delete(customersController.customers_delete_id)
   
 module.exports = router;

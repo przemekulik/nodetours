@@ -45,6 +45,26 @@ var Customers = function() {
     });
   }
 
+  // PUT by {id}
+  this.putCustomer = function (dbo, req, callback) {
+    dbo.collection("customers").findOneAndUpdate(
+      {'customer.emailAddress': req.params.id},
+      {$set: JSON.parse(JSON.stringify(req.body))},
+      function(err, res) {
+        if (err) {
+          // FIXME: cancel processing in case of error
+          console.log("putBooking : Error writing to bookings db");
+          console.log(err);
+          callback(err, null);
+        } else {
+          // FIXME: set proper response body
+          // FIXME: handle cases where bookings doesn't exist
+          var result = res;
+          callback(null, result);
+        }
+    });
+  }
+  
   // DELETE by {id}
   this.deleteCustomer = function(dbo, id, callback) {
     dbo.collection("customers").findOneAndDelete({'customer.emailAddress': id}, function(err, res) {
