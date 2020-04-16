@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licensesMIT)
 [![Contributors](https://img.shields.io/github/contributors/przemekulik/nodetours)](https://github.com/przemekulik/nodetours/graphs/contributors)
 [![GitHub issues open](https://img.shields.io/github/issues/przemekulik/nodetours)](https://img.shields.io/github/issues/przemekulik/nodetours)
-[![Build Status](https://dev.azure.com/przemekulik/nodetours/_apis/build/status/przemekulik.nodetours?branchName=master)](https://dev.azure.com/przemekulik/nodetours/_build/latest?definitionId=15&branchName=master)
+[![Build Status](https://dev.azure.com/przemekulik/nodetours/_apis/build/status/przemekulik.nodetours?branchName=master)](https://dev.azure.com/przemekulik/nodetours/_build/latest?definitionId=1&branchName=feature-2.0.0)
 
 Sample API implementation for fictional NodeTours tour operator company.
 
@@ -13,13 +13,22 @@ Build an image:
 
 ```zsh
 % cd /nodetours
-% docker build -t nodetours:1.0 -f deploy/docker/Dockerfile .
+% docker build -t nodetours:2.0 -f deploy/docker/Dockerfile .
 ```
 
-Start the container using the docker run command:
+Change directory and start the stack using docker compose:
 
 ```zsh
-% docker run -d --name nodetours -p 7777:7777 nodetours:1.0
+% cd deploy/docker/
+% docker-compose -p nodetours up -d
+```
+
+You should see the following output and NodeTours will be up:
+
+```zsh
+Creating network "nodetours_nodetours-network" with driver "bridge"
+Creating nodetours-db ... done
+Creating nodetours-app ... done
 ```
 
 ## Kubernetes deployment

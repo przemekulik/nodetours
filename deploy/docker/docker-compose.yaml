@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nodetours-db:
+    image: mongo:latest
+    container_name: nodetours-db
+    hostname: nodetours-db
+    ports:
+    - "27017:27017"
+    networks:
+    - nodetours-network
+  nodetours-app:
+    image: nodetours:2.0
+    container_name: nodetours-app
+    hostname: nodetours-app
+    ports:
+    - "7777:7777"
+    depends_on: 
+    - nodetours-db
+    networks:
+    - nodetours-network
+networks:
+    nodetours-network:
+        driver: bridge

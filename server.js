@@ -20,7 +20,7 @@ app.use('/customers', customersRouter);
 
 // Set up Mongo DB connection
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://nodetours-db:27017';
 const dbName = 'nodetours';
 
 // Start server (only if connection to DB established)
@@ -36,9 +36,9 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
   app.locals.dbo = dbo;
   
   // start server
-  app.listen(process.env.PORT || 1977, function () {
+  app.listen(process.env.PORT || 7777, function () {
     host = require('os').hostname();
-    port = "1977";
+    port = "7777";
     console.log("Startup: NodeTours listening at http://%s:%s", host, port)
   });
 }).catch(error => console.error(error));
