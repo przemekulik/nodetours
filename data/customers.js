@@ -45,6 +45,22 @@ var Customers = function() {
     });
   }
 
+  // DELETE by {id}
+  this.deleteCustomer = function(dbo, id, callback) {
+    dbo.collection("customers").findOneAndDelete({'customer.emailAddress': id}, function(err, res) {
+      if (err) {
+        console.log("deleteBooking : Error writing to customers db");
+        console.log(err);
+        callback(err, null);
+      } else {
+        // FIXME: set proper response body
+        // FIXME: handles cases when booking doesn't exist
+        var result = res;
+        callback(null, result);
+      }
+    });
+  }
+
 }
 
 module.exports = Customers;

@@ -69,6 +69,7 @@ var Bookings = function() {
         }
     });
   }
+  
   // DELETE by {id}
   this.deleteBooking = function(dbo, id, callback) {
     dbo.collection("bookings").findOneAndDelete({'bookingID': parseInt(id)}, function(err, res) {
