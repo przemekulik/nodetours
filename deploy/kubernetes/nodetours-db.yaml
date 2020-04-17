@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodetours
+  name: nodetours-db
   labels:
-    app: nodetours
+    app: nodetours-db
     version: "2.0"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodetours
+      app: nodetours-db
       version: "2.0"
   template:
     metadata:
       labels:
-        app: nodetours
+        app: nodetours-db
         version: "2.0"
     spec:
       containers:
@@ -56,8 +56,8 @@ metadata:
 spec:
   selector:
     app: nodetours-db
-  type:  ClusterIP
   ports:
   - name:  27017http
     port:  27017
     protocol: TCP
+    
