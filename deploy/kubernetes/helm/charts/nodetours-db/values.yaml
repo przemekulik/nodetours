@@ -1,16 +1,16 @@
-# Default values for nodetours.
+# Default values for nodetours-db.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: nodetours
+  repository: mongo
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "nodetours"
+fullnameOverride: "nodetours-db"
 
 serviceAccount:
   create: false
@@ -22,8 +22,8 @@ podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: NodePort
-  port: 7777
+  type: ClusterIP
+  port: 27017
 
 ingress:
   enabled: false

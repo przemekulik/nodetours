@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "nodetours-app.fullname" . }}
+  name: {{ include "nodetours-db.fullname" . }}
   labels:
-    {{- include "nodetours-app.labels" . | nindent 4 }}
+    {{- include "nodetours-db.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "nodetours-app.selectorLabels" . | nindent 6 }}
+      {{- include "nodetours-db.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "nodetours-app.selectorLabels" . | nindent 8 }}
+        {{- include "nodetours-db.selectorLabels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "nodetours-app.serviceAccountName" . }}
+      serviceAccountName: {{ include "nodetours-db.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 7777
+              containerPort: 27017
               protocol: TCP
           livenessProbe:
             httpGet:
