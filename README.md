@@ -43,9 +43,9 @@ Make sure you have a docker image created for the deployment (see docker instruc
 Check the port through which APIs can be accessed:
 
 ```zsh
-% kubectl get services nodetours
-NAME      TYPE      CLUSTER-IP  EXTERNAL-IP PORT(S)         AGE
-nodetours NodePort  {your-IP}   <none>      7777:$port/TCP  1m
+% kubectl get services nodetours-db
+NAME          TYPE      CLUSTER-IP  EXTERNAL-IP PORT(S)         AGE
+nodetours-db  NodePort  {your-IP}   <none>      7777:$port/TCP  1m
 ```
 
 or
@@ -72,15 +72,15 @@ Check the port through which APIs can be accessed:
 
 
 ```zsh
-% kubectl get services {name}-nodetours
-NAME              TYPE      CLUSTER-IP  EXTERNAL-IP PORT(S)         AGE
-{name}-nodetours  NodePort  {your-IP}   <none>      7777:$port/TCP  1m
+% kubectl get services nodetours
+NAME      TYPE      CLUSTER-IP  EXTERNAL-IP PORT(S)         AGE
+nodetours NodePort  {your-IP}   <none>      7777:$port/TCP  1m
 ```
 
 or
 
 ```zsh
-% kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services {name}-nodetours
+% kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services nodetours
 $port
 ```
 
