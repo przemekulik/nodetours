@@ -50,3 +50,54 @@ exports.initCustomers = function(dbo) {
     }
   });
 }
+
+exports.setDBConnectionString = function(process) {
+
+  console.log("_______TEST: DOcker env variable DB_HOSTNAME: " + process.env.DB_HOSTNAME)
+  console.log("_______TEST: DOcker env variable DB_PORT    : " + process.env.DB_PORT)
+
+  if (process.env.DB_HOSTNAME && process.env.DB_PORT) {
+    console.log("Startup: Env varables avaiable. Trying to use them")
+    dbhost = process.env.DB_HOSTNAME
+    dbport = process.env.DB_PORT
+    console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport)
+  } else {
+    console.log("Startup: Not all env varables avaiable. Trying to use startup arguments")
+    if (!process.argv[2]) {
+      // no params provided
+      console.log("Startup: DB hostname not provided. Trying localhost")
+      dbhost = 'localhost'
+      console.log("Startup: DB port not provided. Trying 27017")
+      dbport = '27017'
+      console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport)
+    } else {
+      // only one param provided
+      if (!process.argv[3]) {
+        if (isNaN(process.argv[2])) {
+          // only one param passed and it's not a number - assuming it's host
+          dbhost = process.argv[2]
+          console.log("Startup: DB port not provided. Trying 27017")
+          dbport = '27017'
+          console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport)
+        } else {
+          // only one param proviede and it is a number - assuming it's port
+          dbport = process.argv[2]
+          console.log("Startup: DB hostname not provided. Trying localhost")
+          dbhost = 'localhost'
+          console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport)
+        }  
+      } else {
+        // at least two params provided
+        if (isNaN(process.argv[3]) || !isNaN(process[2])) {
+          console.log("Startup: Did you pass hostname as port and vice versa? E.g. 'node server.js 8888 localhost'? Fixing")
+          dbport = process.argv[2]
+          dbhost = process.argv[3]
+        } else {
+          dbhost = process.argv[2]
+          dbport = process.argv[3]
+        }
+        console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport) 
+      }
+    }
+  }
+}

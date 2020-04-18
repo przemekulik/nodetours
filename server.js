@@ -19,19 +19,20 @@ app.use('/bookings', bookingsRouter);
 app.use('/customers', customersRouter);
 
 // Set up Mongo DB connection
+init.setDBConnectionString(process);
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://nodetours-db:27017';
+const url = 'mongodb://' + dbhost + ':' + dbport
 const dbName = 'nodetours';
 
 // Start server (only if connection to DB established)
 var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connect().then(client => {
   const dbo = client.db(dbName);
 
-  // check if db anc collections exists and create if needed
+  // check if db and collections exists and create if needed
   init.initCruises(dbo);
   init.initBookings(dbo);
   init.initCustomers(dbo);
-  
+
   // make connection available
   app.locals.dbo = dbo;
   
@@ -41,7 +42,12 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
     port = "7777";
     console.log("Startup: NodeTours listening at http://%s:%s", host, port)
   });
-}).catch(error => console.error(error));
+}).catch(error => {
+  console.log("Startup: Couldn't connect to the DB. The app will exit")
+  console.log("  Error: " + error)
+  process.exit();
+  }
+);
 
 // Close db connection when interrupted
 process.on('SIGINT', () => {
