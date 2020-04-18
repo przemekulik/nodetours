@@ -1,11 +1,12 @@
 {
   "name": "nodetours",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Sample API implementation for fictional NodeTours tour operator company",
   "main": "server.js",
   "scripts": {
     "build": "npm ci",
-    "test": "echo Tests not available"
+    "test": "echo Tests not available",
+    "run": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
   },
   "homepage": "https://github.com/przemekulik/nodetours#readme",
   "dependencies": {
-    "basic-auth": "^2.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.5.5"
   }
 }

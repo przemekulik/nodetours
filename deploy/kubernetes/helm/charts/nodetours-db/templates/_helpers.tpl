@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "nodetours-app.name" -}}
+{{- define "nodetours-db.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "nodetours-app.fullname" -}}
+{{- define "nodetours-db.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "nodetours-app.chart" -}}
+{{- define "nodetours-db.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "nodetours-app.labels" -}}
-helm.sh/chart: {{ include "nodetours-app.chart" . }}
-{{ include "nodetours-app.selectorLabels" . }}
+{{- define "nodetours-db.labels" -}}
+helm.sh/chart: {{ include "nodetours-db.chart" . }}
+{{ include "nodetours-db.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "nodetours-app.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "nodetours-app.name" . }}
+{{- define "nodetours-db.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "nodetours-db.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "nodetours-app.serviceAccountName" -}}
+{{- define "nodetours-db.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "nodetours-app.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "nodetours-db.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
