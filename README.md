@@ -86,7 +86,7 @@ $port
 
 $port is the kubernetes ingress port through which NodeTours APIs are reachable.
 
-## Native deloyment
+## Native deployment
 
 To run NodeTours directly on your machine you need a working node.js / npm environment and git. You will also need a running instance of mongo DB.
 
