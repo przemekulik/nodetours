@@ -10,7 +10,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "nodetours-db"
+fullnameOverride: ""
 
 serviceAccount:
   create: false

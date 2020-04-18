@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "nodetours-db.fullname" . }}
+  name: {{ .Values.global.dbhost }}
   labels:
     {{- include "nodetours-db.labels" . | nindent 4 }}
 spec:

@@ -38,3 +38,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+global:
+  dbhost: nodetours-db
+  dbport: 27017

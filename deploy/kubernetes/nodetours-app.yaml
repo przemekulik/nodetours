@@ -22,6 +22,11 @@ spec:
       - name: nodetours-app
         image: nodetours:2.0
         imagePullPolicy: IfNotPresent
+        env:
+          - name: DB_HOSTNAME
+            value: nodetours-db
+          - name: DB_PORT
+            value: '27017'
         ports:
         - name: 7777http
           containerPort: 7777

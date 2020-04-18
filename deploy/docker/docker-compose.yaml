@@ -12,6 +12,9 @@ services:
     image: nodetours:2.0
     container_name: nodetours-app
     hostname: nodetours-app
+    environment: 
+    - DB_HOSTNAME=nodetours-db
+    - DB_PORT=27017
     ports:
     - "7777:7777"
     depends_on: 

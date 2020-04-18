@@ -52,17 +52,13 @@ exports.initCustomers = function(dbo) {
 }
 
 exports.setDBConnectionString = function(process) {
-
-  console.log("_______TEST: DOcker env variable DB_HOSTNAME: " + process.env.DB_HOSTNAME)
-  console.log("_______TEST: DOcker env variable DB_PORT    : " + process.env.DB_PORT)
-
   if (process.env.DB_HOSTNAME && process.env.DB_PORT) {
-    console.log("Startup: Env varables avaiable. Trying to use them")
+    console.log("Startup: Env varables available. Trying to use them")
     dbhost = process.env.DB_HOSTNAME
     dbport = process.env.DB_PORT
     console.log("Startup: Setting DB host:port to: " + dbhost + ':' + dbport)
   } else {
-    console.log("Startup: Not all env varables avaiable. Trying to use startup arguments")
+    console.log("Startup: Not all env varables available. Trying to use startup arguments")
     if (!process.argv[2]) {
       // no params provided
       console.log("Startup: DB hostname not provided. Trying localhost")
