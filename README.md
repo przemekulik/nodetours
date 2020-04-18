@@ -57,6 +57,15 @@ $port
 
 $port is the kubernetes ingress port through which NodeTours APIs are reachable.
 
+### Kuberneter deployment (single pod)
+
+If you prefer deploying the app in a single pod (instead of two, which the obove instructions result with), deploy it this way:
+
+```zsh
+% cd /nodetours
+% kubectl apply -f deploy/kubernetes/single
+```
+
 ## Kubernetes deployment using helm
 
 Make sure you have a docker image created for the deployment (see docker instructions above). Deploy the app and service to kubernetes cluster:
@@ -85,6 +94,15 @@ $port
 ```
 
 $port is the kubernetes ingress port through which NodeTours APIs are reachable.
+
+### Kubernetes deployment using helm (single pod)
+
+If you prefer deploying the app in a single pod (instead of two, which the obove instructions result with), deploy it this way:
+
+```zsh
+% cd /nodetours
+% helm install {name} deploy/kubernetes/helm/single
+```
 
 ## Native deployment
 
