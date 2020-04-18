@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "npm ci",
-    "test": "echo Tests not available"
+    "test": "echo Tests not available",
+    "run": "node server.js"
   },
   "repository": {
     "type": "git",
