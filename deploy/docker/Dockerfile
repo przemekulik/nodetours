@@ -9,4 +9,4 @@ COPY package*.json ./
 RUN npm ci --only=production
 COPY . .
 EXPOSE 7777
-CMD [ "node", "server.js" ]
+CMD [ "npm", "run-script", "run" ]
