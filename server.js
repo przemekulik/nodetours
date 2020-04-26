@@ -7,7 +7,7 @@ var { rootRouter } = require('./routers');
 var { cruisesRouter } = require('./routers');
 var { bookingsRouter } = require('./routers');
 var { customersRouter } = require('./routers');
-var init = require('./main');
+var init = require('./utilities/init');
 
 //globals
 app = express();
@@ -50,6 +50,7 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
 
 // Close db connection when interrupted
 process.on('SIGINT', () => {
-  MongoClient.close();
+  // FIXME: MongoClient.close() is not a function
+  //MongoClient.close();
   process.exit();
 });

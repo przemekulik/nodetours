@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "npm ci",
-    "test": "echo Tests not available",
+    "test": "mocha",
     "run": "node server.js"
   },
   "repository": {
@@ -25,5 +25,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.5.5"
+  },
+  "devDependencies": {
+    "winston": "^3.2.1"
   }
 }
