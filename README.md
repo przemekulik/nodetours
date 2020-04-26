@@ -57,7 +57,7 @@ $port
 
 $port is the kubernetes ingress port through which NodeTours APIs are reachable.
 
-### Kuberneter deployment (single pod)
+### Kubernetes deployment (single pod)
 
 If you prefer deploying the app in a single pod (instead of two, which the obove instructions result with), deploy it this way:
 
