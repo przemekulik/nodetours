@@ -1,3 +1,5 @@
+var logger = require('../utilities/loggers')
+
 var Cruises = function() {
 
   // GET all
@@ -5,8 +7,8 @@ var Cruises = function() {
     dbo.collection("cruises").find({}).toArray(function(err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getCruises : Error reading cruises db");
-        console.log(err);
+        logger.error("getCruises : Error reading cruises db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var cruisesData = data;
@@ -20,8 +22,8 @@ var Cruises = function() {
     dbo.collection("cruises").findOne({'cruiseID': id}, function (err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getCruises : Error reading cruises db");
-        console.log(err);
+        logger.error("getCruise(id): Error reading cruises db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var cruisesData = data;

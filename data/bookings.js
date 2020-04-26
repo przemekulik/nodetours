@@ -1,3 +1,5 @@
+var logger = require('../utilities/loggers')
+
 var Bookings = function() {
 
   // GET all
@@ -5,8 +7,8 @@ var Bookings = function() {
     dbo.collection("bookings").find({}).toArray(function(err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getBookings : Error reading bookings db");
-        console.log(err);
+        logger.error("getBookings : Error reading bookings db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var bookingsData = data;
@@ -24,8 +26,8 @@ var Bookings = function() {
     maxBookingID++;
     dbo.collection("bookings").insertOne(bookings, function(err, res) {
       if (err) {
-        console.log("postBookings : Error writing to bookings db");
-        console.log(err);
+        logger.error("posttBookings : Error writing to bookings db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var result = res;
@@ -40,8 +42,8 @@ var Bookings = function() {
     dbo.collection("bookings").findOne({'bookingID': parseInt(id)}, function(err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getBooking : Error reading bookings db");
-        console.log(err);
+        logger.error("getBooking(id) : Error reading bookings db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var bookingData = data;
@@ -58,8 +60,8 @@ var Bookings = function() {
       function(err, res) {
         if (err) {
           // FIXME: cancel processing in case of error
-          console.log("putBooking : Error writing to bookings db");
-          console.log(err);
+          logger.error("putBookings : Error writing to bookings db")
+          logger.error("  Error: " + err)
           callback(err, null);
         } else {
           // FIXME: set proper response body
@@ -74,8 +76,8 @@ var Bookings = function() {
   this.deleteBooking = function(dbo, id, callback) {
     dbo.collection("bookings").findOneAndDelete({'bookingID': parseInt(id)}, function(err, res) {
       if (err) {
-        console.log("deleteBooking : Error writing to bookings db");
-        console.log(err);
+        logger.error("deleteBookings : Error writing to bookings db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         // FIXME: set proper response body

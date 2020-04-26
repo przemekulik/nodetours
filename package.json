@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm ci",
     "test": "mocha",
-    "run": "node server.js"
+    "run": "NODE_ENV=production node server.js",
+    "run-dev": "NODE_ENV=development node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,7 @@
   "homepage": "https://github.com/przemekulik/nodetours#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^3.5.5"
-  },
-  "devDependencies": {
+    "mongodb": "^3.5.5",
     "winston": "^3.2.1"
   }
 }

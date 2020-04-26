@@ -1,3 +1,5 @@
+var logger = require('../utilities/loggers')
+
 var Customers = function() {
 
   // GET all
@@ -5,8 +7,8 @@ var Customers = function() {
     dbo.collection("customers").find({}).toArray(function(err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getCustomers : Error reading bookings db");
-        console.log(err);
+        logger.error("getCustomers : Error reading customers db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var customersData = data;
@@ -19,8 +21,8 @@ var Customers = function() {
   this.postCustomers = function(dbo, customers, callback) {
     dbo.collection("customers").insertOne(customers, function(err, res) {
       if (err) {
-        console.log("postCustomer : Error writing to customers db");
-        console.log(err);
+        logger.error("postCustomers : Error writing to customers db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var result = res;
@@ -35,8 +37,8 @@ var Customers = function() {
     dbo.collection("customers").findOne({'customer.emailAddress': id}, function(err, data) {
       // TODO: filter out _id
       if (err) {
-        console.log("getCustomer : Error reading customers db");
-        console.log(err);
+        logger.error("getCustomer(id) : Error reading customers db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         var customerData = data;
@@ -53,8 +55,8 @@ var Customers = function() {
       function(err, res) {
         if (err) {
           // FIXME: cancel processing in case of error
-          console.log("putBooking : Error writing to bookings db");
-          console.log(err);
+          logger.error("putCustomer : Error writing customers db")
+          logger.error("  Error: " + err)
           callback(err, null);
         } else {
           // FIXME: set proper response body
@@ -69,8 +71,8 @@ var Customers = function() {
   this.deleteCustomer = function(dbo, id, callback) {
     dbo.collection("customers").findOneAndDelete({'customer.emailAddress': id}, function(err, res) {
       if (err) {
-        console.log("deleteBooking : Error writing to customers db");
-        console.log(err);
+        logger.error("deleteCustomer : Error writing to customers db")
+        logger.error("  Error: " + err)
         callback(err, null);
       } else {
         // FIXME: set proper response body

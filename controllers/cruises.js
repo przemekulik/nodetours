@@ -1,12 +1,13 @@
 var Cruises = require("../data/cruises");
+var logger = require('../utilities/loggers')
 var cruises = new Cruises();
 
 exports.cruises_get = function(req, res) {
   const dbo = req.app.locals.dbo;
   cruises.getCruises(dbo, function(err, cruisesRes) {
     if (err) {
-      console.log("GET /cruises : Error reading cruise db");
-      console.log(err);
+      logger.error("GET /cruises : Error reading cruise db")
+      logger.error("  Error: " + err)
     } else {
       // Rread query-string params || default when not passed
       var startDate = req.query.startDate || "0";
@@ -33,8 +34,8 @@ exports.cruises_get_id = function(req, res) {
   const dbo = req.app.locals.dbo;
   cruises.getCruise(dbo, req.params.id, function(err, cruisesRes) {
     if (err) {
-      console.log("GET /cruises/{cruiseID} : Error reading cruise db");
-      console.log(err);
+      logger.error("GET /cruises/{cruiseID} : Error reading cruise db")
+      logger.error("  Error: " + err)
     } else {
       if (typeof cruisesRes !== 'undefined' && cruisesRes !== null) {
         res.writeHead(200, {'Content-Type': 'application/json'});

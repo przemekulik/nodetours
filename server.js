@@ -8,6 +8,7 @@ var { cruisesRouter } = require('./routers');
 var { bookingsRouter } = require('./routers');
 var { customersRouter } = require('./routers');
 var init = require('./utilities/init');
+var logger = require('./utilities/loggers');
 
 //globals
 app = express();
@@ -39,11 +40,11 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
   app.listen(process.env.PORT || 7777, function () {
     host = require('os').hostname();
     port = "7777";
-    console.log("Startup: NodeTours listening at http://%s:%s", host, port)
+    logger.verbose("Startup: NodeTours listening at http://%s:%s", host, port)
   });
 }).catch(error => {
-  console.log("Startup: Couldn't connect to the DB. The app will exit")
-  console.log("  Error: " + error)
+  logger.error("Startup: Couldn't connect to the DB. The app will exit")
+  logger.error("  Error: " + error)
   process.exit();
   }
 );
