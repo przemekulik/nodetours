@@ -37,7 +37,7 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
   app.locals.dbo = dbo;
   
   // start server
-  app.listen(process.env.PORT || 7777, function () {
+  app = app.listen(process.env.PORT || 7777, function () {
     host = require('os').hostname();
     port = "7777";
     logger.verbose("Startup: NodeTours listening at http://%s:%s", host, port)
@@ -50,8 +50,19 @@ var server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connec
 );
 
 // Close db connection when interrupted
+// SIGINT e.g. Ctrl+C
 process.on('SIGINT', () => {
-  // FIXME: MongoClient.close() is not a function
-  //MongoClient.close();
-  process.exit();
+  app.close(() => {
+    logger.info("Received SIGINT. Closing DB connections and exiting");
+    MongoClient(url).close();
+    process.exit();
+  })
+});
+//SIGTERM e.g. kill without -9
+process.on('SIGTERM', () => {
+  app.close(() => {
+    logger.info("Received SIGTERM. Closing DB connections and exiting");
+    MongoClient(url).close();
+    process.exit();
+  })
 });
