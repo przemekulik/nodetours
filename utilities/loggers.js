@@ -1,6 +1,6 @@
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf } = format;
-const path = require('path')
+const path = require('path');
 
 const logFormat = printf(({ level, message, label, timestamp }) => {
   return `${timestamp} [${label}] [${level}]: ${message}`;

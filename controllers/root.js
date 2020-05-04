@@ -1,4 +1,4 @@
-var logger = require('../utilities/loggers')
+const logger = require('../utilities/loggers');
 
 exports.root_get = function(req, res) {
   res.writeHead(200, {'Content-Type': 'application/json'});

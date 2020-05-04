@@ -1,17 +1,16 @@
-var logger = require('../utilities/loggers')
+const logger = require('../utilities/loggers')
 
-var Cruises = function() {
-
+const Cruises = function() {
   // GET all
   this.getCruises = function(dbo, callback) {
-    dbo.collection("cruises").find({}).toArray(function(err, data) {
+    dbo.collection('cruises').find({}).toArray(function(err, data) {
       // TODO: filter out _id
       if (err) {
-        logger.error("getCruises : Error reading cruises db")
-        logger.error("  Error: " + err)
+        logger.error(`getCruises : Error reading cruises db`);
+        logger.error(`  Error: ${err}`);
         callback(err, null);
       } else {
-        var cruisesData = data;
+        let cruisesData = data;
         callback(null, cruisesData);
       }
     });
@@ -22,16 +21,15 @@ var Cruises = function() {
     dbo.collection("cruises").findOne({'cruiseID': id}, function (err, data) {
       // TODO: filter out _id
       if (err) {
-        logger.error("getCruise(id): Error reading cruises db")
-        logger.error("  Error: " + err)
+        logger.error(`getCruise(id): Error reading cruises db`);
+        logger.error(`  Error: ${err}`);
         callback(err, null);
       } else {
-        var cruisesData = data;
+        let cruisesData = data;
         callback(null, cruisesData);
       }
     });
   }
-
 }
 
 module.exports = Cruises;
