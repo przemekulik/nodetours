@@ -11,7 +11,7 @@ const init = require('./utilities/init');
 const logger = require('./utilities/loggers');
 
 //globals
-app = express();
+let app = express();
 app.use(bodyParser.json());
 app.use('/', rootRouter);
 app.use('/cruises', cruisesRouter);
@@ -24,8 +24,8 @@ const MongoClient = require('mongodb').MongoClient;
 const url = `mongodb://${dbhost}:${dbport}`;
 const dbName = 'nodetours';
 
-// Start server (only if connection to DB established)
-const server = MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connect().then(client => {
+//Start server (only if connection to DB established)
+MongoClient(url, { useUnifiedTopology: true, poolSize: 10 }).connect().then(client => {
   const dbo = client.db(dbName);
 
   // check if db and collections exists and create if needed
