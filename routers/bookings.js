@@ -8,7 +8,6 @@ router
    .get(bookingsController.bookings_get)
    .post(bookingsController.bookings_post)
    
-
 router
    .route('/:id')
    .get(bookingsController.bookings_get_id)
