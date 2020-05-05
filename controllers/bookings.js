@@ -1,6 +1,6 @@
 const Bookings = require('../data/bookings');
-var logger = require('../utilities/loggers');
-var bookings = new Bookings();
+const logger = require('../utilities/loggers');
+const bookings = new Bookings();
 
 exports.bookings_get = function(req, res) {
   const dbo = req.app.locals.dbo;
