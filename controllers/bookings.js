@@ -14,7 +14,7 @@ exports.bookings_get = function(req, res) {
         res.write(JSON.stringify(bookingsRes, null, 3));
       } else {
         res.writeHead(204);
-      };
+      }
       res.end();
     }
   });
@@ -32,7 +32,7 @@ exports.bookings_post = function(req, res) {
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
         res.writeHead(204);
-      };
+      }
       res.end();
     }
   });
@@ -50,7 +50,7 @@ exports.bookings_get_id = function(req, res) {
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
         res.writeHead(204);
-      };
+      }
       res.end();
     }
   });
@@ -68,7 +68,7 @@ exports.bookings_put_id = function(req, res) {
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
         res.writeHead(204);
-      };
+      }
       res.end();
     }
   });
@@ -86,7 +86,7 @@ exports.bookings_delete_id = function(req, res) {
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
         res.writeHead(204);
-      };
+      }
       res.end();
     }
   });
