@@ -53,6 +53,9 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
+# eslint config
+.eslintrc.yml
+
 # Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
