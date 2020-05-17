@@ -11,7 +11,7 @@ const init = require('./utilities/init');
 const logger = require('./utilities/loggers');
 
 //globals
-let app = express();
+app = express();
 app.use(bodyParser.json());
 app.use('/', rootRouter);
 app.use('/cruises', cruisesRouter);
