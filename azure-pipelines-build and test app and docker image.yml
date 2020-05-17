@@ -64,8 +64,26 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
+          # pull image
+          docker pull mongo:latest
+
+
+    - task: DockerCompose@0
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Run a Docker Compose command'
+        dockerComposeCommand: 'up'
+
+
+
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
           # run container
-          docker run -d --name nodetours -p 7777:7777 przemekulik/nodetours:1.0
+          docker run -d --name nodetours -p 7777:7777 przemekulik/nodetours:2.0
     - task: Bash@3
       inputs:
         targetType: 'inline'
