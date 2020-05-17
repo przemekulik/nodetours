@@ -9,7 +9,7 @@ services:
     networks:
     - nodetours-network
   nodetours-app:
-    image: nodetours:2.0
+    image: przemekulik/nodetours:2.0
     container_name: nodetours-app
     hostname: nodetours-app
     environment: 
