@@ -1,4 +1,4 @@
-# Build NnoteTours Node.js project with npm.
+# Build NodeTours Node.js project with npm.
 # Build a docker image and push it to przemekulik/nodetours Docker Hub repository
 # Pull it from Docker Hub, run and test the API
 
@@ -9,7 +9,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  tag: '1.0'
+  tag: '2.0'
 
 stages:
 - stage: BuildApp
