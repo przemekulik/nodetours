@@ -4,7 +4,6 @@ var Customers = function() {
   // GET all
   this.getCustomers = function(dbo, callback) {
     dbo.collection('customers').find({}, {projection:{_id: 0}}).toArray(function(err, data) {
-      // TODO: filter out _id
       if (err) {
         logger.error(`getCustomers : Error reading customers db`);
         logger.error(`  Error: ${err}`);
@@ -34,7 +33,6 @@ var Customers = function() {
   // GET by {id}
   this.getCustomer = function(dbo, id, callback) {
     dbo.collection('customers').findOne({'customer.emailAddress': id},  {projection:{_id: 0}}, function(err, data) {
-      // TODO: filter out _id
       if (err) {
         logger.error(`getCustomer(id) : Error reading customers db`);
         logger.error(`  Error: ${err}`);

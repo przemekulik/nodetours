@@ -4,7 +4,6 @@ const Cruises = function() {
   // GET all
   this.getCruises = function(dbo, callback) {
     dbo.collection('cruises').find({}, {projection:{_id: 0}}).toArray(function(err, data) {
-      // TODO: filter out _id
       if (err) {
         logger.error(`getCruises : Error reading cruises db`);
         logger.error(`  Error: ${err}`);
@@ -19,7 +18,6 @@ const Cruises = function() {
   // GET by {id}
   this.getCruise = function(dbo, id, callback) {
     dbo.collection("cruises").findOne({'cruiseID': id}, {projection:{_id: 0}}, function (err, data) {
-      // TODO: filter out _id
       if (err) {
         logger.error(`getCruise(id): Error reading cruises db`);
         logger.error(`  Error: ${err}`);
