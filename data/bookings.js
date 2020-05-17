@@ -3,7 +3,7 @@ const logger = require('../utilities/loggers')
 const Bookings = function() {
   // GET all
   this.getBookings = function(dbo, callback) {
-    dbo.collection('bookings').find({}).toArray(function(err, data) {
+    dbo.collection('bookings').find({}, {projection:{_id: 0}}).toArray(function(err, data) {
       // TODO: filter out _id
       if (err) {
         logger.error(`getBookings : Error reading bookings db`);
@@ -38,7 +38,7 @@ const Bookings = function() {
   
   // GET by {id}
   this.getBooking = function(dbo, id, callback) {
-    dbo.collection('bookings').findOne({'bookingID': parseInt(id)}, function(err, data) {
+    dbo.collection('bookings').findOne({'bookingID': parseInt(id)},  {projection:{_id: 0}}, function(err, data) {
       // TODO: filter out _id
       if (err) {
         logger.error(`getBooking(id) : Error reading bookings db`);
