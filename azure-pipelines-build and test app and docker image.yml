@@ -74,9 +74,8 @@ stages:
         dockerRegistryEndpoint: 'Docker Hub'
         dockerComposeFile: '$(Build.SourcesDirectory)/deploy/docker/docker-compose.yaml'
         action: 'Run a Docker Compose command'
-        dockerComposeCommand: '-p nodetours up -d'
-
-
+        dockerComposeCommand: '-p nodetours up'
+        arguments: '-d'
 
     - task: Bash@3
       inputs:
