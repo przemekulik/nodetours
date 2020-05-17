@@ -76,6 +76,14 @@ stages:
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'up -d'
 
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'localhost'
+        method: 'GET'
+        urlSuffix: ':7777'
+        waitForCompletion: 'false'
+
     - task: Bash@3
       inputs:
         targetType: 'inline'
