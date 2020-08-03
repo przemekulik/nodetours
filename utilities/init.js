@@ -55,8 +55,8 @@ exports.initCustomers = function(dbo) {
 exports.setDBConnectionString = function(process) {
   if (process.env.DB_HOSTNAME && process.env.DB_PORT) {
     logger.verbose(`Startup: Env varables available. Trying to use them`);
-    let dbhost = process.env.DB_HOSTNAME;
-    let dbport = process.env.DB_PORT;
+    dbhost = process.env.DB_HOSTNAME;
+    dbport = process.env.DB_PORT;
     logger.verbose(`Startup: Setting DB host:port to: ${dbhost}:${dbport}`);
   } else {
     logger.verbose(`Startup: Not all env varables available. Trying to use startup arguments`);
