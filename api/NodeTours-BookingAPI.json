@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "You found the perfect cruise, now lets get it booked.\nBefore a cruise can be booked, the customer must sign-up to the NodeTours site if they have not already done so.  Once signed-up, use the Bookings API can be used to book a cruise.  You need the credentials you gave during sign-up to book the cruise.  The credentials should be sent to the API using HTTP Basic Authentication (the HTTP header Authorization: BASIC <base64 encoded user:password>).\n\nIf an error occurs while booking a trip, the API will give back an HTTP status code and where appropriate the message body will contain a plain text message giving the reason for the error.",
-    "version" : "1.0",
+    "version" : "2.1",
     "title" : "NodeTours Bookings API"
   },
   "host" : "nodetours:7777",

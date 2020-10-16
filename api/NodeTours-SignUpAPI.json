@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "API for signing-up to NodeTours.\nThe signing-up resources creates/updates/deletes a customer from SAGTours.\nSign-up and Booking are protected via Basic Authentication.\n\nIf an error occurs, the Sign-up API may give a text message as well as the HTTP response code.",
-    "version" : "1.0",
+    "version" : "2.1",
     "title" : "NodeTours Sign-up API"
   },
   "host" : "nodetours:7777",

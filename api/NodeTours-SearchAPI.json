@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "info" : {
     "description" : "This API enables site visitors to search for tours offered by NodeTours. Once a tour is found and the visitor wants to book the tour, the visitor must do the following:\n\n1. Sign up for an account, if the visitor has not already done so, using the functionality provided in the Sign-up API.\n\n2. Book the tour using the functionality provided in the Bookings API. \n\nThe Search API provides the following search options:\n\n- Show all available cruises.\n- Show cruises based on filter criteria.\n- Show a specific cruise based on its cruise ID.\n\nIf an error occurs, the API returns an HTTP status code and, where appropriate, a plain text message in the message body providing the reason for the error.",
-    "version" : "1.0",
+    "version" : "2.1",
     "title" : "NodeTours Search API"
   },
   "host" : "nodetours:7777",
