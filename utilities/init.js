@@ -2,7 +2,7 @@ const fs = require('fs');
 const functions = require('./functions');
 const logger = require('./loggers')
 
-exports.initCruises = function(dbo) {
+initCruises = function(dbo) {
   dbo.collection('cruises').findOne({}, function(err, result) {
     if (result == null) {
       const cruisesFile = fs.readFileSync(__dirname + '/../data/init/' + 'cruises.json', 'utf8');
@@ -19,7 +19,7 @@ exports.initCruises = function(dbo) {
 // global maxBookingID variable
 globalThis.maxBookingID = -1;
 // initilize bookings collection and get max booking od
-exports.initBookings = function(dbo) {
+initBookings = function(dbo) {
   dbo.collection('bookings').find({}).toArray(function(err, result) {
     let resultLength = Object.keys(result).length;
     if (resultLength == 0) {
@@ -37,7 +37,7 @@ exports.initBookings = function(dbo) {
   });
 }
 
-exports.initCustomers = function(dbo) {
+initCustomers = function(dbo) {
   dbo.collection('customers').find({}).toArray(function(err, result) {
     let resultLength = Object.keys(result).length;
     if (resultLength == 0) {
@@ -52,7 +52,7 @@ exports.initCustomers = function(dbo) {
   });
 }
 
-exports.setDBConnectionString = function(process) {
+setDBConnectionString = function(process) {
   if (process.env.DB_HOSTNAME && process.env.DB_PORT) {
     logger.verbose(`Startup: Env varables available. Trying to use them`);
     dbhost = process.env.DB_HOSTNAME;
@@ -97,4 +97,11 @@ exports.setDBConnectionString = function(process) {
       }
     }
   }
+}
+
+module.exports = {
+  initCruises,
+  initBookings,
+  initCustomers,
+  setDBConnectionString
 }

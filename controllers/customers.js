@@ -3,8 +3,7 @@ const logger = require('../utilities/loggers');
 const customers = new Customers();
 
 exports.customers_get = function(req, res) {
-  const dbo = req.app.locals.dbo;
-  customers.getCustomers(dbo, function(err, customersRes) {
+  customers.getCustomers(db, function(err, customersRes) {
     if (err) {
       logger.error(`GET /customers : Error reading customers db`);
       logger.error(`  Error: ${err}`)
@@ -21,9 +20,8 @@ exports.customers_get = function(req, res) {
 }
 
 exports.customers_post = function(req, res) {
-  const dbo = req.app.locals.dbo;
   // check if customer exists with this id
-  customers.getCustomer(dbo, req.body.customer.emailAddress, function(err, customersRes) {
+  customers.getCustomer(db, req.body.customer.emailAddress, function(err, customersRes) {
     if (err) {
       logger.error(`POST /customers : Error reading customers db`);
       logger.error(`  Error: ${err}`);
@@ -36,7 +34,7 @@ exports.customers_post = function(req, res) {
       // customer does not exist
       } else {
         // create customer
-        customers.postCustomers(dbo, req.body, function(err, customersRes) {
+        customers.postCustomers(db, req.body, function(err, customersRes) {
           if (err) {
             logger.error(`POST /customers : Error writing to customers db`);
             logger.error(`  Error: ${err}`);
@@ -56,8 +54,7 @@ exports.customers_post = function(req, res) {
 }
 
 exports.customers_get_id = function(req, res) {
-  const dbo = req.app.locals.dbo;
-  customers.getCustomer(dbo, req.params.id, function(err, customerRes) {
+  customers.getCustomer(db, req.params.id, function(err, customerRes) {
     if (err) {
       logger.error(`GET /customers/{customerID} : Error reading customers db`);
       logger.error(`  Error: ${err}`);
@@ -74,8 +71,7 @@ exports.customers_get_id = function(req, res) {
 }
 
 exports.customers_put_id = function(req, res) {
-  const dbo = req.app.locals.dbo;
-  customers.putCustomer(dbo, req, function(err, customersRes) {
+  customers.putCustomer(db, req, function(err, customersRes) {
     if (err) {
       logger.error(`PUT /customers/{customerID} : Error writing to customers db`);
       logger.error(`  Error: ${err}`);
@@ -92,8 +88,7 @@ exports.customers_put_id = function(req, res) {
 }
 
 exports.customers_delete_id = function(req, res) {
-  const dbo = req.app.locals.dbo;
-  customers.deleteCustomer(dbo, req.params.id, function(err, customersRes) {
+  customers.deleteCustomer(db, req.params.id, function(err, customersRes) {
     if (err) {
       logger.error(`DELETE /customers/{customerID} : Error writing to customers db`);
       logger.error(`  Error: ${err}`);
