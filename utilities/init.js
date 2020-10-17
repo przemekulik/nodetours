@@ -2,6 +2,13 @@ const fs = require('fs');
 const functions = require('./functions');
 const logger = require('./loggers')
 
+initDB = function(dbo) {
+  initCruises(dbo);
+  initRooms(dob);
+  initBookings(dbo);
+  initCustomers(dbo);
+}
+
 initCruises = function(dbo) {
   dbo.collection('cruises').findOne({}, function(err, result) {
     if (result == null) {
@@ -12,6 +19,20 @@ initCruises = function(dbo) {
       });
     } else {
       logger.verbose(`Startup: found existing cruises collection - not touching it`)
+    }
+  });
+}
+
+initRooms = function(dbo) {
+  dbo.collection('rooms').findOne({}, function(err, result) {
+    if (result == null) {
+      const roomsFile = fs.readFileSync(__dirname + '/../data/init/' + 'rooms.json', 'utf8');
+      dbo.collection('rooms').insertMany(JSON.parse(roomsFile), function(err, res) {
+        if (err) throw err;
+        logger.verbose(`Startup: Rooms empty : initializing : ${res.insertedCount} documents inserted`);
+      });
+    } else {
+      logger.verbose(`Startup: found existing rooms collection - not touching it`)
     }
   });
 }
@@ -100,8 +121,6 @@ setDBConnectionString = function(process) {
 }
 
 module.exports = {
-  initCruises,
-  initBookings,
-  initCustomers,
+  initDB,
   setDBConnectionString
 }

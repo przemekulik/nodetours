@@ -3,7 +3,7 @@ const logger = require('../utilities/loggers')
 const Cruises = function() {
   // GET all
   this.getCruises = function(dbo, callback) {
-    dbo.collection('cruises_new').aggregate([
+    dbo.collection('cruises').aggregate([
       { $lookup: {from: 'rooms', localField: 'roomTypes.roomID', foreignField: 'roomID', as: 'roomTypes'} },
       {
         $addFields: {
@@ -49,7 +49,7 @@ const Cruises = function() {
   
   // GET by {id}
   this.getCruise = function(dbo, id, callback) {
-    dbo.collection('cruises_new').aggregate([
+    dbo.collection('cruises').aggregate([
       { $match: {'cruiseID': id} },
       { $lookup: { from: 'rooms', localField: 'roomTypes.roomID', foreignField: 'roomID', as: 'roomTypes'} },
       {

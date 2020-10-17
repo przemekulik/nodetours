@@ -33,9 +33,7 @@ dbClient.connect(function (err) {
     db = dbClient.db(dbName);
     logger.verbose(`Startup: Database connection established`);
     // initialize db if not present
-    init.initCruises(db);
-    init.initBookings(db);
-    init.initCustomers(db);
+    init.initDB(db);
     // start server
     app = app.listen(process.env.PORT || 7777, function () {
       globalThis.host = require('os').hostname();
