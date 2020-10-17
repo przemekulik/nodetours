@@ -27,7 +27,7 @@ exports.customers_post = function(req, res) {
       logger.error(`  Error: ${err}`);
     } else {
       // customer exists
-      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
+      if (typeof customersRes !== 'undefined' && customersRes !== null) {
         res.writeHead(409, {'Content-Type': 'application/json'});
         res.write(JSON.stringify({Message: "Customer already exists"}, null, 3));
         res.end();
