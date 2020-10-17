@@ -34,9 +34,9 @@ const logger = createLogger({
         format.json()
       )
     }),
-    // verbose and below
+    // debug and below
     new transports.Console({
-      level: process.env.NODE_ENV === 'production' ? 'info' : 'verbose',
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
       format: format.combine(
         format.colorize({ all: true }),
         logFormat
