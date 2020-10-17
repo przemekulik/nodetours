@@ -1,0 +1,80 @@
+[
+  {
+    "roomID": "IPD",
+    "roomDetails": {
+        "roomType": "Inside Premier Double",
+        "title": "Inside Premier Double cabin",
+        "description": "An Eco-friendly double room with desk, Tv and Shower",
+        "maxOccupants": 2
+    },
+    "capacity": [
+      {"cruiseID": "00001", "total": 21, "available": 20},
+      {"cruiseID": "00002", "total": 31, "available": 30}
+    ]
+  },
+  {
+    "roomID": "OPD",
+    "roomDetails": {
+        "roomType": "Seaview Premier Double",
+        "title": "Premier Double cabin with seaview",
+        "description": "An Eco-friendly double room with seaview, desk, Tv and Shower",
+        "maxOccupants": 2
+    },
+    "capacity": [
+      {"cruiseID": "00001", "available": 30},
+      {"cruiseID": "00002", "available": 30}
+    ]
+  },
+  {
+    "roomID": "SDD",
+    "roomDetails": {
+        "roomType": "Seaview Deluxe Room",
+        "title": "Deluxe cabin with seaview",
+        "description": "For those wanting that extra bit of luxury. The Deluxe cabins come with a private balcony, desk, Tv and Shower",
+        "maxOccupants": 2
+    },
+    "capacity": [
+      {"cruiseID": "00001", "available": 25},
+      {"cruiseID": "00002", "available": 25}
+    ]
+  },
+  {
+    "roomID": "SD2",
+    "roomDetails": {
+        "roomType": "Seaview Double Deluxe Room",
+        "title": "Deluxe cabin with 2 double beds and a seaview",
+        "description": "For those wanting that extra bit of luxury. The Double Deluxe cabins come with 2 double beds a private balcony, desk, Tv and Shower",
+        "maxOccupants": 4
+    },
+    "capacity": [
+      {"cruiseID": "00001", "available": 22},
+      {"cruiseID": "00002", "available": 22}
+    ]
+  },
+  {
+    "roomID": "SJS",
+    "roomDetails": {
+        "roomType": "Seaview Junior Suite",
+        "title": "2 bedroom suite with seaview",
+        "description": "The Junior suite cabins come with 2 bedrooms, a separate sitting area, a private balcony, Tvs in each room and Shower",
+        "maxOccupants": 4
+    },
+    "capacity": [
+      {"cruiseID": "00001", "available": 27},
+      {"cruiseID": "00002", "available": 27}
+    ]
+  },
+  {
+    "roomID": "SDS",
+    "roomDetails": {
+        "roomType": "Seaview Deluxe Suite",
+        "title": "3 bedroom suite with seaview",
+        "description": "The Deluxe suite cabins come with 3 bedrooms, a spacious entertaining room, a private balcony with hot tub, Tvs in each room and Bath with Jacuzzi",
+        "maxOccupants": 4
+    },
+    "capacity": [
+      {"cruiseID": "00001", "available": 20},
+      {"cruiseID": "00002", "available": 20}
+    ]
+  }
+]
