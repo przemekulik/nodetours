@@ -4,7 +4,7 @@ const logger = require('./loggers')
 
 initDB = function(dbo) {
   initCruises(dbo);
-  initRooms(dob);
+  initRooms(dbo);
   initBookings(dbo);
   initCustomers(dbo);
 }
