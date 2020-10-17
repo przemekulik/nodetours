@@ -8,7 +8,7 @@ exports.bookings_get = function(req, res) {
       logger.error(`GET /bookings : Error reading bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingsRes !== 'undefined') {
+      if (typeof bookingsRes !== 'undefined' && JSON.stringify(bookingsRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingsRes, null, 3));
       } else {
@@ -25,7 +25,7 @@ exports.bookings_post = function(req, res) {
       logger.error(`POST /bookings : Error writing to bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+      if (typeof bookingRes !== 'undefined' && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
         res.writeHead(201, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
@@ -42,7 +42,7 @@ exports.bookings_get_id = function(req, res) {
       logger.error(`GET /bookings/{bookingID} : Error reading bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+      if (typeof bookingRes !== 'undefined' && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
@@ -59,7 +59,7 @@ exports.bookings_put_id = function(req, res) {
       logger.error(`PUT /bookings/{bookingID} : Error writing to bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+      if (typeof bookingRes !== 'undefined' && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {
@@ -76,7 +76,7 @@ exports.bookings_delete_id = function(req, res) {
       logger.error(`DELETE /bookings/{bookingsID} : Error writing to bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingRes !== 'undefined' && bookingRes !== null) {
+      if (typeof bookingRes !== 'undefined' && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {

@@ -8,7 +8,7 @@ exports.customers_get = function(req, res) {
       logger.error(`GET /customers : Error reading customers db`);
       logger.error(`  Error: ${err}`)
     } else {
-      if (typeof customersRes !== 'undefined') {
+      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customersRes, null, 3));
       } else {
@@ -27,7 +27,7 @@ exports.customers_post = function(req, res) {
       logger.error(`  Error: ${err}`);
     } else {
       // customer exists
-      if (typeof customersRes !== 'undefined' && customersRes !== null) {
+      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
         res.writeHead(409, {'Content-Type': 'application/json'});
         res.write(JSON.stringify({Message: "Customer already exists"}, null, 3));
         res.end();
@@ -39,7 +39,7 @@ exports.customers_post = function(req, res) {
             logger.error(`POST /customers : Error writing to customers db`);
             logger.error(`  Error: ${err}`);
           } else {
-            if (typeof customersRes !== 'undefined' && customersRes !== null) {
+            if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
               res.writeHead(201, {'Content-Type': 'application/json'});
               res.write(JSON.stringify(customersRes, null, 3));
             } else {
@@ -59,7 +59,7 @@ exports.customers_get_id = function(req, res) {
       logger.error(`GET /customers/{customerID} : Error reading customers db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof customerRes !== 'undefined' && customerRes !== null) {
+      if (typeof customerRes !== 'undefined' && JSON.stringify(customerRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customerRes, null, 3));
       } else {
@@ -76,7 +76,7 @@ exports.customers_put_id = function(req, res) {
       logger.error(`PUT /customers/{customerID} : Error writing to customers db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof customersRes !== 'undefined' && customersRes !== null) {
+      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customersRes, null, 3));
       } else {
@@ -93,7 +93,7 @@ exports.customers_delete_id = function(req, res) {
       logger.error(`DELETE /customers/{customerID} : Error writing to customers db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof customersRes !== 'undefined' && customersRes !== null) {
+      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customersRes, null, 3));
       } else {

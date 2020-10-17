@@ -18,7 +18,7 @@ exports.cruises_get = function(req, res) {
         // Find matching cruise
         return cruise.numDays <= numDays && cruise.startDate >= startDate && cruise.endDate <= endDate && cruise.startPort.includes(startPort);
       });
-      if (typeof cruisesRes !== 'undefined') {
+      if (typeof cruisesRes !== 'undefined' && JSON.stringify(cruisesRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(cruisesRes, null, 3));
       } else {
@@ -35,7 +35,7 @@ exports.cruises_get_id = function(req, res) {
       logger.error(`GET /cruises/{cruiseID} : Error reading cruise db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof cruisesRes !== 'undefined' && cruisesRes !== null) {
+      if (typeof cruisesRes !== 'undefined' && JSON.stringify(cruisesRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(cruisesRes, null, 3));
       } else {
