@@ -8,7 +8,7 @@ exports.customers_get = function(req, res) {
       logger.error(`GET /customers : Error reading customers db`);
       logger.error(`  Error: ${err}`)
     } else {
-      if (typeof customersRes !== 'undefined' && JSON.stringify(customersRes).localeCompare('[]') != 0) {
+      if (typeof customersRes !== 'undefined' && customersRes != null && JSON.stringify(customersRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customersRes, null, 3));
       } else {
@@ -59,7 +59,7 @@ exports.customers_get_id = function(req, res) {
       logger.error(`GET /customers/{customerID} : Error reading customers db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof customerRes !== 'undefined' && JSON.stringify(customerRes).localeCompare('[]') != 0) {
+      if (typeof customerRes !== 'undefined' && customerRes != null && JSON.stringify(customerRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(customerRes, null, 3));
       } else {

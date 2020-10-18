@@ -23,7 +23,7 @@ var Customers = function() {
         logger.error(`  Error: ${err}`);
         callback(err, null);
       } else {
-        let result = res;
+        let result = res.ops[0];
         // FIXME: set proper 204 response
         callback(null, result);
       }
@@ -47,8 +47,9 @@ var Customers = function() {
   // PUT by {id}
   this.putCustomer = function (dbo, req, callback) {
     dbo.collection('customers').findOneAndUpdate(
-      {'customer.emailAddress': req.params.id},
-      {$set: JSON.parse(JSON.stringify(req.body))},
+      { 'customer.emailAddress': req.params.id },
+      { $set: JSON.parse(JSON.stringify(req.body)) },
+      { returnOriginal : false },
       function(err, res) {
         if (err) {
           // FIXME: cancel processing in case of error
@@ -58,7 +59,7 @@ var Customers = function() {
         } else {
           // FIXME: set proper response body
           // FIXME: handle cases where bookings doesn't exist
-          let result = res;
+          let result = res.value;
           callback(null, result);
         }
     });
@@ -74,7 +75,7 @@ var Customers = function() {
       } else {
         // FIXME: set proper response body
         // FIXME: handles cases when booking doesn't exist
-        let result = res;
+        let result = res.value;
         callback(null, result);
       }
     });

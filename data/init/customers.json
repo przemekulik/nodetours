@@ -11,9 +11,7 @@
         "dob": "1992.09.01"
      },
      "address": {
-        "street": [
-           "221B Baker St"
-        ],
+        "street": "221B Baker St",
         "city": "London",
         "state": null,
         "zipcode": "NW1 6XE",
@@ -26,19 +24,17 @@
         "surname": "Apple",
         "title": "Nr.",
         "emailAddress": "adam.apple@email.com",
-        "passportID": "1220123456789",
+        "passportID": "1320123456789",
         "passportExpiration": "2022.07.01",
         "passportOrgin": "USA",
         "dob": "1992.09.01"
      },
      "address": {
-        "street": [
-           "221B Baker St"
-        ],
-        "city": "London",
-        "state": null,
-        "zipcode": "NW1 6XE",
-        "country": "UK"
+        "street": "21 Jump St",
+        "city": "New York",
+        "state": "NY",
+        "zipcode": "23450",
+        "country": "US"
      }
   }
 ]

@@ -82,7 +82,7 @@ const Cruises = function() {
         }
       },
       { $project: {_id: 0, 'roomTypes': {_id: 0}, 'roomTypes.capacity': 0} }
-    ]).toArray(function(err, data) {
+    ]).next(function(err, data) {
       if (err) {
         logger.error(`getCruises : Error reading cruises db`);
         logger.error(`  Error: ${err}`);

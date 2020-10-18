@@ -42,7 +42,7 @@ exports.bookings_get_id = function(req, res) {
       logger.error(`GET /bookings/{bookingID} : Error reading bookings db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof bookingRes !== 'undefined' && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
+      if (typeof bookingRes !== 'undefined' && bookingRes != null && JSON.stringify(bookingRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(bookingRes, null, 3));
       } else {

@@ -35,7 +35,7 @@ exports.cruises_get_id = function(req, res) {
       logger.error(`GET /cruises/{cruiseID} : Error reading cruise db`);
       logger.error(`  Error: ${err}`);
     } else {
-      if (typeof cruisesRes !== 'undefined' && JSON.stringify(cruisesRes).localeCompare('[]') != 0) {
+      if (typeof cruisesRes !== 'undefined' && cruisesRes !== null && JSON.stringify(cruisesRes).localeCompare('[]') != 0) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(cruisesRes, null, 3));
       } else {
