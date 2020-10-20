@@ -91,3 +91,36 @@ type Address {
   zipcode: String
   country: String
 }
+
+scalar JSON
+type Mutation {
+  createCustomer (
+    customer: CustomerInput,
+    address: AddressInput
+  ): JSON
+  updateCustomer (
+    customer: CustomerInput,
+    address: AddressInput
+  ): JSON
+  deleteCustomer (
+    customerID: String
+  ): JSON
+}
+
+input CustomerInput {
+  firstname: String
+  surname: String
+  title: String
+  emailAddress: String
+  passportID: String
+  passportExpiration: String
+  passportOrgin: String
+  dob: String
+}
+input AddressInput {
+  street: String
+  city: String
+  state: String
+  zipcode: String
+  country: String
+}

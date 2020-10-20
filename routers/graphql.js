@@ -116,9 +116,40 @@ const BookedRoom = {
   }
 }
 
+const Mutation = {
+  createCustomer: async (root, args, context, info) => {
+    customer = await db.collection('customers').insertOne({
+      customer: args.customer,
+      address: args.address
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(customer).ops[0];
+  },
+  updateCustomer: async (root, args, context, info) => {
+    customer = await db.collection('customers').findOneAndUpdate(
+      { 'customer.emailAddress': args.customer.emailAddress },
+      { $set: {customer: args.customer, address: args.address} },
+      { returnOriginal : false }
+    ).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(customer.value));
+  },
+  deleteCustomer: async (root, args, context, info) => {
+    customer = await db.collection('customers').findOneAndDelete({
+      'customer.emailAddress': args.customerID
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(customer.value));
+  }
+}
+
 module.exports = {
   Query,
   Cruise,
   Booking,
-  BookedRoom
+  BookedRoom,
+  Mutation
 }
