@@ -22,12 +22,11 @@
     "startDate" : 20150710,
     "endDate" : 20150724,
     "numDays" : 14,
-    "startPort" : "San Diego",
+    "startPort" : "San Diego, California",
     "roomTypes" : [
       {"roomID" : "IPD"},
       {"roomID" : "OPD"},
       {"roomID" : "SDD"},
-      {"roomID" : "SD2"},
       {"roomID" : "SJS"},
       {"roomID" : "SDS"}
     ]
