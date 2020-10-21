@@ -94,17 +94,12 @@ type Address {
 
 scalar JSON
 type Mutation {
-  createCustomer (
-    customer: CustomerInput,
-    address: AddressInput
-  ): JSON
-  updateCustomer (
-    customer: CustomerInput,
-    address: AddressInput
-  ): JSON
-  deleteCustomer (
-    customerID: String
-  ): JSON
+  createCustomer (customer: CustomerInput, address: AddressInput): JSON
+  updateCustomer (customer: CustomerInput, address: AddressInput): JSON
+  deleteCustomer (customerID: String): JSON
+  createBooking (bookingID: Int, cruiseID: String, customerID: String, room: [RoomInput]): JSON
+  updateBooking (bookingID: Int, cruiseID: String, customerID: String, room: [RoomInput]): JSON
+  deleteBooking (bookingID: Int): JSON
 }
 
 input CustomerInput {
@@ -117,10 +112,16 @@ input CustomerInput {
   passportOrgin: String
   dob: String
 }
+
 input AddressInput {
   street: String
   city: String
   state: String
   zipcode: String
   country: String
+}
+
+input RoomInput {
+  roomID: String,
+  numRooms: Int
 }

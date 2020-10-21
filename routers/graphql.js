@@ -143,6 +143,37 @@ const Mutation = {
       return res
     });
     return JSON.parse(JSON.stringify(customer.value));
+  },
+  createBooking: async (root, args, context, info) => {
+    let newBookingID = globalThis.maxBookingID + 1;
+    globalThis.maxBookingID++;
+    booking = await db.collection('bookings').insertOne({
+      bookingID: newBookingID,
+      cruiseID: args.cruiseID,
+      customerID: args.customerID,
+      room: args.room
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(booking).ops[0];
+  },
+  updateBooking: async (root, args, context, info) => {
+    booking = await db.collection('bookings').findOneAndUpdate(
+      { 'bookingID': args.bookingID },
+      { $set: {bookingID: args.bookingID, cruiseID: args.cruiseID, customerID: args.customerID, room: args.room} },
+      { returnOriginal : false }
+    ).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(booking.value));
+  },
+  deleteBooking: async (root, args, context, info) => {
+    booking = await db.collection('bookings').findOneAndDelete({
+      'bookingID': args.bookingID
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(booking.value));
   }
 }
 
