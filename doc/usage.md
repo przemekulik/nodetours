@@ -24,7 +24,7 @@ All NodeTours REST and GraphQL endpoints are documeted in [this](../test/int/Nod
 
 You can also use this collection to test your deployment. Simply run the collection
 
-![run-1](./images/run-collection-1.png) {width: 25%}
+![run-1](./images/run-collection-1.png =100x)
 
 adjust settings
 
