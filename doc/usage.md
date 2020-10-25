@@ -4,7 +4,7 @@ NodeTours app 3.0 implements REST and GraphQL APIs.
 
 ## REST
 
-REST API descriptors are locate [here](../api/).
+REST API descriptors are located [here](../api/).
 
 ## GraphQL
 
@@ -24,7 +24,7 @@ All NodeTours REST and GraphQL endpoints are documeted in [this](../test/int/Nod
 
 You can also use this collection to test your deployment. Simply run the collection
 
-![run-1](./images/run-collection-1.png)
+![run-1](./images/run-collection-1.png) {width: 25%}
 
 adjust settings
 
