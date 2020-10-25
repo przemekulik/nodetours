@@ -3,8 +3,8 @@
     "cruiseID" : "00001",
     "title" : "Alaska Whale Watching Photo Expedition",
     "description" : "Photographying the Whale in Alaska is a unique experience.  Join us on this tour to this unique area.  The cruise is a luxury tour for this that what to spend time with others with a like for see these unique animals of the sea.  The tour will be conducted by a pro photography who will work with each of the members of the tour as needed.",
-    "startDate" : 20150820,
-    "endDate" : 20150827,
+    "startDate" : 20210801,
+    "endDate" : 20210809,
     "numDays" : 8,
     "startPort" : "Juneau, Alaska",
     "roomTypes" : [
@@ -19,8 +19,8 @@
     "cruiseID" : "00002",
     "title" : "Panama canal",
     "description" : "Cruise from San Diego to Mexico and on to the canal, then up to Miami. The canal is 77.1 Km (48 miles) long and connects the Atlantic Ocean with the Pacific Ocean.  This cruise shows a side of the canal that is unique for those that what to see it in luxury.",
-    "startDate" : 20150710,
-    "endDate" : 20150724,
+    "startDate" : 20210701,
+    "endDate" : 20210715,
     "numDays" : 14,
     "startPort" : "San Diego, California",
     "roomTypes" : [

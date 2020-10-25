@@ -1,6 +1,72 @@
 const logger = require('../utilities/loggers')
 
 const Bookings = function() {
+  // GraphQL
+  this.gqlBookings = async function() {
+    bookings = await db.collection('bookings').find().toArray().then(res => { return res });
+    return bookings;
+  }
+
+  this.gqlBookingByID = async function(root, args) {
+    booking = await db.collection('bookings').findOne({'bookingID': args.bookingID}).then(res => { return res });
+    return booking;
+  }
+
+  this.gqlBookingsByCustomer = async function(root, args) {
+    bookings = await db.collection('bookings').find({'customerID': args.customerID}).toArray().then(res => { return res });
+    return bookings;
+  }
+
+  this.gqlBookingsByCruise = async function(root, args) {
+    bookings = await db.collection('bookings').find({'cruiseID': args.cruiseID}).toArray().then(res => { return res });
+    return bookings;
+  }
+
+  this.gqlBookingsByRoom = async function(root, args) {
+    bookings = await db.collection('bookings').find({'room.roomID': args.roomID}).toArray().then(res => { return res });
+    return bookings;
+  }
+
+  this.gqlBookingTraveller = async function(root) {
+    traveller = await db.collection('customers').findOne({'customer.emailAddress': root.customerID}).then(res => { return res });
+    return traveller;
+  }
+
+  this.gqlCreateBooking = async function(root, args) {
+    let newBookingID = globalThis.maxBookingID + 1;
+    globalThis.maxBookingID++;
+    booking = await db.collection('bookings').insertOne({
+      bookingID: newBookingID,
+      cruiseID: args.cruiseID,
+      customerID: args.customerID,
+      room: args.room
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(booking).ops[0];
+  }
+
+  this.gqlUpdateBooking = async function(root, args) {
+    booking = await db.collection('bookings').findOneAndUpdate(
+      { 'bookingID': args.bookingID },
+      { $set: {bookingID: args.bookingID, cruiseID: args.cruiseID, customerID: args.customerID, room: args.room} },
+      { returnOriginal : false }
+    ).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(booking.value));
+  }
+
+  this.gqlDeleteBooking = async function(root, args) {
+    booking = await db.collection('bookings').findOneAndDelete({
+      'bookingID': args.bookingID
+    }).then(res => {
+      return res
+    });
+    return JSON.parse(JSON.stringify(booking.value));
+  }
+  
+  // REST
   // GET all
   this.getBookings = function(dbo, callback) {
     //dbo.collection('bookings').find({}, {projection:{_id: 0}}).toArray(function(err, data) {

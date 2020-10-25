@@ -1,180 +1,56 @@
 const logger = require('../utilities/loggers');
+const Cruises = require('../data/cruises');
+const Rooms = require('../data/rooms');
+const Bookings = require('../data/bookings');
+const Customers = require('../data/customers');
+
+const cruises = new Cruises();
+const rooms = new Rooms();
+const bookings = new Bookings();
+const customers = new Customers();
 
 const Query = {
-  Cruises: async () => {
-    cruises = await db.collection('cruises').find().toArray().then(res => { return res });
-    return cruises;
-  },
-  CruiseByID: async (root, args, context, info) => {
-    cruise = await db.collection('cruises').findOne({'cruiseID': args.cruiseID}).then(res => { return res });
-    return cruise;
-  },
-  CruisesWithFilter: async (root, args, context, info) => {
-    cruises = await db.collection('cruises').find().toArray().then(res => { return res });
-    cruises = cruises.filter(function(cruises) {
-      return cruises.numDays <= args.numDays && cruises.startDate >= args.startDate && cruises.endDate <= args.endDate && cruises.startPort.includes(args.startPort);
-    });
-    return cruises;
-  },
+  Cruises: () => { return cruises.gqlCruises() },
+  CruiseByID: (root, args) => { return cruises.gqlCruiseByID(root, args) },
+  CruisesWithFilter: (root, args) => { return cruises.gqlCruisesWithFilter(root, args) },
 
-  Rooms: async () => {
-    rooms = await db.collection('rooms').find().toArray().then(res => { return res });
-    return rooms;
-  },
-  RoomsByType: async (root, args, context, info) => {
-    rooms = await db.collection('rooms').find({'roomID': args.roomID}).toArray().then(res => { return res });
-    return rooms;
-  },
-  RoomsByCruise: async (root, args, context, info) => {
-    rooms = await db.collection('rooms').find({'capacity.cruiseID': args.cruiseID}).toArray().then(res => { return res });
-    rooms.forEach(room => {
-      room.capacity = room.capacity.filter(function(c) {
-        return c.cruiseID === args.cruiseID;
-      })   
-    });
-    return rooms;
-  },
-  RoomsAvailable: async () => {
-    rooms = await db.collection('rooms').find().toArray().then(res => { return res });
-    rooms.forEach(room => {
-      room.capacity = room.capacity.filter(function(c) {
-        return c.available > 0;
-      })   
-    });
-    return rooms;
-  },
+  Rooms: () => { return rooms.gqlRooms() },
+  RoomByType: (root, args) => { return rooms.gqlRoomByType(root, args) },
+  RoomsByCruise: (root, args) => { return rooms.gqlRoomsByCruise(root, args) },
+  RoomsAvailable: () => { return rooms.gqlRoomsAvailable() },
 
-  Bookings: async () => {
-    bookings = await db.collection('bookings').find().toArray().then(res => { return res });
-    return bookings;
-  },
-  BookingByID: async (root, args, context, info) => {
-    booking = await db.collection('bookings').findOne({'bookingID': args.bookingID}).then(res => { return res });
-    return booking;
-  },
-  BookingsByCustomer: async (root, args, context, info) => {
-    bookings = await db.collection('bookings').find({'customerID': args.customerID}).toArray().then(res => { return res });
-    return bookings;
-  },
-  BookingsByCruise: async (root, args, context, info) => {
-    bookings = await db.collection('bookings').find({'cruiseID': args.cruiseID}).toArray().then(res => { return res });
-    return bookings;
-  },
-  BookingsByRoom: async (root, args, context, info) => {
-    bookings = await db.collection('bookings').find({'room.roomID': args.roomID}).toArray().then(res => { return res });
-    return bookings;
-  },
+  Bookings: () => { return bookings.gqlBookings() },
+  BookingByID: (root, args) => { return bookings.gqlBookingByID(root, args) },
+  BookingsByCustomer: (root, args) => { return bookings.gqlBookingsByCustomer(root, args) },
+  BookingsByCruise: (root, args) => { return bookings.gqlBookingsByCruise(root, args) },
+  BookingsByRoom: (root, args) => { return bookings.gqlBookingsByRoom(root, args) },
 
-  Customers: async () => {
-    customers = await db.collection('customers').find().toArray().then(res => { return res });
-    return customers
-  },
-  CustomerByID: async (root, args, context, info) => {
-    customer = await db.collection('customers').findOne({'customer.emailAddress': args.customerID}).then(res => { return res });
-    return customer;
-  },
-  CustomersByCountry: async (root, args, context, info) => {
-    customers = await db.collection('customers').find({'address.country': args.country}).toArray().then(res => { return res });
-    return customers;
-  }
+  Customers: () => { return customers.gqlCustomers() },
+  CustomerByID: (root, args) => { return customers.gqlCustomerByID(root, args) },
+  CustomersByCountry: (root, args) => { return customers.gqlCustomersByCountry(root, args) }
 }
 
 const Cruise = {
-  roomTypes: async (root) => {
-    let rooms = root.roomTypes;
-    allRooms = await db.collection('rooms').find().toArray().then(res => { return res });
-    rooms.forEach(room => {
-      let currentRoomID = room.roomID;
-      currentRoom = allRooms.filter(function(r) {
-        return r.roomID === currentRoomID;
-      });
-      currentRoomCapacity = currentRoom[0].capacity.filter(function(c) {
-        return c.cruiseID === root.cruiseID;
-      });
-      room.roomDetails = currentRoom[0].roomDetails;
-      room.capacity = currentRoomCapacity;
-    });
-    return rooms;
-  }
+  roomTypes: (root) => { return cruises.gqlCruiseRoomTypes(root) }
 }
 
 const Booking = {
-  cruise: async (root) => {
-    cruise = await db.collection('cruises').findOne({'cruiseID': root.cruiseID}).then(res => { return res });
-    return cruise;
-  },
-  traveller: async (root) => {
-    traveller = await db.collection('customers').findOne({'customer.emailAddress': root.customerID}).then(res => { return res });
-    return traveller;
-  }
+  cruise: (root) => { return cruises.gqlCruiseByID(root) },
+  traveller: (root) => { return customers.gqlCustomerByID(root) }
 }
 
 const BookedRoom = {
-  details: async (root) => {
-    room = await db.collection('rooms').findOne({'roomID': root.roomID}).then(res => { return res });
-    return room;
-  }
+  details: (root) => { return rooms.gqlRoomByType(root) }
 }
 
 const Mutation = {
-  createCustomer: async (root, args, context, info) => {
-    customer = await db.collection('customers').insertOne({
-      customer: args.customer,
-      address: args.address
-    }).then(res => {
-      return res
-    });
-    return JSON.parse(customer).ops[0];
-  },
-  updateCustomer: async (root, args, context, info) => {
-    customer = await db.collection('customers').findOneAndUpdate(
-      { 'customer.emailAddress': args.customer.emailAddress },
-      { $set: {customer: args.customer, address: args.address} },
-      { returnOriginal : false }
-    ).then(res => {
-      return res
-    });
-    return JSON.parse(JSON.stringify(customer.value));
-  },
-  deleteCustomer: async (root, args, context, info) => {
-    customer = await db.collection('customers').findOneAndDelete({
-      'customer.emailAddress': args.customerID
-    }).then(res => {
-      return res
-    });
-    return JSON.parse(JSON.stringify(customer.value));
-  },
-  createBooking: async (root, args, context, info) => {
-    let newBookingID = globalThis.maxBookingID + 1;
-    globalThis.maxBookingID++;
-    booking = await db.collection('bookings').insertOne({
-      bookingID: newBookingID,
-      cruiseID: args.cruiseID,
-      customerID: args.customerID,
-      room: args.room
-    }).then(res => {
-      return res
-    });
-    return JSON.parse(booking).ops[0];
-  },
-  updateBooking: async (root, args, context, info) => {
-    booking = await db.collection('bookings').findOneAndUpdate(
-      { 'bookingID': args.bookingID },
-      { $set: {bookingID: args.bookingID, cruiseID: args.cruiseID, customerID: args.customerID, room: args.room} },
-      { returnOriginal : false }
-    ).then(res => {
-      return res
-    });
-    return JSON.parse(JSON.stringify(booking.value));
-  },
-  deleteBooking: async (root, args, context, info) => {
-    booking = await db.collection('bookings').findOneAndDelete({
-      'bookingID': args.bookingID
-    }).then(res => {
-      return res
-    });
-    return JSON.parse(JSON.stringify(booking.value));
-  }
+  createCustomer: (root, args) => { return customers.gqlCreateCustomer(root, args) },
+  updateCustomer: (root, args) => { return customers.gqlUpdateCustomer(root, args) },
+  deleteCustomer: (root, args) => { return customers.gqlDeleteCustomer(root, args) },
+
+  createBooking: (root, args) => { return bookings.gqlCreateBooking(root, args) },
+  updateBooking: (root, args) => { return bookings.gqlUpdateBooking(root, args) },
+  deleteBooking: (root, args) => { return bookings.gqlDeleteBooking(root, args) },
 }
 
 module.exports = {

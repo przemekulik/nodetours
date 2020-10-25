@@ -4,7 +4,7 @@ type Query {
   CruisesWithFilter (numDays: Int = 99999999, startDate: Int = 0, endDate: Int = 99999999, startPort: String = " "): [Cruise]
 
   Rooms: [Room]
-  RoomsByType (roomID: String): [Room]
+  RoomByType (roomID: String): Room
   RoomsByCruise (cruiseID: String): [Room]
   RoomsAvailable: [Room]
 
