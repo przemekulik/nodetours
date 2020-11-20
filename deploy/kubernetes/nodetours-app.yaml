@@ -5,22 +5,22 @@ metadata:
   name: nodetours-app
   labels:
     app: nodetours-app
-    version: "2.1"
+    version: "3.0"
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: nodetours-app
-      version: "2.1"
+      version: "3.0"
   template:
     metadata:
       labels:
         app: nodetours-app
-        version: "2.1"
+        version: "3.0"
     spec:
       containers:
       - name: nodetours-app
-        image: nodetours:2.1
+        image: nodetours:3.0
         imagePullPolicy: IfNotPresent
         env:
           - name: DB_HOSTNAME

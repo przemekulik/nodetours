@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/przemekulik/nodetours#readme",
   "dependencies": {
+    "apollo-server-express": "^2.18.2",
     "express": "^4.17.1",
     "mongodb": "^3.6.2",
     "winston": "^3.3.3"

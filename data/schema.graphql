@@ -1,0 +1,127 @@
+type Query {
+  Cruises: [Cruise]
+  CruiseByID (cruiseID: String): Cruise
+  CruisesWithFilter (numDays: Int = 99999999, startDate: Int = 0, endDate: Int = 99999999, startPort: String = " "): [Cruise]
+
+  Rooms: [Room]
+  RoomByType (roomID: String): Room
+  RoomsByCruise (cruiseID: String): [Room]
+  RoomsAvailable: [Room]
+
+  Bookings: [Booking]
+  BookingByID (bookingID: Int): Booking
+  BookingsByCustomer (customerID: String): [Booking]
+  BookingsByCruise (cruiseID: String): [Booking]
+  BookingsByRoom (roomID: String): [Booking]
+
+  Customers: [Customer]
+  CustomerByID (customerID: String): Customer
+  CustomersByCountry (country: String): [Customer]
+}
+
+type Cruise {
+  _id: ID
+  cruiseID: String
+  title: String
+  description: String
+  startDate: Int
+  endDate: Int
+  numDays: Int
+  startPort: String
+  roomTypes: [Room]
+}
+
+type Room {
+  _id: ID
+  roomID: String
+  roomDetails: RoomDetails
+  capacity: [Capacity]
+}
+
+type RoomDetails {
+  roomType: String
+  title: String
+  description: String
+  maxOccupants: Int
+}
+
+type Capacity {
+  cruiseID: String
+  total: Int
+  available: Int
+}
+
+type Booking {
+  _id: ID
+  bookingID: Int
+  cruiseID: String
+  cruise: Cruise
+  customerID: String
+  traveller: Customer
+  room: [BookedRoom]
+}
+
+type BookedRoom {
+  roomID: String
+  details: Room
+  numRooms: Int
+}
+
+type Customer {
+  _id: ID
+  customer: CustomerDetails
+  address: Address
+}
+
+type CustomerDetails {
+  firstname: String
+  surname: String
+  title: String
+  emailAddress: String
+  passportID: String
+  passportExpiration: String
+  passportOrgin: String
+  dob: String
+}
+
+type Address {
+  street: String
+  city: String
+  state: String
+  zipcode: String
+  country: String
+}
+
+scalar JSON
+type Mutation {
+  createCustomer (customer: CustomerInput, address: AddressInput): JSON
+  updateCustomer (customer: CustomerInput, address: AddressInput): JSON
+  deleteCustomer (customerID: String): JSON
+  createBooking (bookingID: Int, cruiseID: String, customerID: String, room: [RoomInput]): JSON
+  updateBooking (bookingID: Int, cruiseID: String, customerID: String, room: [RoomInput]): JSON
+  deleteBooking (bookingID: Int): JSON
+}
+
+input CustomerInput {
+  firstname: String
+  surname: String
+  title: String
+  emailAddress: String
+  passportID: String
+  passportExpiration: String
+  passportOrgin: String
+  dob: String
+}
+
+input AddressInput {
+  street: String
+  city: String
+  state: String
+  zipcode: String
+  country: String
+}
+
+input RoomInput {
+  roomID: String,
+  numRooms: Int
+}
