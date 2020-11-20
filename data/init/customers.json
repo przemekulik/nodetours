@@ -4,7 +4,7 @@
         "firstname": "Oleg",
         "surname": "Orange",
         "title": "Mr.",
-        "emailAddress": "oleg.orange@email.com",
+        "emailAddress": "oleg.oranges@email.com",
         "passportID": "1220123456789",
         "passportExpiration": "2022.07.01",
         "passportOrgin": "USA",
@@ -22,7 +22,7 @@
      "customer": {
         "firstname": "Adam",
         "surname": "Apple",
-        "title": "Mr.",
+        "title": "Nr.",
         "emailAddress": "adam.apple@email.com",
         "passportID": "1320123456789",
         "passportExpiration": "2022.07.01",

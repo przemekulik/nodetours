@@ -1,8 +1,6 @@
 // npm pacakages
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const { ApolloServer, gql } = require('apollo-server-express');
 
 // app imports
 const rootRouter = require('./routers/root');
@@ -11,8 +9,6 @@ const bookingsRouter = require('./routers/bookings');
 const customersRouter = require('./routers/customers');
 const init = require('./utilities/init');
 const logger = require('./utilities/loggers');
-const typeDefs = fs.readFileSync('./data/schema.graphql',{encoding: 'utf-8'});
-const resolvers = require('./routers/graphql');
 
 //globals
 app = express();
@@ -21,12 +17,6 @@ app.use('/', rootRouter);
 app.use('/cruises', cruisesRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/customers', customersRouter);
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  graphiql: true
-});
-server.applyMiddleware({ app });
 
 // Set up Mongo DB connection and start the app
 init.setDBConnectionString(process);

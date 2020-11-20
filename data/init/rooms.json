@@ -8,7 +8,8 @@
         "maxOccupants": 2
     },
     "capacity": [
-      {"cruiseID": "00001", "total": 21, "available": 20}
+      {"cruiseID": "00001", "total": 21, "available": 20},
+      {"cruiseID": "00002", "total": 31, "available": 30}
     ]
   },
   {
@@ -20,7 +21,8 @@
         "maxOccupants": 2
     },
     "capacity": [
-      {"cruiseID": "00002", "total": 31, "available": 29}
+      {"cruiseID": "00001", "available": 30},
+      {"cruiseID": "00002", "available": 30}
     ]
   },
   {
@@ -32,8 +34,8 @@
         "maxOccupants": 2
     },
     "capacity": [
-      {"cruiseID": "00001", "total": 11, "available": 9},
-      {"cruiseID": "00002", "total": 11, "available": 7}
+      {"cruiseID": "00001", "available": 25},
+      {"cruiseID": "00002", "available": 25}
     ]
   },
   {
@@ -45,8 +47,8 @@
         "maxOccupants": 4
     },
     "capacity": [
-      {"cruiseID": "00001", "total": 21, "available": 20},
-      {"cruiseID": "00002", "total": 31, "available": 30}
+      {"cruiseID": "00001", "available": 22},
+      {"cruiseID": "00002", "available": 22}
     ]
   },
   {
@@ -58,8 +60,8 @@
         "maxOccupants": 4
     },
     "capacity": [
-      {"cruiseID": "00001", "total": 32, "available": 20},
-      {"cruiseID": "00002", "total": 34, "available": 30}
+      {"cruiseID": "00001", "available": 27},
+      {"cruiseID": "00002", "available": 27}
     ]
   },
   {
@@ -71,8 +73,8 @@
         "maxOccupants": 4
     },
     "capacity": [
-      {"cruiseID": "00001", "total": 11, "available": 10},
-      {"cruiseID": "00002", "total": 21, "available": 14}
+      {"cruiseID": "00001", "available": 20},
+      {"cruiseID": "00002", "available": 20}
     ]
   }
 ]
