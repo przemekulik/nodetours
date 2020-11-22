@@ -24,7 +24,11 @@ app.use('/customers', customersRouter);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  graphiql: true
+  graphiql: true,
+  context: ({ req }) => {
+    const locale = req.headers.locale;
+    return { locale };
+  }
 });
 server.applyMiddleware({ app });
 

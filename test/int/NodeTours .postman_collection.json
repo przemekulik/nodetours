@@ -1,0 +1,3510 @@
+{
+	"info": {
+		"_postman_id": "1742eba0-f651-4869-93f2-bf2b725b50b0",
+		"name": "NodeTours ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "/cruises",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    pm.expect(res[0].cruiseID).to.eql('00001');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises/{cruiseID} [1]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f77caba-22d9-484a-a4e6-7afe4e0b2007",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCruiseID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.cruiseID).to.eql(reqCruiseID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/00001",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								"00001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises/{cruiseID} [2]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "037ac2a5-46ce-4cac-9f16-61eebe5aa93d",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCruiseID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.cruiseID).to.eql(reqCruiseID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "cache",
+								"value": "yes",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/00002",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								"00002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises/{cruiseID} [3]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e1b4565-13f2-408d-a6f5-08341c141988",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.not.be.ok;",
+									"     pm.response.to.not.be.withBody;",
+									"     pm.response.to.not.be.json;",
+									"     pm.response.to.not.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/00003",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								"00003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises?params [1]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.length;",
+									"    pm.expect(res[0].cruiseID).to.eql('00001');",
+									"    pm.expect(elementsCount).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/?numDays=15&startDate=20210630&endDate=20210830&startPort=Alaska",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								""
+							],
+							"query": [
+								{
+									"key": "numDays",
+									"value": "15"
+								},
+								{
+									"key": "startDate",
+									"value": "20210630"
+								},
+								{
+									"key": "endDate",
+									"value": "20210830"
+								},
+								{
+									"key": "startPort",
+									"value": "Alaska"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises?params [2]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.length;",
+									"    pm.expect(res[0].cruiseID).to.eql('00002');",
+									"    pm.expect(elementsCount).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/?numDays=15&startDate=20210630&endDate=20210730&startPort=",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								""
+							],
+							"query": [
+								{
+									"key": "numDays",
+									"value": "15"
+								},
+								{
+									"key": "startDate",
+									"value": "20210630"
+								},
+								{
+									"key": "endDate",
+									"value": "20210730"
+								},
+								{
+									"key": "startPort",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cruises?params [1,2]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.length;",
+									"    pm.expect(elementsCount).to.eql(2);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/cruises/?numDays=15&startDate=20210630&endDate=20210830&startPort=",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"cruises",
+								""
+							],
+							"query": [
+								{
+									"key": "numDays",
+									"value": "15"
+								},
+								{
+									"key": "startDate",
+									"value": "20210630"
+								},
+								{
+									"key": "endDate",
+									"value": "20210830"
+								},
+								{
+									"key": "startPort",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/{customerID} [adam.apple@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6f96c766-7db7-4ad3-905b-26885f355614",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCustomerID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.customer.emailAddress).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/adam.apple@email.com",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								"adam.apple@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/{customerID} [oleg.oranges@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ceb0c7c-9b44-40c0-bf0a-0053b530b96f",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCustomerID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.customer.emailAddress).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "oleg.orange@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "cache",
+								"value": "yes",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/oleg.orange@email.com",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								"oleg.orange@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/ [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11ac6bf8-4c33-4c0a-b92c-02599121d716",
+								"exec": [
+									"pm.test(\"successful POST request\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = JSON.parse(pm.request.body);",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.customer).to.eql(req.customer);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer\" : {\r\n    \"firstname\" : \"Przemek\",\r\n    \"surname\" : \"Kulik\",\r\n    \"title\" : \"Mrs.\",\r\n    \"emailAddress\" : \"przemek.kulik@email.com\",\r\n    \"passportID\" : \"1220123456789\",\r\n    \"passportExpiration\" : \"2022.07.01\",\r\n    \"passportOrgin\" : \"PL\",\r\n    \"dob\" : \"1992.09.01\"\r\n  },\r\n  \"address\" : {\r\n    \"street\" : \"Ulica 7\",\r\n    \"city\" : \"Płońsk\",\r\n    \"state\" : \"MZ\",\r\n    \"zipcode\" : \"09-100\",\r\n    \"country\" : \"PL\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/ [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eddf6886-4589-4938-a575-3801e56e5ed5",
+								"exec": [
+									"pm.test(\"unsuccessful POST request\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    var res = pm.response.json();",
+									"    pm.expect(res.Message).to.eql('Customer already exists');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer\" : {\r\n    \"firstname\" : \"Przemek\",\r\n    \"surname\" : \"Kulik\",\r\n    \"title\" : \"Mrs.\",\r\n    \"emailAddress\" : \"przemek.kulik@email.com\",\r\n    \"passportID\" : \"1220123456789\",\r\n    \"passportExpiration\" : \"2022.07.01\",\r\n    \"passportOrgin\" : \"PL\",\r\n    \"dob\" : \"1992.09.01\"\r\n  },\r\n  \"address\" : {\r\n    \"street\" : \"Ulica 7\",\r\n    \"city\" : \"Płońsk\",\r\n    \"state\" : \"MZ\",\r\n    \"zipcode\" : \"09-100\",\r\n    \"country\" : \"PL\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/{customerID} [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2184b500-106c-4ddb-9f10-5f3159118b83",
+								"exec": [
+									"pm.test(\"successful PUT request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = JSON.parse(pm.request.body);",
+									"    let res = pm.response.json();",
+									"    pm.expect(JSON.stringify(res.customer)).to.eql(JSON.stringify(req.customer));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "przemek.kulik@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer\" : {\r\n    \"firstname\" : \"Przemek\",\r\n    \"surname\" : \"Kulik\",\r\n    \"title\" : \"Mr.\",\r\n    \"emailAddress\" : \"przemek.kulik@email.com\",\r\n    \"passportID\" : \"1220123456789\",\r\n    \"passportExpiration\" : \"2022.07.01\",\r\n    \"passportOrgin\" : \"PL\",\r\n    \"dob\" : \"1992.09.01\"\r\n  },\r\n  \"address\" : {\r\n    \"street\" : \"Ulica 7\",\r\n    \"city\" : \"Płońsk\",\r\n    \"state\" : \"MZ\",\r\n    \"zipcode\" : \"09-100\",\r\n    \"country\" : \"PL\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/przemek.kulik@email.com",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								"przemek.kulik@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/{customerID} [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "973b853a-4f80-425a-bba4-5304e0ea7ba3",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCustomerID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.customer.emailAddress).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/przemek.kulik@email.com",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								"przemek.kulik@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings [adam.apple@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b84bb49-5626-4e3b-8bf4-8a532c6c4034",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    var res = pm.response.json();",
+									"    pm.expect(res[0].bookingID).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings [*][przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7732ad07-e041-49db-93b9-bb34b2a9a02b",
+								"exec": [
+									"let res = JSON.parse(responseBody);",
+									"pm.collectionVariables.set('NodeToursBookingID', res.bookingID);",
+									"",
+									"pm.test(\"successful POST request\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = JSON.parse(pm.request.body);",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.cruiseID).to.eql(req.cruiseID);",
+									"    pm.expect(res.customerID).to.eql(req.customerID);",
+									"    pm.expect(res.room).to.eql(req.room);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"cruiseID\": \"00001\",\r\n \"customerID\": \"przemek.kulik@email.com\",\r\n \"room\": [\r\n  {\r\n   \"roomID\": \"SDS\",\r\n   \"numRooms\": 1\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "13edf2b6-cb26-44b1-bec7-fdcc3ededdf0",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    var res = pm.response.json();",
+									"    pm.expect(res[0].bookingID).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "przemek.kulik@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings/{bookingID} [1][adam.apple@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c59c575-4e60-4024-9f16-d7c73561fb80",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqBookingID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.bookingID).to.eql(parseInt(reqBookingID));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings/1",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings/{bookingID} [2][adam.apple@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ffc9119b-a7b3-4444-ad56-c798e12565e6",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqBookingID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.bookingID).to.eql(parseInt(reqBookingID));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "cache",
+								"value": "yes",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings/2",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings/{bookingID} [*][przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c8969676-4eea-4628-8388-8a195a9102c1",
+								"exec": [
+									"pm.test(\"succesful GET request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqBookingID = pm.request.url.path[1];",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.bookingID).to.eql(parseInt(reqBookingID));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "przemek.kulik@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "cache",
+								"value": "yes",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings/{{NodeToursBookingID}}",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings",
+								"{{NodeToursBookingID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings/{bookingID} [*][przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3983814-5aba-40ea-8f4b-556de6f292ef",
+								"exec": [
+									"pm.test(\"successful PUT request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = JSON.parse(pm.request.body);",
+									"    let res = pm.response.json();",
+									"    pm.expect(res.cruiseID).to.eql(req.cruiseID);",
+									"    pm.expect(res.customerID).to.eql(req.customerID);",
+									"    pm.expect(res.room).to.eql(req.room);",
+									"    pm.expect(res.bookingID).to.eql(req.bookingID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"bookingID\": {{NodeToursBookingID}},\r\n \"cruiseID\": \"00001\",\r\n \"customerID\": \"przemek.kulik@email.com\",\r\n \"room\": [\r\n  {\r\n   \"roomID\": \"SDS\",\r\n   \"numRooms\": 2\r\n  }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings/{{NodeToursBookingID}}",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings",
+								"{{NodeToursBookingID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bookings/{bookingID} [*][przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1325d44f-38c7-4a13-8c5b-38b71ae6650f",
+								"exec": [
+									"pm.test(\"succesful DELETE request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqBookingID = pm.request.url.path[1];",
+									"    var res = pm.response.json();",
+									"    pm.expect(res.bookingID).to.eql(parseInt(reqBookingID));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "adam.apple@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{nodetours-host}}/bookings/{{NodeToursBookingID}}",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"bookings",
+								"{{NodeToursBookingID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/customer/{customerID} [przemek.kulik@email.com]",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9360aafc-1c3c-4396-9ba1-02c91029c12b",
+								"exec": [
+									"pm.test(\"succesful DELETE request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let reqCustomerID = pm.request.url.path[1];",
+									"    var res = pm.response.json();",
+									"    pm.expect(res.customer.emailAddress).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "przemek.kulik@email.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "manage",
+									"type": "string"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{nodetours-host}}/customers/przemek.kulik@email.com",
+							"protocol": "http",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"customers",
+								"przemek.kulik@email.com"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GraphQL",
+			"item": [
+				{
+					"name": "Cruises",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a510134c-ba3a-4f20-b85c-57dbaf6ded69",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Cruises instanceof Array);",
+									"",
+									"    pm.expect(res.data.Cruises[0].cruiseID).to.eql('00001');",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    Cruises {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseByID (cruiseID: \"00001\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.CruiseByID.cruiseID;",
+									"    let isArray = (res.data.CruiseByID instanceof Array);",
+									"",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    CruiseByID (cruiseID: $cruiseID) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00001\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseByID (cruiseID: \"00002\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.CruiseByID.cruiseID;",
+									"    let isArray = (res.data.CruiseByID instanceof Array);",
+									"",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    CruiseByID (cruiseID: $cruiseID) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00002\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseByID (cruiseID: \"00003\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    pm.expect(res).to.eql({\"data\": {\"CruiseByID\": null}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    CruiseByID (cruiseID: $cruiseID) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00003\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseWithFilter (cruiseID: \"00001\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.data.CruisesWithFilter.length;",
+									"    let reqStartPort = JSON.parse(req.body.graphql.variables).startPort;",
+									"    let resStartPort = res.data.CruisesWithFilter[0].startPort;",
+									"    let resCruiseID = res.data.CruisesWithFilter[0].cruiseID;",
+									"    let isArray = (res.data.CruiseWithFilter instanceof Array);",
+									"",
+									"    pm.expect(elementsCount).to.eql(1);",
+									"    pm.expect(resCruiseID).to.eql('00001');",
+									"    pm.expect(resStartPort).to.contain(reqStartPort);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($numDays: Int, $startDate: Int, $endDate: Int, $startPort: String)\n{\n    CruisesWithFilter (numDays: $numDays, startDate: $startDate, endDate: $endDate, startPort: $startPort) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"numDays\": 15,\n    \"startDate\": 20210630,\n    \"endDate\": 20210830,\n    \"startPort\": \"Alaska\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseWithFilter (cruiseID: \"00002\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.data.CruisesWithFilter.length;",
+									"    let resCruiseID = res.data.CruisesWithFilter[0].cruiseID;",
+									"    let isArray = (res.data.CruiseWithFilter instanceof Array);",
+									"",
+									"    pm.expect(resCruiseID).to.eql('00002');",
+									"    pm.expect(elementsCount).to.eql(1);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($numDays: Int, $startDate: Int, $endDate: Int, $startPort: String)\n{\n    CruisesWithFilter (numDays: $numDays, startDate: $startDate, endDate: $endDate, startPort: $startPort) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"numDays\": 15,\n    \"startDate\": 20210630,\n    \"endDate\": 20210730\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CruiseWithFilter (cruiseID: \"00001, 00002\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(pm.request.body.mode).to.eql(\"graphql\");",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let elementsCount = res.data.CruisesWithFilter.length;",
+									"    let resCruiseID = res.data.CruisesWithFilter[0].cruiseID;",
+									"    let isArray = (res.data.CruisesWithFilter instanceof Array);",
+									"",
+									"    pm.expect(resCruiseID).to.eql('00001');",
+									"    pm.expect(elementsCount).to.eql(2);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($numDays: Int, $startDate: Int, $endDate: Int, $startPort: String)\n{\n    CruisesWithFilter (numDays: $numDays, startDate: $startDate, endDate: $endDate, startPort: $startPort) {\n        cruiseID\n        title\n        description\n        startDate\n        endDate\n        numDays\n        startPort\n        roomTypes {\n            roomID\n            roomDetails {\n                roomType\n                title\n                description\n                maxOccupants\n            }\n            capacity {\n                cruiseID\n                total\n                available\n            }\n        }\n    }\n}",
+								"variables": "{\n    \"numDays\": 15,\n    \"startDate\": 20210630,\n    \"endDate\": 20210830\n}"
+							}
+						},
+						"url": {
+							"raw": "{{nodetours-host}}/graphql",
+							"host": [
+								"{{nodetours-host}}"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea5d7af1-e109-4644-83f2-dd99be06af31",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Customers instanceof Array);",
+									"",
+									"    pm.expect(res.data.Customers[0].customer.emailAddress).to.eql(\"oleg.orange@email.com\");",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    Customers {\n        customer {\n            firstname\n            surname\n            title\n            emailAddress\n            passportID\n            passportExpiration\n            passportOrgin\n            dob\n        }\n        address {\n            street\n            city\n            state\n            zipcode\n            country\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerByID (customerID: \"oleg.orange@email.com\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f21039f0-be89-444c-9c05-74e030c8f8f0",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.CustomerByID instanceof Array);",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customerID;",
+									"    let resCustomerID = res.data.CustomerByID.customer.emailAddress;",
+									"",
+									"    pm.expect(res.data.CustomerByID.customer.emailAddress).to.eql(\"oleg.orange@email.com\");",
+									"    pm.expect(isArray).to.be.false;",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerID: String)\n{\n    CustomerByID (customerID: $customerID) {\n        customer {\n            firstname\n            surname\n            title\n            emailAddress\n            passportID\n            passportExpiration\n            passportOrgin\n            dob\n        }\n        address {\n            street\n            city\n            state\n            zipcode\n            country\n        }\n    }\n}",
+								"variables": "{\n    \"customerID\": \"oleg.orange@email.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerByID (customerID: \"not.exists@email.com\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f21039f0-be89-444c-9c05-74e030c8f8f0",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"CustomerByID\": null}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerID: String)\n{\n    CustomerByID (customerID: $customerID) {\n        customer {\n            firstname\n            surname\n            title\n            emailAddress\n            passportID\n            passportExpiration\n            passportOrgin\n            dob\n        }\n        address {\n            street\n            city\n            state\n            zipcode\n            country\n        }\n    }\n}",
+								"variables": "{\n    \"customerID\": \"not.exists@email.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerByCountry (countryID: \"US\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c12f7fe6-6422-478d-a363-ef87eacfe5a4",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.CustomersByCountry instanceof Array);",
+									"    let reqCountry = JSON.parse(req.body.graphql.variables).country;",
+									"    let resCountry = res.data.CustomersByCountry[0].address.country;",
+									"",
+									"    pm.expect(res.data.CustomersByCountry[0].address.country).to.eql(\"US\");",
+									"    pm.expect(isArray).to.be.true;",
+									"    pm.expect(resCountry).to.eql(reqCountry);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($country: String)\n{\n    CustomersByCountry (country: $country) {\n        customer {\n            firstname\n            surname\n            title\n            emailAddress\n            passportID\n            passportExpiration\n            passportOrgin\n            dob\n        }\n        address {\n            street\n            city\n            state\n            zipcode\n            country\n        }\n    }\n}",
+								"variables": "{\n    \"country\": \"US\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomerByCountry (countryID: \"XX\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a52db11a-5ee4-4fd1-8c72-1cbdcd28239b",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"CustomersByCountry\": []}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($country: String)\n{\n    CustomersByCountry (country: $country) {\n        customer {\n            firstname\n            surname\n            title\n            emailAddress\n            passportID\n            passportExpiration\n            passportOrgin\n            dob\n        }\n        address {\n            street\n            city\n            state\n            zipcode\n            country\n        }\n    }\n}",
+								"variables": "{\n    \"country\": \"XX\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomer (\"przemek.kulik@email.com\", ...)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79f6f5e9-39c9-4c67-a6ff-dc33c6b4ce2d",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customer.emailAddress;",
+									"    let resCustomerID = res.data.createCustomer.customer.emailAddress;",
+									"",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"    pm.expect(res.data.createCustomer.customer.title).to.eql(\"Mrs.\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($customer: CustomerInput, $address: AddressInput) {\n    createCustomer (\n        customer: $customer,\n        address: $address\n    )\n}",
+								"variables": "{\n    \"customer\" : {\n        \"firstname\": \"Przemek\",\n        \"surname\": \"Kulik\",\n        \"title\": \"Mrs.\",\n        \"emailAddress\": \"przemek.kulik@email.com\",\n        \"passportID\": \"1240123456789\",\n        \"passportExpiration\": \"2022.07.01\",\n        \"passportOrgin\": \"PL\",\n        \"dob\": \"1977.06.10\"\n    },\n       \"address\": {\n        \"street\": \"Lazurowa 7\",\n        \"city\": \"Płońsk\",\n        \"state\": \"MZ\",\n        \"zipcode\": \"09-100\",\n        \"country\": \"PL\"\n        }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer (\"przemek.kulik@email.com\", ...)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec340499-ddd7-4a14-a75f-da872a3d96f6",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customer.emailAddress;",
+									"    let resCustomerID = res.data.updateCustomer.customer.emailAddress;",
+									"",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"    pm.expect(res.data.updateCustomer.customer.title).to.eql(\"Mr.\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($customer: CustomerInput, $address: AddressInput) {\n    updateCustomer (\n        customer: $customer,\n        address: $address\n    )\n}",
+								"variables": "{\n    \"customer\" : {\n        \"firstname\": \"Przemek\",\n        \"surname\": \"Kulik\",\n        \"title\": \"Mr.\",\n        \"emailAddress\": \"przemek.kulik@email.com\",\n        \"passportID\": \"1240123456789\",\n        \"passportExpiration\": \"2022.07.01\",\n        \"passportOrgin\": \"PL\",\n        \"dob\": \"1977.06.10\"\n    },\n       \"address\": {\n        \"street\": \"Lazurowa 7\",\n        \"city\": \"Płońsk\",\n        \"state\": \"MZ\",\n        \"zipcode\": \"09-100\",\n        \"country\": \"PL\"\n        }\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Bookings instanceof Array);",
+									"",
+									"    pm.expect(res.data.Bookings[0].bookingID).to.eql(1);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    Bookings {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByID (bookingID: 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Bookings instanceof Array);",
+									"    let reqBookingID = JSON.parse(req.body.graphql.variables).bookingID;",
+									"    let resBookingID = res.data.BookingByID.bookingID;",
+									"",
+									"    pm.expect(res.data.BookingByID.bookingID).to.eql(1);",
+									"    pm.expect(resBookingID).to.eql(reqBookingID);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($bookingID: Int)\n{\n    BookingByID (bookingID: $bookingID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"bookingID\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByID (bookingID: 2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "15612f75-2ad6-4c94-80e3-b55ce3c3487f",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Bookings instanceof Array);",
+									"    let reqBookingID = JSON.parse(req.body.graphql.variables).bookingID;",
+									"    let resBookingID = res.data.BookingByID.bookingID;",
+									"",
+									"    pm.expect(res.data.BookingByID.bookingID).to.eql(2);",
+									"    pm.expect(resBookingID).to.eql(reqBookingID);",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($bookingID: Int)\n{\n    BookingByID (bookingID: $bookingID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"bookingID\": 2\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByID (bookingID: 999)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56946e5f-defb-4ed1-b780-1f7b29295fd7",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"BookingByID\": null}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($bookingID: Int)\n{\n    BookingByID (bookingID: $bookingID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"bookingID\": 999\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByCustomer (customerID: \"adam.apple@email.com\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.BookingsByCustomer instanceof Array);",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customerID;",
+									"    let resCustomerID = res.data.BookingsByCustomer[0].customerID;",
+									"",
+									"    pm.expect(res.data.BookingsByCustomer[0].bookingID).to.eql(1);",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerID: String)\n{\n    BookingsByCustomer (customerID: $customerID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"customerID\": \"adam.apple@email.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByCustomer (customerID: \"oleg.orange@email.com\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da9f804e-33f4-4e71-9253-c9645b9449e0",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"BookingsByCustomer\": []}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($customerID: String)\n{\n    BookingsByCustomer (customerID: $customerID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"customerID\": \"oleg.orange@email.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByCruise (cruiseID: \"00001\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "203f03a0-e928-47b7-aa8d-c48d8bf8e32f",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.BookingsByCruise instanceof Array);",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.BookingsByCruise[0].cruiseID;",
+									"",
+									"    pm.expect(res.data.BookingsByCruise[0].cruiseID).to.eql(\"00001\");",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    BookingsByCruise (cruiseID: $cruiseID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00001\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByCruise (cruiseID: \"00002\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d5bd410-4781-4212-856a-e429c0ddab5d",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.BookingsByCruise instanceof Array);",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.BookingsByCruise[0].cruiseID;",
+									"",
+									"    pm.expect(res.data.BookingsByCruise[0].cruiseID).to.eql(\"00002\");",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    BookingsByCruise (cruiseID: $cruiseID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00002\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByCruise (cruiseID: \"00003\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4894cd4f-a7b8-4149-bdf2-e1698db8f1ef",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"BookingsByCruise\": []}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    BookingsByCruise (cruiseID: $cruiseID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00003\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByRoom (roomID: \"SDS\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39fb71fc-40d4-4f01-aa70-a5876be07cd0",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.BookingsByRoom instanceof Array);",
+									"    let reqRoomID = JSON.parse(req.body.graphql.variables).roomID;",
+									"    let resRoomID = res.data.BookingsByRoom[0].room[0].roomID;",
+									"",
+									"    pm.expect(res.data.BookingsByRoom[0].room[0].roomID).to.eql(\"SDS\");",
+									"    pm.expect(resRoomID).to.eql(reqRoomID);",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($roomID: String)\n{\n    BookingsByRoom (roomID: $roomID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"roomID\": \"SDS\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookingsByRoom (roomID: \"XXX\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "684242cc-2c4c-40cf-891a-e128e938d351",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"BookingsByRoom\": []}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($roomID: String)\n{\n    BookingsByRoom (roomID: $roomID) {\n        bookingID\n        cruiseID\n        cruise {\n            cruiseID\n            title\n            description\n            startDate\n            endDate\n            numDays\n            startPort\n            roomTypes {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n        }\n        customerID\n        traveller {\n            customer {\n                firstname\n                surname\n                title\n                emailAddress\n                passportID\n                passportExpiration\n                passportOrgin\n                dob\n            }\n            address {\n                street\n                city\n                state\n                zipcode\n                country\n            }\n        }\n        room {\n            roomID\n            details {\n                roomID\n                roomDetails {\n                    roomType\n                    title\n                    description\n                    maxOccupants\n                }\n                capacity {\n                    cruiseID\n                    total\n                    available\n                }\n            }\n            numRooms\n        }\n    }\n}",
+								"variables": "{\n    \"roomID\": \"XXX\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBooking (customerID: \"przemek..., cruiseID: \"00001\", room.roomID: \"SDS\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b39cf784-4d05-4f94-a906-1719d7445e56",
+								"exec": [
+									"let res = pm.response.json();",
+									"pm.collectionVariables.set('NodeToursBookingID', res.data.createBooking.bookingID);",
+									"",
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customerID;",
+									"    let resCustomerID = res.data.createBooking.customerID;",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.createBooking.cruiseID;",
+									"    let reqNumRooms = JSON.parse(req.body.graphql.variables).room.numRooms;",
+									"    let resNumRooms = res.data.createBooking.room.numRooms;",
+									"",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(resNumRooms).to.eql(reqNumRooms);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($cruiseID: String, $customerID: String, $room: [RoomInput]) {\n    createBooking (cruiseID: $cruiseID, customerID: $customerID, room: $room)\n}",
+								"variables": "{\n    \"cruiseID\": \"00001\",\n    \"customerID\": \"przemek.kulik@email.com\",\n    \"room\": [\n        {\n            \"roomID\": \"SDS\",\n            \"numRooms\": 1\n        }\n    ]\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBooking (customerID: \"przemek..., cruiseID: \"00001\", room.roomID: \"SDS\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f05a59bd-7fe0-4f1b-8a40-a02a1e5aefa8",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customerID;",
+									"    let resCustomerID = res.data.updateBooking.customerID;",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.updateBooking.cruiseID;",
+									"    let reqNumRooms = JSON.parse(req.body.graphql.variables).room.numRooms;",
+									"    let resNumRooms = res.data.updateBooking.room.numRooms;",
+									"",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(resNumRooms).to.eql(reqNumRooms);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($bookingID: Int, $cruiseID: String, $customerID: String, $room: [RoomInput]) {\n    updateBooking (bookingID: $bookingID, cruiseID: $cruiseID, customerID: $customerID, room: $room)\n}",
+								"variables": "{\n    \"bookingID\": {{NodeToursBookingID}},\n    \"cruiseID\": \"00001\",\n    \"customerID\": \"przemek.kulik@email.com\",\n    \"room\": [\n        {\n            \"roomID\": \"SDS\",\n            \"numRooms\": 2\n        }\n    ]\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rooms",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dee6235b-2f46-4139-b950-8d5f5a9d57bb",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.Rooms instanceof Array);",
+									"",
+									"    pm.expect(res.data.Rooms[0].roomID).to.eql('IPD');",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    Rooms {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomByType (roomID: \"IPD\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dee6235b-2f46-4139-b950-8d5f5a9d57bb",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.RoomByType instanceof Array);",
+									"    let reqRoomID = JSON.parse(req.body.graphql.variables).roomID;",
+									"    let resRoomID = res.data.RoomByType.roomID;",
+									"",
+									"    pm.expect(resRoomID).to.eql(reqRoomID);",
+									"    pm.expect(res.data.RoomByType.roomID).to.eql('IPD');",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($roomID: String)\n{\n    RoomByType (roomID: $roomID) {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": "{\n    \"roomID\": \"IPD\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomByType (roomID: \"SDS\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d390118-5cd4-454c-b1e8-be911e8b0fcf",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.RoomByType instanceof Array);",
+									"    let reqRoomID = JSON.parse(req.body.graphql.variables).roomID;",
+									"    let resRoomID = res.data.RoomByType.roomID;",
+									"",
+									"    pm.expect(resRoomID).to.eql(reqRoomID);",
+									"    pm.expect(res.data.RoomByType.roomID).to.eql('SDS');",
+									"    pm.expect(isArray).to.be.false;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($roomID: String)\n{\n    RoomByType (roomID: $roomID) {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": "{\n    \"roomID\": \"SDS\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomByType (roomID: \"XXX\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07e3f84f-9e87-47fb-bfbd-51857229d48b",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"",
+									"    pm.expect(res).to.eql({\"data\": {\"RoomByType\": null}});",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($roomID: String)\n{\n    RoomByType (roomID: $roomID) {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": "{\n    \"roomID\": \"XXX\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomsByCruise (cruiseID: \"00002\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e60b5994-d600-4406-b1a8-d7ff9e5dc974",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.RoomsByCruise instanceof Array);",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"    let resCruiseID = res.data.RoomsByCruise[0].capacity[0].cruiseID;",
+									"",
+									"    pm.expect(resCruiseID).to.eql(reqCruiseID);",
+									"    pm.expect(res.data.RoomsByCruise[0].capacity[0].cruiseID).to.eql('00002');",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    RoomsByCruise (cruiseID: $cruiseID) {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00002\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomsByCruise (cruiseID: \"00003\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e60b5994-d600-4406-b1a8-d7ff9e5dc974",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.RoomsByCruise instanceof Array);",
+									"    let reqCruiseID = JSON.parse(req.body.graphql.variables).cruiseID;",
+									"",
+									"    pm.expect(res.data.RoomsByCruise).to.be.empty;",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($cruiseID: String)\n{\n    RoomsByCruise (cruiseID: $cruiseID) {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": "{\n    \"cruiseID\": \"00003\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RoomsAvailable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74aac176-9e0d-4734-a568-f483cd4433f9",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"     pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let res = pm.response.json();",
+									"    let isArray = (res.data.RoomsAvailable instanceof Array);",
+									"",
+									"    pm.expect(res.data.RoomsAvailable[0].roomID).to.eql('IPD');",
+									"    pm.expect(isArray).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    RoomsAvailable {\n        roomID\n        roomDetails {\n            roomType\n            title\n            description\n            maxOccupants\n        }\n        capacity {\n            cruiseID\n            total\n            available\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer (\"przemek.kulik@email.com\")",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "607615ec-62f5-4fc4-aa14-b975a4bd296a",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customerID;",
+									"    let resCustomerID = res.data.deleteCustomer.customer.emailAddress;",
+									"",
+									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($customerID: String) {\n    deleteCustomer (\n        customerID: $customerID\n    )\n}",
+								"variables": "{\n    \"customerID\": \"przemek.kulik@email.com\"\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBooking (bookingID: *)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c6725d3-b931-4c6d-bd74-8559247fa298",
+								"exec": [
+									"pm.test(\"succesful GQL query request\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response must be valid have json body and content-type header\", function () {",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"proper data returned\", function () {",
+									"    let req = pm.request;",
+									"    let res = pm.response.json();",
+									"    let resBookingID = res.data.deleteBooking.bookingID;",
+									"",
+									"",
+									"    pm.expect(resBookingID).to.eql(pm.collectionVariables.get(\"NodeToursBookingID\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($bookingID: Int) {\n    deleteBooking (bookingID: $bookingID)\n}",
+								"variables": "{\n    \"bookingID\": {{NodeToursBookingID}}\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:7777/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "7777",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ccb5a94c-541a-4935-8311-6dfed59463c6",
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'locale', value: 'pl' })"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "35f4d9ca-ca24-43ee-84a7-4bdb45fae091",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "aa3496ca-e0cc-42a1-8820-4790a97028f5",
+			"key": "nodetours-host",
+			"value": "localhost:7777"
+		},
+		{
+			"id": "eeadab06-13e1-4d24-8331-ed79fc3851b9",
+			"key": "NodeToursBookingID",
+			"value": 3
+		}
+	],
+	"protocolProfileBehavior": {}
+}

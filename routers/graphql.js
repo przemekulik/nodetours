@@ -10,14 +10,14 @@ const bookings = new Bookings();
 const customers = new Customers();
 
 const Query = {
-  Cruises: () => { return cruises.gqlCruises() },
-  CruiseByID: (root, args) => { return cruises.gqlCruiseByID(root, args) },
-  CruisesWithFilter: (root, args) => { return cruises.gqlCruisesWithFilter(root, args) },
+  Cruises: (root, args, context) => { return cruises.gqlCruises(root, args, context) },
+  CruiseByID: (root, args, context) => { return cruises.gqlCruiseByID(root, args, context) },
+  CruisesWithFilter: (root, args, context) => { return cruises.gqlCruisesWithFilter(root, args, context) },
 
-  Rooms: () => { return rooms.gqlRooms() },
-  RoomByType: (root, args) => { return rooms.gqlRoomByType(root, args) },
-  RoomsByCruise: (root, args) => { return rooms.gqlRoomsByCruise(root, args) },
-  RoomsAvailable: () => { return rooms.gqlRoomsAvailable() },
+  Rooms: (root, args, context) => { return rooms.gqlRooms(root, args, context) },
+  RoomByType: (root, args, context) => { return rooms.gqlRoomByType(root, args, context) },
+  RoomsByCruise: (root, args, context) => { return rooms.gqlRoomsByCruise(root, args, context) },
+  RoomsAvailable: (root, args, context) => { return rooms.gqlRoomsAvailable(root, args, context) },
 
   Bookings: () => { return bookings.gqlBookings() },
   BookingByID: (root, args) => { return bookings.gqlBookingByID(root, args) },
@@ -31,7 +31,7 @@ const Query = {
 }
 
 const Cruise = {
-  roomTypes: (root) => { return cruises.gqlCruiseRoomTypes(root) }
+  roomTypes: (root, args, context) => { return cruises.gqlCruiseRoomTypes(root, args, context) }
 }
 
 const Booking = {
