@@ -1,29 +1,57 @@
 const logger = require('../utilities/loggers')
+const functions = require('../utilities/functions');
 
 const Cruises = function() {
   // GraphQL
-  this.gqlCruises = async function() {
-    cruises = await db.collection('cruises').find().toArray().then(res => { return res });
+  this.gqlCruises = async function(root, args, context) {
+    let locale = functions.locale(context.locale);
+    cruises = await db.collection('cruises').aggregate([
+      { $addFields: {
+        title: functions.localeFilter('$title', locale),
+        description: functions.localeFilter('$description', locale)
+      } }
+      ]).toArray().then(res => { return res });
     return cruises;
   }
    
-  this.gqlCruiseByID = async function(root, args) {
+  this.gqlCruiseByID = async function(root, args, context) {
+    let locale = functions.locale(context.locale);
     let cruiseID = args != undefined ? args.cruiseID : root.cruiseID;
-    cruise = await db.collection('cruises').findOne({'cruiseID': cruiseID}).then(res => { return res });
+    cruise = await db.collection('cruises').aggregate([
+      { $match: {'cruiseID': cruiseID} },
+      { $addFields: {
+        title: functions.localeFilter('$title', locale),
+        description: functions.localeFilter('$description', locale)
+      } }
+    ]).toArray().then(res => { return res[0] });
     return cruise;
   }
 
-  this.gqlCruisesWithFilter = async function(root, args) {
-    cruises = await db.collection('cruises').find().toArray().then(res => { return res });
+  this.gqlCruisesWithFilter = async function(root, args, context) {
+    let locale = functions.locale(context.locale);
+    cruises = await db.collection('cruises').aggregate([
+      { $addFields: {
+        title: functions.localeFilter('$title', locale),
+        description: functions.localeFilter('$description', locale)
+      } }
+      ]).toArray().then(res => { return res });
     cruises = cruises.filter(function(cruises) {
       return cruises.numDays <= args.numDays && cruises.startDate >= args.startDate && cruises.endDate <= args.endDate && cruises.startPort.includes(args.startPort);
     });
     return cruises;
   }
 
-  this.gqlCruiseRoomTypes = async function(root) {
+  this.gqlCruiseRoomTypes = async function(root, args, context) {
+    let locale = functions.locale(context.locale);
     let rooms = root.roomTypes;
-    allRooms = await db.collection('rooms').find().toArray().then(res => { return res });
+    allRooms = await db.collection('rooms').aggregate([
+      { $addFields: {
+        roomDetails: {
+          title: functions.localeFilter('$roomDetails.title', locale),
+          description: functions.localeFilter('$roomDetails.description', locale),
+        }
+      } }
+    ]).toArray().then(res => { return res });
     rooms.forEach(room => {
       let currentRoomID = room.roomID;
       currentRoom = allRooms.filter(function(r) {
@@ -40,11 +68,11 @@ const Cruises = function() {
 
   // REST
   // GET all
-  this.getCruises = function(dbo, callback) {
+  this.getCruises = function(dbo, loc, callback) {
+    let locale = functions.locale(loc);
     dbo.collection('cruises').aggregate([
       { $lookup: {from: 'rooms', localField: 'roomTypes.roomID', foreignField: 'roomID', as: 'roomTypes'} },
-      {
-        $addFields: {
+      { $addFields: {
           roomTypes: {
             $map: {
               input: "$roomTypes",
@@ -52,6 +80,15 @@ const Cruises = function() {
                 $mergeObjects: [
                   "$$this",
                   {
+                    roomDetails: {
+                      $mergeObjects: [
+                        "$$this.roomDetails",
+                        {
+                          title: functions.localeFilter('$$this.roomDetails.title', locale),
+                          description: functions.localeFilter('$$this.roomDetails.description', locale)
+                        }
+                      ]
+                    },
                     available: {
                       $reduce: {
                         input: "$$this.capacity",
@@ -70,8 +107,11 @@ const Cruises = function() {
               }
             }
           }
-        }
-      },
+      } },
+      { $addFields: {
+        title: functions.localeFilter('$title', locale),
+        description: functions.localeFilter('$description', locale)
+      } },
       { $project: {_id: 0, 'roomTypes': {_id: 0}, 'roomTypes.capacity': 0} }
     ]).toArray(function(err, data) {
       if (err) {
@@ -86,12 +126,12 @@ const Cruises = function() {
   }
   
   // GET by {id}
-  this.getCruise = function(dbo, id, callback) {
+  this.getCruise = function(dbo, loc, id, callback) {
+    let locale = functions.locale(loc);
     dbo.collection('cruises').aggregate([
       { $match: {'cruiseID': id} },
       { $lookup: { from: 'rooms', localField: 'roomTypes.roomID', foreignField: 'roomID', as: 'roomTypes'} },
-      {
-        $addFields: {
+      { $addFields: {
           roomTypes: {
             $map: {
               input: "$roomTypes",
@@ -99,6 +139,15 @@ const Cruises = function() {
                 $mergeObjects: [
                   "$$this",
                   {
+                    roomDetails: {
+                      $mergeObjects: [
+                        "$$this.roomDetails",
+                        {
+                          title: functions.localeFilter('$$this.roomDetails.title', locale),
+                          description: functions.localeFilter('$$this.roomDetails.description', locale)
+                        }
+                      ]
+                    },
                     available: {
                       $reduce: {
                         input: "$$this.capacity",
@@ -117,8 +166,11 @@ const Cruises = function() {
               }
             }
           }
-        }
-      },
+      } },
+      { $addFields: {
+        title: functions.localeFilter('$title', locale),
+        description: functions.localeFilter('$description', locale)
+      } },
       { $project: {_id: 0, 'roomTypes': {_id: 0}, 'roomTypes.capacity': 0} }
     ]).next(function(err, data) {
       if (err) {

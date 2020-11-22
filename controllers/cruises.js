@@ -3,7 +3,8 @@ const logger = require('../utilities/loggers');
 const cruises = new Cruises();
 
 exports.cruises_get = function(req, res) {
-  cruises.getCruises(db, function(err, cruisesRes) {
+  let locale = req.headers.locale;
+  cruises.getCruises(db, locale, function(err, cruisesRes) {
     if (err) {
       logger.error(`GET /cruises : Error reading cruise db`);
       logger.error(`  Error: ${err}`);
@@ -31,7 +32,8 @@ exports.cruises_get = function(req, res) {
 };
 
 exports.cruises_get_id = function(req, res) {
-  cruises.getCruise(db, req.params.id, function(err, cruisesRes) {
+  let locale = req.headers.locale;
+  cruises.getCruise(db, locale, req.params.id, function(err, cruisesRes) {
     if (err) {
       logger.error(`GET /cruises/{cruiseID} : Error reading cruise db`);
       logger.error(`  Error: ${err}`);

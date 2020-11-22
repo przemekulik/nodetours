@@ -9,7 +9,7 @@ info:
   \n- Show cruises based on filter criteria.
   \n- Show a specific cruise based on its cruise ID.
   \n\nIf an error occurs, the API returns an HTTP status code and, where appropriate, a message in the message body providing the reason for the error."
-  version: "3.0"
+  version: "3.1"
 servers:
 - url: http://nodetours:7777/
 paths:

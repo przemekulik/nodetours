@@ -9,7 +9,7 @@ services:
     networks:
     - nodetours-network
   nodetours-app:
-    image: nodetours:3.0
+    image: nodetours:3.1
     container_name: nodetours-app
     hostname: nodetours-app
     environment: 

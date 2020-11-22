@@ -7,7 +7,7 @@ info:
     Sign-up and Booking are protected via Basic Authentication.
 
     If an error occurs, the Sign-up API may give a text message as well as the HTTP response code.
-  version: "3.0"
+  version: "3.1"
 servers:
 - url: http://nodetours:7777/
 paths:

@@ -1,8 +1,26 @@
 [
   {
     "cruiseID" : "00001",
-    "title" : "Alaska Whale Watching Photo Expedition",
-    "description" : "Photographying the Whale in Alaska is a unique experience.  Join us on this tour to this unique area.  The cruise is a luxury tour for this that what to spend time with others with a like for see these unique animals of the sea.  The tour will be conducted by a pro photography who will work with each of the members of the tour as needed.",
+    "title" : [
+      {
+        "locale": "en",
+        "value": "Alaska Whale Watching Photo Expedition"
+      },
+      {
+        "locale": "pl",
+        "value": "Fotografowanie wielorybów na Alasce"
+      }
+    ],
+    "description" : [
+      {
+        "locale": "en",
+        "value": "Photographying the Whale in Alaska is a unique experience. Join us on this tour to this unique area. This cruise is a luxury tour for those who want to see these majestic animals in their natural habitat and want to spend time with people of the same interest. There will be a pro photographer on the cruise to assist anybody who wants to sharpen their photograpging skills."
+      },
+      {
+        "locale": "pl",
+        "value": "Fotografowanie wielorybów na Alasce jest unikalnym doświadczeniem. Dołącz do naszej wyprawy w to unikalne miejsce. To luksusowa wycieczka dla tych, którzy chcieliby zobaczyć te majestatyczne zwierzęta w ich naturalnym środowisku i spędzić czas z osobami o podobnych zainteresowaniach. Na statku będzie dostępny profesjonalny fotograf, który będzie służył radą wszytkim pragnącym podnieść swoje umiejętności fotografowania."
+      }
+    ],
     "startDate" : 20210801,
     "endDate" : 20210809,
     "numDays" : 8,
@@ -17,8 +35,26 @@
     ]
   }, {
     "cruiseID" : "00002",
-    "title" : "Panama canal",
-    "description" : "Cruise from San Diego to Mexico and on to the canal, then up to Miami. The canal is 77.1 Km (48 miles) long and connects the Atlantic Ocean with the Pacific Ocean.  This cruise shows a side of the canal that is unique for those that what to see it in luxury.",
+    "title" : [
+      {
+        "locale": "en",
+        "value": "Panama canal"
+      },
+      {
+        "locale": "pl",
+        "value": "Kanał Panamski"
+      }
+    ],
+    "description" : [
+      {
+        "locale": "en",
+        "value": "Cruise from San Diego to Mexico and on to the canal, then up to Miami. The canal is 77.1 Km (48 miles) long and connects the Atlantic Ocean with the Pacific Ocean.  This cruise shows a side of the canal that is unique for those that what to see it in luxury."
+      },
+      {
+        "locale": "pl",
+        "value": "Podróż z San Diego do Meksyku, przez kanał i potem do Miami. Kanał Panamski ma 77,1 km długości (48 mil) i łączy ocen spokojny z antaltyckim. Ta wycieczka pokazuje kanał w sposób pozwalający na luksusowe spędzanie czasu."
+      }
+    ],
     "startDate" : 20210701,
     "endDate" : 20210715,
     "numDays" : 14,

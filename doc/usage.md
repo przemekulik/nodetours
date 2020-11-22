@@ -1,6 +1,6 @@
 # Using NodeTours
 
-NodeTours app 3.0 implements REST and GraphQL APIs.
+NodeTours app 3.1 implements REST and GraphQL APIs.
 
 ## REST
 
