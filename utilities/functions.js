@@ -24,7 +24,7 @@ exports.localeFilter = function localeFilter(inputField, locale) {
 }
 
 function supportedLocales() {
-  return ['en', 'pl'];
+  return ['en', 'pl', 'ru', 'ar'];
 }
 
 // Return default locale if requested is not supported

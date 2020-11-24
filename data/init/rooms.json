@@ -11,6 +11,14 @@
           {
             "locale": "pl",
             "value": "Wewnętrzna podwójna kabina klasy premium"
+          },
+          {
+            "locale": "ru",
+            "value": "Внутренняя двухместная каюта премиум-класса"
+          },
+          {
+            "locale": "ar",
+            "value": "داخل كابينة بريمير مزدوجة"
           }
         ],
         "description": [
@@ -21,6 +29,14 @@
           {
             "locale": "pl",
             "value": "Pokój dla dwóch osób z biurkiem, TV i prysznicem"
+          },
+          {
+            "locale": "ru",
+            "value": "Двухместный номер с письменным столом, телевизором и душем."
+          },
+          {
+            "locale": "ar",
+            "value": "غرفة مزدوجة صديقة للبيئة مع مكتب وتلفزيون ودش"
           }
         ],
         "maxOccupants": 2
@@ -41,6 +57,14 @@
           {
             "locale": "pl",
             "value": "Podwójna kabina klasy premium z widokiem na morze"
+          },
+          {
+            "locale": "ru",
+            "value": "Премиум двухместная каюта с видом на море"
+          },
+          {
+            "locale": "ar",
+            "value": "كابينة مزدوجة ممتازة مطلة على البحر"
           }
         ],
         "description": [
@@ -51,6 +75,14 @@
           {
             "locale": "pl",
             "value": "Pokój dla dwóch osób z biurkiem, TV i prysznicem"
+          },
+          {
+            "locale": "ru",
+            "value": "Двухместный номер с письменным столом, телевизором и душем."
+          },
+          {
+            "locale": "ar",
+            "value": "غرفة مزدوجة صديقة للبيئة مع إطلالة على البحر ومكتب وتلفزيون ودش"
           }
         ],
         "maxOccupants": 2
@@ -71,6 +103,14 @@
           {
             "locale": "pl",
             "value": "Kabina deluxe z widokiem na morze"
+          },
+          {
+            "locale": "ru",
+            "value": "Каюта делюкс с видом на море"
+          },
+          {
+            "locale": "ar",
+            "value": "كابينة فاخرة مطلة على البحر"
           }
         ],
         "description": [
@@ -81,6 +121,14 @@
           {
             "locale": "pl",
             "value": "Dla pragnących odrobiny luksusu. Kabine klasu deluxe z prywatnym balkonem, biurkiem, TV i prysznicem"
+          },
+          {
+            "locale": "ru",
+            "value": "Для тех, кто хочет немного роскоши. Каюта класса делюкс с отдельным балконом, письменным столом, телевизором и душем"
+          },
+          {
+            "locale": "ar",
+            "value": "لأولئك الذين يريدون القليل من الرفاهية الإضافية. تحتوي الكابينة الفاخرة على شرفة خاصة ومكتب وتلفزيون ودش"
           }
         ],
         "maxOccupants": 2
@@ -102,6 +150,14 @@
           {
             "locale": "pl",
             "value": "Podwójna kabina klasy premium z dwoma podwójnymi łóżkami i widokiem na morze"
+          },
+          {
+            "locale": "ru",
+            "value": "Двухместная каюта премиум-класса с двумя двуспальными кроватями и видом на море"
+          },
+          {
+            "locale": "ar",
+            "value": "كابينة فاخرة بسريرين مزدوجين وإطلالة على البحر"
           }
         ],
         "description": [
@@ -112,6 +168,14 @@
           {
             "locale": "pl",
             "value": "Dla pragnących odrobiny luksusu. Kabine klasu deluxe z prywatnym balkonem, biurkiem, TV i prysznicem i dwoma podójnymi łóżkami"
+          },
+          {
+            "locale": "ru",
+            "value": "Для тех, кто хочет немного роскоши. Каюта класса делюкс с отдельным балконом, письменным столом, телевизором, душем и двумя двуспальными кроватями"
+          },
+          {
+            "locale": "ar",
+            "value": "لأولئك الذين يريدون القليل من الرفاهية الإضافية. تحتوي الكابينة المزدوجة الفاخرة على سريرين مزدوجين وشرفة خاصة ومكتب وتلفزيون ودش"
           }
         ],
         "maxOccupants": 4
@@ -133,6 +197,14 @@
           {
             "locale": "pl",
             "value": "2 pokojowy apartament z widokiem na morze"
+          },
+          {
+            "locale": "ru",
+            "value": "2 комнатная квартира с видом на море"
+          },
+          {
+            "locale": "ar",
+            "value": "جناح بغرفتي نوم مطل على البحر"
           }
         ],
         "description": [
@@ -143,6 +215,14 @@
           {
             "locale": "pl",
             "value": "Apartament z dwoma sypialniami, odrebną częścia dzienną, prywatnym balkonem, TV w każdym pokoju i pryszniecem"
+          },
+          {
+            "locale": "ru",
+            "value": "Трехкомнатная квартира с отдельной гостиной, отдельным балконом, телевизором в каждой комнате и душем."
+          },
+          {
+            "locale": "ar",
+            "value": "تحتوي كبائن جناح جونيور على غرفتي نوم ومنطقة جلوس منفصلة وشرفة خاصة وأجهزة تلفزيون في كل غرفة ودش"
           }
         ],
         "maxOccupants": 4
@@ -164,6 +244,14 @@
           {
             "locale": "pl",
             "value": "3 pokojowy apartament z widokiem na morze"
+          },
+          {
+            "locale": "ru",
+            "value": "3 комнатная квартира с видом на море"
+          },
+          {
+            "locale": "ar",
+            "value": "جناح 3 غرف نوم مطل على البحر"
           }
         ],
         "description": [
@@ -174,6 +262,14 @@
           {
             "locale": "pl",
             "value": "Apartament z trzema sypialniami, przestronną, odrebną częścia dzienną, prywatnym balkonem z jacuzzi, TV w każdym pokoju i łazienką z jacuzzi"
+          },
+          {
+            "locale": "ru",
+            "value": "Трехкомнатная квартира, просторная отдельная гостиная, отдельный балкон с джакузи, телевизор в каждой комнате и ванная комната с джакузи."
+          },
+          {
+            "locale": "ar",
+            "value": "تحتوي كبائن الأجنحة الديلوكس على 3 غرف نوم وغرفة ترفيهية واسعة وشرفة خاصة مع حوض استحمام ساخن وتلفزيونات في كل غرفة وحمام مع جاكوزي"
           }
         ],
         "maxOccupants": 6

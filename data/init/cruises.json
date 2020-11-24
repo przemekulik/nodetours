@@ -9,6 +9,14 @@
       {
         "locale": "pl",
         "value": "Fotografowanie wielorybów na Alasce"
+      },
+      {
+        "locale": "ru",
+        "value": "Фотосъемка китов на Аляске"
+      },
+      {
+        "locale": "ar",
+        "value": "رحلة استكشافية لمشاهدة حوت ألاسكا"
       }
     ],
     "description" : [
@@ -19,6 +27,14 @@
       {
         "locale": "pl",
         "value": "Fotografowanie wielorybów na Alasce jest unikalnym doświadczeniem. Dołącz do naszej wyprawy w to unikalne miejsce. To luksusowa wycieczka dla tych, którzy chcieliby zobaczyć te majestatyczne zwierzęta w ich naturalnym środowisku i spędzić czas z osobami o podobnych zainteresowaniach. Na statku będzie dostępny profesjonalny fotograf, który będzie służył radą wszytkim pragnącym podnieść swoje umiejętności fotografowania."
+      },
+      {
+        "locale": "ru",
+        "value": "Фотографировать китов на Аляске - это уникальный опыт. Присоединяйтесь к нашему путешествию в это уникальное место. Это роскошный тур для тех, кто хотел бы увидеть этих величественных животных в их естественной среде обитания и провести время с людьми со схожими интересами. На борту лайнера будет профессиональный фотограф, который посоветует всем, кто хочет улучшить свои навыки фотографии."
+      },
+      {
+        "locale": "ar",
+        "value": "يعد تصوير الحوت في ألاسكا تجربة فريدة من نوعها. انضم إلينا في هذه الجولة إلى هذه المنطقة الفريدة. هذه الرحلة البحرية هي جولة فاخرة لأولئك الذين يرغبون في رؤية هذه الحيوانات المهيبة في بيئتها الطبيعية ويريدون قضاء الوقت مع أشخاص من نفس الاهتمامات. سيكون هناك مصور محترف في الرحلة لمساعدة أي شخص يرغب في صقل مهاراته في التصوير الفوتوغرافي."
       }
     ],
     "startDate" : 20210801,
@@ -43,6 +59,14 @@
       {
         "locale": "pl",
         "value": "Kanał Panamski"
+      },
+      {
+        "locale": "ru",
+        "value": "Панамский канал"
+      },
+      {
+        "locale": "ar",
+        "value": "قناة بنما"
       }
     ],
     "description" : [
@@ -53,6 +77,14 @@
       {
         "locale": "pl",
         "value": "Podróż z San Diego do Meksyku, przez kanał i potem do Miami. Kanał Panamski ma 77,1 km długości (48 mil) i łączy ocen spokojny z antaltyckim. Ta wycieczka pokazuje kanał w sposób pozwalający na luksusowe spędzanie czasu."
+      },
+      {
+        "locale": "ru",
+        "value": "Путешествие из Сан-Диего в Мексику, через канал, а затем в Майами. Панамский канал имеет длину 77,1 км (48 миль) и сочетает в себе спокойствие с рейтингом Антальтики. Этот тур показывает канал в роскошной обстановке."
+      },
+      {
+        "locale": "ar",
+        "value": "رحلة بحرية من سان دييغو إلى المكسيك ثم إلى القناة ، ثم حتى ميامي. يبلغ طول القناة 77.1 كيلومترًا (48 ميلاً) وتربط المحيط الأطلسي بالمحيط الهادي. تُظهر هذه الرحلة البحرية جانبًا من القناة فريدًا لمن يراه برفاهية."
       }
     ],
     "startDate" : 20210701,
