@@ -3479,7 +3479,7 @@
 				"id": "ccb5a94c-541a-4935-8311-6dfed59463c6",
 				"type": "text/javascript",
 				"exec": [
-					"pm.request.headers.add({key: 'locale', value: 'pl' })"
+					"//pm.request.headers.add({key: 'locale', value: 'pl' })"
 				]
 			}
 		},
@@ -3496,14 +3496,14 @@
 	],
 	"variable": [
 		{
-			"id": "aa3496ca-e0cc-42a1-8820-4790a97028f5",
+			"id": "6f11d902-74b9-4f50-8b9e-6fc77dc6b507",
 			"key": "nodetours-host",
 			"value": "localhost:7777"
 		},
 		{
-			"id": "eeadab06-13e1-4d24-8331-ed79fc3851b9",
+			"id": "6290fef4-fed9-4e6d-aa6b-2cc4674830e8",
 			"key": "NodeToursBookingID",
-			"value": 3
+			"value": 4
 		}
 	],
 	"protocolProfileBehavior": {}
