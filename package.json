@@ -1,6 +1,6 @@
 {
   "name": "nodetours",
-  "version": "2.0.0",
+  "version": "3.1.0",
   "description": "Sample API implementation for fictional NodeTours tour operator company",
   "main": "server.js",
   "scripts": {
@@ -27,6 +27,7 @@
   "dependencies": {
     "apollo-server-express": "^2.18.2",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
     "mongodb": "^3.6.2",
     "winston": "^3.3.3"
   },
