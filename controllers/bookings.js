@@ -3,7 +3,8 @@ const logger = require('../utilities/loggers');
 const bookings = new Bookings();
 
 exports.bookings_get = function(req, res) {
-  bookings.getBookings(db, function(err, bookingsRes) {
+  let locale = req.headers.locale;
+  bookings.getBookings(db, locale, function(err, bookingsRes) {
     if (err) {
       logger.error(`GET /bookings : Error reading bookings db`);
       logger.error(`  Error: ${err}`);
