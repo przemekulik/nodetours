@@ -1,4 +1,5 @@
 const logger = require('../utilities/loggers')
+const functions = require('../utilities/functions');
 
 const Bookings = function() {
   // GraphQL
@@ -68,21 +69,23 @@ const Bookings = function() {
   
   // REST
   // GET all
-  this.getBookings = function(dbo, callback) {
+  this.getBookings = function(dbo, loc, callback) {
+    let locale = functions.locale(loc);
     //dbo.collection('bookings').find({}, {projection:{_id: 0}}).toArray(function(err, data) {
     dbo.collection('bookings').aggregate([
       { $lookup: {from: 'cruises', localField: 'cruiseID', foreignField: 'cruiseID', as: 'cruise'} },
       { $unwind: '$cruise' },
-      { $unwind: '$room' },
-      { $project: {_id: 0, 'cruiseID': 0, 'cruise': {_id: 0, 'roomTypes': 0}} },
-      { $project: {'bookingRooms': '$room', 'bookingID': 1, 'cruise': 1, 'customerID': 1} },
-      { $lookup: {from: 'rooms', localField: 'bookingRooms.roomID', foreignField: 'roomID', as: 'room'} },
-      { $unwind: '$room' },
-      { $addFields: {'room.numRooms': '$bookingRooms.numRooms'} },
-      { $project: {'room': {_id: 0, 'capacity': 0}} },
-      { $lookup: {from: 'customers', localField: 'customerID', foreignField: 'customer.emailAddress', as: 'traveller'} },
-      { $unwind: '$traveller' },
-      { $project: {'traveller': '$traveller.customer', 'bookingID': 1, 'cruise': 1, 'room': 1} }
+      // Przemek: needs fixing here to filter for locale
+      // { $unwind: '$room' },
+      // { $project: {_id: 0, 'cruiseID': 0, 'cruise': {_id: 0, 'roomTypes': 0}} },
+      // { $project: {'bookingRooms': '$room', 'bookingID': 1, 'cruise': 1, 'customerID': 1} },
+      // { $lookup: {from: 'rooms', localField: 'bookingRooms.roomID', foreignField: 'roomID', as: 'room'} },
+      // { $unwind: '$room' },
+      // { $addFields: {'room.numRooms': '$bookingRooms.numRooms'} },
+      // { $project: {'room': {_id: 0, 'capacity': 0}} },
+      // { $lookup: {from: 'customers', localField: 'customerID', foreignField: 'customer.emailAddress', as: 'traveller'} },
+      // { $unwind: '$traveller' },
+      // { $project: {'traveller': '$traveller.customer', 'bookingID': 1, 'cruise': 1, 'room': 1} }
     ]).toArray(function(err, data) {
       if (err) {
         logger.error(`getBookings : Error reading bookings db`);
