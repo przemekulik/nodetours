@@ -97,7 +97,7 @@ var Customers = function() {
     dbo.collection('customers').findOneAndUpdate(
       { 'customer.emailAddress': req.params.id },
       { $set: JSON.parse(JSON.stringify(req.body)) },
-      { returnOriginal : false },
+      { returnNewDocument : true },
       function(err, res) {
         if (err) {
           // FIXME: cancel processing in case of error
@@ -106,7 +106,7 @@ var Customers = function() {
           callback(err, null);
         } else {
           // FIXME: set proper response body
-          // FIXME: handle cases where bookings doesn't exist
+          // FIXME: handle cases where customer doesn't exist
           let result = res.value;
           callback(null, result);
         }

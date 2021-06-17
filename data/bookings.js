@@ -151,7 +151,7 @@ const Bookings = function() {
     dbo.collection("bookings").findOneAndUpdate(
       { 'bookingID': parseInt(req.params.id) },
       { $set: JSON.parse(JSON.stringify(req.body)) },
-      { returnOriginal : false },
+      { returnNewDocument : true },
       function(err, res) {
         if (err) {
           // FIXME: cancel processing in case of error
