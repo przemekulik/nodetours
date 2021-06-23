@@ -19,15 +19,15 @@ const Query = {
   RoomsByCruise: (root, args, context) => { return rooms.gqlRoomsByCruise(root, args, context) },
   RoomsAvailable: (root, args, context) => { return rooms.gqlRoomsAvailable(root, args, context) },
 
-  Bookings: () => { return bookings.gqlBookings() },
-  BookingByID: (root, args) => { return bookings.gqlBookingByID(root, args) },
-  BookingsByCustomer: (root, args) => { return bookings.gqlBookingsByCustomer(root, args) },
-  BookingsByCruise: (root, args) => { return bookings.gqlBookingsByCruise(root, args) },
-  BookingsByRoom: (root, args) => { return bookings.gqlBookingsByRoom(root, args) },
+  Bookings: (root, args, context) => { return bookings.gqlBookings(root, args, context) },
+  BookingByID: (root, args, context) => { return bookings.gqlBookingByID(root, args, context) },
+  BookingsByCustomer: (root, args, context) => { return bookings.gqlBookingsByCustomer(root, args, context) },
+  BookingsByCruise: (root, args, context) => { return bookings.gqlBookingsByCruise(root, args, context) },
+  BookingsByRoom: (root, args, context) => { return bookings.gqlBookingsByRoom(root, args, context) },
 
-  Customers: () => { return customers.gqlCustomers() },
-  CustomerByID: (root, args) => { return customers.gqlCustomerByID(root, args) },
-  CustomersByCountry: (root, args) => { return customers.gqlCustomersByCountry(root, args) }
+  Customers: (root, args, context) => { return customers.gqlCustomers(root, args, context) },
+  CustomerByID: (root, args, context) => { return customers.gqlCustomerByID(root, args, context) },
+  CustomersByCountry: (root, args, context) => { return customers.gqlCustomersByCountry(root, args, context) }
 }
 
 const Cruise = {
@@ -35,12 +35,12 @@ const Cruise = {
 }
 
 const Booking = {
-  cruise: (root) => { return cruises.gqlCruiseByID(root) },
-  traveller: (root) => { return customers.gqlCustomerByID(root) }
+  cruise: (root, args, context) => { return cruises.gqlCruiseByID(root, args, context) },
+  traveller: (root, args, context) => { return customers.gqlCustomerByID(root, args, context) }
 }
 
 const BookedRoom = {
-  details: (root) => { return rooms.gqlRoomByType(root) }
+  details: (root, args, context) => { return rooms.gqlRoomByType(root, args, context) }
 }
 
 const Mutation = {

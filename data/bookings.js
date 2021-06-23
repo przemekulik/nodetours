@@ -3,7 +3,8 @@ const functions = require('../utilities/functions');
 
 const Bookings = function() {
   // GraphQL
-  this.gqlBookings = async function() {
+  this.gqlBookings = async function(root, args, context) {
+    let locale = functions.locale(context.locale);
     bookings = await db.collection('bookings').find().toArray().then(res => { return res });
     return bookings;
   }
@@ -71,21 +72,27 @@ const Bookings = function() {
   // GET all
   this.getBookings = function(dbo, loc, callback) {
     let locale = functions.locale(loc);
-    //dbo.collection('bookings').find({}, {projection:{_id: 0}}).toArray(function(err, data) {
     dbo.collection('bookings').aggregate([
       { $lookup: {from: 'cruises', localField: 'cruiseID', foreignField: 'cruiseID', as: 'cruise'} },
       { $unwind: '$cruise' },
-      // Przemek: needs fixing here to filter for locale
-      // { $unwind: '$room' },
-      // { $project: {_id: 0, 'cruiseID': 0, 'cruise': {_id: 0, 'roomTypes': 0}} },
-      // { $project: {'bookingRooms': '$room', 'bookingID': 1, 'cruise': 1, 'customerID': 1} },
-      // { $lookup: {from: 'rooms', localField: 'bookingRooms.roomID', foreignField: 'roomID', as: 'room'} },
-      // { $unwind: '$room' },
-      // { $addFields: {'room.numRooms': '$bookingRooms.numRooms'} },
-      // { $project: {'room': {_id: 0, 'capacity': 0}} },
-      // { $lookup: {from: 'customers', localField: 'customerID', foreignField: 'customer.emailAddress', as: 'traveller'} },
-      // { $unwind: '$traveller' },
-      // { $project: {'traveller': '$traveller.customer', 'bookingID': 1, 'cruise': 1, 'room': 1} }
+      { $project: {_id: 0, 'cruiseID': 0, 'cruise': {_id: 0, 'roomTypes': 0}} },
+      { $addFields: {
+        'cruise.title': functions.localeFilter('$cruise.title', locale),
+        'cruise.description': functions.localeFilter('$cruise.description', locale)
+      } },
+      { $unwind: '$room' },
+      { $project: {'bookingRooms': '$room', 'bookingID': 1, 'cruise': 1, 'customerID': 1} },
+      { $lookup: {from: 'rooms', localField: 'bookingRooms.roomID', foreignField: 'roomID', as: 'room'} },
+      { $unwind: '$room' },
+      { $addFields: {
+        'room.numRooms': '$bookingRooms.numRooms',
+        'room.roomDetails.title': functions.localeFilter('$room.roomDetails.title', locale),
+        'room.roomDetails.description': functions.localeFilter('$room.roomDetails.description', locale),
+      } },
+      { $project: {'room': {_id: 0, 'capacity': 0}} },
+      { $lookup: {from: 'customers', localField: 'customerID', foreignField: 'customer.emailAddress', as: 'traveller'} },
+      { $unwind: '$traveller' },
+      { $project: {'traveller': '$traveller.customer', 'bookingID': 1, 'cruise': 1, 'room': 1} }
     ]).toArray(function(err, data) {
       if (err) {
         logger.error(`getBookings : Error reading bookings db`);
@@ -119,17 +126,27 @@ const Bookings = function() {
   }
   
   // GET by {id}
-  this.getBooking = function(dbo, id, callback) {
+  this.getBooking = function(dbo, id, loc, callback) {
+    let locale = functions.locale(loc);
     dbo.collection('bookings').aggregate([
       { $match: {'bookingID': parseInt(id)} },
       { $lookup: {from: 'cruises', localField: 'cruiseID', foreignField: 'cruiseID', as: 'cruise'} },
       { $unwind: '$cruise' },
-      { $unwind: '$room' },
       { $project: {_id: 0, 'cruiseID': 0, 'cruise': {_id: 0, 'roomTypes': 0}} },
+      { $addFields: {
+        'cruise.title': functions.localeFilter('$cruise.title', locale),
+        'cruise.description': functions.localeFilter('$cruise.description', locale)
+      } },
+      { $unwind: '$room' },
       { $project: {'bookingRooms': '$room', 'bookingID': 1, 'cruise': 1, 'customerID': 1} },
       { $lookup: {from: 'rooms', localField: 'bookingRooms.roomID', foreignField: 'roomID', as: 'room'} },
       { $unwind: '$room' },
-      { $addFields: {'room.numRooms': '$bookingRooms.numRooms'} },
+
+      { $addFields: {
+        'room.numRooms': '$bookingRooms.numRooms',
+        'room.roomDetails.title': functions.localeFilter('$room.roomDetails.title', locale),
+        'room.roomDetails.description': functions.localeFilter('$room.roomDetails.description', locale),
+      } },
       { $project: {'room': {_id: 0, 'capacity': 0}} },
       { $lookup: {from: 'customers', localField: 'customerID', foreignField: 'customer.emailAddress', as: 'traveller'} },
       { $unwind: '$traveller' },

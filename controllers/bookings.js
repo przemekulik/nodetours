@@ -38,7 +38,8 @@ exports.bookings_post = function(req, res) {
 }
 
 exports.bookings_get_id = function(req, res) {
-  bookings.getBooking(db, req.params.id, function(err, bookingRes) {
+  let locale = req.headers.locale;
+  bookings.getBooking(db, req.params.id, locale, function(err, bookingRes) {
     if (err) {
       logger.error(`GET /bookings/{bookingID} : Error reading bookings db`);
       logger.error(`  Error: ${err}`);
