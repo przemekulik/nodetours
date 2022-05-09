@@ -114,12 +114,11 @@ const Bookings = function() {
     globalThis.maxBookingID++;
     dbo.collection('bookings').insertOne(bookings, function(err, res) {
       if (err) {
-        logger.error(`posttBookings : Error writing to bookings db`);
+        logger.error(`postBookings : Error writing to bookings db`);
         logger.error(`  Error: ${err}`);
         callback(err, null);
       } else {
-        let result = res.ops[0];
-        // FIXME: set proper 204 response
+        let result = res;
         callback(null, result);
       }
     });

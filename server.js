@@ -2,7 +2,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const { ApolloServer, gql } = require('apollo-server-express');
+const http = require('http');
+//const { resolve } = require('path');
+const { ApolloServer } = require('apollo-server-express');
+const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
+const { MongoClient } = require('mongodb');
 
 // app imports
 const rootRouter = require('./routers/root');
@@ -21,56 +25,61 @@ app.use('/', rootRouter);
 app.use('/cruises', cruisesRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/customers', customersRouter);
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  graphiql: true,
-  context: ({ req }) => {
-    const locale = req.headers.locale;
-    return { locale };
-  }
-});
-server.applyMiddleware({ app });
 
-// Set up Mongo DB connection and start the app
+// Set up the server
+async function startServer(typeDefs, resolvers) {
+  const httpServer = http.createServer(app);
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    graphiql: true,
+    csrfPrevention: true,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: ({ req }) => {
+      const locale = req.headers.locale;
+      return { locale };
+    }
+  });
+  await server.start();
+  server.applyMiddleware({ app });
+  host = require('os').hostname();
+  port = 7777;
+  await new Promise(resolve => httpServer.listen({ port: port }, resolve));
+  logger.verbose(`Startup: NodeTours listening at http://${host}:${port}`);
+}
+
+// Set up the Mongo DB connection
 init.setDBConnectionString(process);
-const MongoClient = require('mongodb').MongoClient;
-const url = `mongodb://${dbhost}:${dbport}`;
+const url = `mongodb://${dbhost}:${dbport}/`;
 const dbName = 'nodetours';
-const dbClient = new MongoClient(url+dbName, { useUnifiedTopology: true, poolSize: 10 });
-dbClient.connect(function (err) {
-  if (err) {
+const dbClient = new MongoClient(url);
+async function connectToDatabase() {
+  try {
+    await dbClient.connect();
+    await dbClient.db("admin").command({ ping: 1});
+    logger.verbose(`Startup: Succesully connected to DB at mongodb://${dbhost}:${dbport}/${dbName}`);
+    db = dbClient.db(dbName);
+    init.initDB(db);
+  } catch (error) {
     logger.error(`Startup: Database connection could not be established. The app will exit.`);
     logger.error(`  Error: ${error}`);
-    process.exit();
-  } else {
-    db = dbClient.db(dbName);
-    logger.verbose(`Startup: Database connection established`);
-    // initialize db if not present
-    init.initDB(db);
-    // start server
-    app = app.listen(process.env.PORT || 7777, function () {
-      globalThis.host = require('os').hostname();
-      globalThis.port = '7777';
-      logger.verbose(`Startup: NodeTours listening at http://${host}:${port}`);
-    });
   }
-});
+}
+
+// Connect to the DB and start the server
+connectToDatabase().catch(console.error);
+startServer(typeDefs, resolvers);
 
 // Close db connection when interrupted
 // SIGINT e.g. Ctrl+C
 process.on('SIGINT', () => {
-  app.close(() => {
-    logger.info(`Received SIGINT. Closing DB connections and exiting`);
-    MongoClient(url).close();
-    process.exit();
-  })
+  logger.info(`Received SIGINT. Closing DB connections and exiting`);
+  dbClient.close();
+  process.exit();
 });
 //SIGTERM e.g. kill without -9
 process.on('SIGTERM', () => {
-  app.close(() => {
-    logger.info(`Received SIGTERM. Closing DB connections and exiting`);
-    MongoClient(url).close();
-    process.exit();
-  })
+  logger.info(`Received SIGTERM. Closing DB connections and exiting`);
+  dbClient.close();
+  process.exit();
 });

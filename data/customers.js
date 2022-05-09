@@ -25,7 +25,7 @@ var Customers = function() {
     }).then(res => {
       return res;
     });
-    return JSON.parse(customer).ops[0];
+    return customer;
   }
 
   this.gqlUpdateCustomer = async function(root, args) {
@@ -36,7 +36,7 @@ var Customers = function() {
     ).then(res => {
       return res
     });
-    return JSON.parse(JSON.stringify(customer.value));
+    return customer;
   }
 
   this.gqlDeleteCustomer = async function(root, args) {
@@ -71,8 +71,7 @@ var Customers = function() {
         logger.error(`  Error: ${err}`);
         callback(err, null);
       } else {
-        let result = res.ops[0];
-        // FIXME: set proper 204 response
+        let result = res;
         callback(null, result);
       }
     });
@@ -97,17 +96,17 @@ var Customers = function() {
     dbo.collection('customers').findOneAndUpdate(
       { 'customer.emailAddress': req.params.id },
       { $set: JSON.parse(JSON.stringify(req.body)) },
-      { returnNewDocument : true },
+      { returnDocument: "after" },
       function(err, res) {
         if (err) {
-          // FIXME: cancel processing in case of error
+          FIXME: `cancel processing in case of error`
           logger.error(`putCustomer : Error writing customers db`);
           logger.error(`  Error: ${err}`);
           callback(err, null);
         } else {
-          // FIXME: set proper response body
-          // FIXME: handle cases where customer doesn't exist
-          let result = res.value;
+          FIXME: `set proper response body`
+          FIXME: `handle cases where customer doesn't exist`
+          let result = res;
           callback(null, result);
         }
     });
