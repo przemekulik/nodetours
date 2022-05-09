@@ -6,7 +6,7 @@ Build an image:
 
 ```zsh
 % cd /nodetours
-% docker build -t nodetours:3.1 -f deploy/docker/Dockerfile .
+% docker build -t nodetours:3.2 -f deploy/docker/Dockerfile .
 ```
 
 Change directory and start the stack using docker compose:

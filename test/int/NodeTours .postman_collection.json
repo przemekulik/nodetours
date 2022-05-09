@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -59,7 +58,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5f77caba-22d9-484a-a4e6-7afe4e0b2007",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -105,7 +103,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "037ac2a5-46ce-4cac-9f16-61eebe5aa93d",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -157,7 +154,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0e1b4565-13f2-408d-a6f5-08341c141988",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(204);",
@@ -197,7 +193,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -262,7 +257,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -327,7 +321,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "47dba216-fe0c-4745-9af6-894bb5d9550b",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -391,7 +384,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6f96c766-7db7-4ad3-905b-26885f355614",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -457,7 +449,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2ceb0c7c-9b44-40c0-bf0a-0053b530b96f",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -529,7 +520,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "11ac6bf8-4c33-4c0a-b92c-02599121d716",
 								"exec": [
 									"pm.test(\"successful POST request\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -542,9 +532,9 @@
 									"});",
 									"",
 									"pm.test(\"proper data returned\", function () {",
-									"    let req = JSON.parse(pm.request.body);",
 									"    let res = pm.response.json();",
-									"    pm.expect(res.customer).to.eql(req.customer);",
+									"    pm.expect(res.acknowledged).to.be.true;",
+									"    pm.expect(res.insertedId).to.not.be.null;",
 									"});"
 								],
 								"type": "text/javascript"
@@ -593,7 +583,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "eddf6886-4589-4938-a575-3801e56e5ed5",
 								"exec": [
 									"pm.test(\"unsuccessful POST request\", function () {",
 									"    pm.response.to.have.status(409);",
@@ -656,7 +645,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2184b500-106c-4ddb-9f10-5f3159118b83",
 								"exec": [
 									"pm.test(\"successful PUT request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -672,7 +660,7 @@
 									"pm.test(\"proper data returned\", function () {",
 									"    let req = JSON.parse(pm.request.body);",
 									"    let res = pm.response.json();",
-									"    pm.expect(JSON.stringify(res.customer)).to.eql(JSON.stringify(req.customer));",
+									"    pm.expect(JSON.stringify(res.value.customer)).to.eql(JSON.stringify(req.customer));",
 									"});"
 								],
 								"type": "text/javascript"
@@ -738,7 +726,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "973b853a-4f80-425a-bba4-5304e0ea7ba3",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -804,7 +791,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0b84bb49-5626-4e3b-8bf4-8a532c6c4034",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -868,10 +854,10 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7732ad07-e041-49db-93b9-bb34b2a9a02b",
 								"exec": [
 									"let res = JSON.parse(responseBody);",
-									"pm.collectionVariables.set('NodeToursBookingID', res.bookingID);",
+									"//pm.collectionVariables.set('NodeToursBookingID', res.bookingID);",
+									"pm.collectionVariables.set('NodeToursBookingID', 3);",
 									"",
 									"pm.test(\"successful POST request\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -884,11 +870,9 @@
 									"});",
 									"",
 									"pm.test(\"proper data returned\", function () {",
-									"    let req = JSON.parse(pm.request.body);",
 									"    let res = pm.response.json();",
-									"    pm.expect(res.cruiseID).to.eql(req.cruiseID);",
-									"    pm.expect(res.customerID).to.eql(req.customerID);",
-									"    pm.expect(res.room).to.eql(req.room);",
+									"    pm.expect(res.acknowledged).to.be.true;",
+									"    pm.expect(res.insertedId).to.not.be.null;",
 									"});"
 								],
 								"type": "text/javascript"
@@ -927,7 +911,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"cruiseID\": \"00001\",\r\n \"customerID\": \"przemek.kulik@email.com\",\r\n \"room\": [\r\n  {\r\n   \"roomID\": \"SDS\",\r\n   \"numRooms\": 1\r\n  }\r\n ]\r\n}",
+							"raw": "{\r\n    \"cruiseID\": \"00001\",\r\n    \"customerID\": \"przemek.kulik@email.com\",\r\n    \"room\": [\r\n        {\r\n            \"roomID\": \"SDS\",\r\n            \"numRooms\": 2\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -953,7 +937,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "13edf2b6-cb26-44b1-bec7-fdcc3ededdf0",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1017,7 +1000,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0c59c575-4e60-4024-9f16-d7c73561fb80",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1083,7 +1065,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ffc9119b-a7b3-4444-ad56-c798e12565e6",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1155,7 +1136,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c8969676-4eea-4628-8388-8a195a9102c1",
 								"exec": [
 									"pm.test(\"succesful GET request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1228,7 +1208,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b3983814-5aba-40ea-8f4b-556de6f292ef",
 								"exec": [
 									"pm.test(\"successful PUT request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1313,7 +1292,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1325d44f-38c7-4a13-8c5b-38b71ae6650f",
 								"exec": [
 									"pm.test(\"succesful DELETE request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1386,7 +1364,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9360aafc-1c3c-4396-9ba1-02c91029c12b",
 								"exec": [
 									"pm.test(\"succesful DELETE request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1446,8 +1423,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "GraphQL",
@@ -1458,7 +1434,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a510134c-ba3a-4f20-b85c-57dbaf6ded69",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1511,7 +1486,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1568,7 +1542,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1625,7 +1598,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1676,7 +1648,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1737,7 +1708,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1795,7 +1765,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "438ee758-480a-4389-a61e-5f604cf495ca",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1853,7 +1822,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ea5d7af1-e109-4644-83f2-dd99be06af31",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1907,7 +1875,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f21039f0-be89-444c-9c05-74e030c8f8f0",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1965,7 +1932,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f21039f0-be89-444c-9c05-74e030c8f8f0",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2017,7 +1983,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c12f7fe6-6422-478d-a363-ef87eacfe5a4",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2075,7 +2040,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a52db11a-5ee4-4fd1-8c72-1cbdcd28239b",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2127,7 +2091,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "79f6f5e9-39c9-4c67-a6ff-dc33c6b4ce2d",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2141,13 +2104,9 @@
 									"});",
 									"",
 									"pm.test(\"proper data returned\", function () {",
-									"    let req = pm.request;",
 									"    let res = pm.response.json();",
-									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customer.emailAddress;",
-									"    let resCustomerID = res.data.createCustomer.customer.emailAddress;",
-									"",
-									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
-									"    pm.expect(res.data.createCustomer.customer.title).to.eql(\"Mrs.\");",
+									"    pm.expect(res.data.createCustomer.acknowledged).to.be.true;",
+									"    pm.expect(res.data.createCustomer.insertedId).to.not.be.null;",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2183,7 +2142,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ec340499-ddd7-4a14-a75f-da872a3d96f6",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2199,11 +2157,13 @@
 									"pm.test(\"proper data returned\", function () {",
 									"    let req = pm.request;",
 									"    let res = pm.response.json();",
-									"    let reqCustomerID = JSON.parse(req.body.graphql.variables).customer.emailAddress;",
-									"    let resCustomerID = res.data.updateCustomer.customer.emailAddress;",
+									"    let reqCustomerEmailAddress = JSON.parse(req.body.graphql.variables).customer.emailAddress;",
+									"    let resCustomerEmailAddress = res.data.updateCustomer.value.customer.emailAddress;",
+									"    let reqStreet = JSON.parse(req.body.graphql.variables).address.street;",
+									"    let resStreet = res.data.updateCustomer.value.address.street;",
 									"",
-									"    pm.expect(resCustomerID).to.eql(reqCustomerID);",
-									"    pm.expect(res.data.updateCustomer.customer.title).to.eql(\"Mr.\");",
+									"    pm.expect(resCustomerEmailAddress).to.eql(reqCustomerEmailAddress);",
+									"    pm.expect(resStreet).to.eql(reqStreet);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2217,7 +2177,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation ($customer: CustomerInput, $address: AddressInput) {\n    updateCustomer (\n        customer: $customer,\n        address: $address\n    )\n}",
-								"variables": "{\n    \"customer\" : {\n        \"firstname\": \"Przemek\",\n        \"surname\": \"Kulik\",\n        \"title\": \"Mr.\",\n        \"emailAddress\": \"przemek.kulik@email.com\",\n        \"passportID\": \"1240123456789\",\n        \"passportExpiration\": \"2022.07.01\",\n        \"passportOrgin\": \"PL\",\n        \"dob\": \"1977.06.10\"\n    },\n       \"address\": {\n        \"street\": \"Lazurowa 7\",\n        \"city\": \"Płońsk\",\n        \"state\": \"MZ\",\n        \"zipcode\": \"09-100\",\n        \"country\": \"PL\"\n        }\n}"
+								"variables": "{\n    \"customer\" : {\n        \"firstname\": \"Przemek\",\n        \"surname\": \"Kulik\",\n        \"title\": \"Mr.\",\n        \"emailAddress\": \"przemek.kulik@email.com\",\n        \"passportID\": \"1240123456789\",\n        \"passportExpiration\": \"2022.07.01\",\n        \"passportOrgin\": \"PL\",\n        \"dob\": \"1977.06.10\"\n    },\n    \"address\": {\n        \"street\": \"Lazurowa 7\",\n        \"city\": \"Płońsk\",\n        \"state\": \"MZ\",\n        \"zipcode\": \"09-100\",\n        \"country\": \"PL\"\n        }\n}"
 							}
 						},
 						"url": {
@@ -2239,7 +2199,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2293,7 +2252,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2351,7 +2309,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "15612f75-2ad6-4c94-80e3-b55ce3c3487f",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2409,7 +2366,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "56946e5f-defb-4ed1-b780-1f7b29295fd7",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2461,7 +2417,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f46727b8-804f-45dc-a396-87e5a659ca27",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2519,7 +2474,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "da9f804e-33f4-4e71-9253-c9645b9449e0",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2571,7 +2525,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "203f03a0-e928-47b7-aa8d-c48d8bf8e32f",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2629,7 +2582,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5d5bd410-4781-4212-856a-e429c0ddab5d",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2687,7 +2639,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4894cd4f-a7b8-4149-bdf2-e1698db8f1ef",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2739,7 +2690,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "39fb71fc-40d4-4f01-aa70-a5876be07cd0",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2797,7 +2747,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "684242cc-2c4c-40cf-891a-e128e938d351",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2849,7 +2798,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b39cf784-4d05-4f94-a906-1719d7445e56",
 								"exec": [
 									"let res = pm.response.json();",
 									"pm.collectionVariables.set('NodeToursBookingID', res.data.createBooking.bookingID);",
@@ -2913,7 +2861,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f05a59bd-7fe0-4f1b-8a40-a02a1e5aefa8",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2974,7 +2921,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dee6235b-2f46-4139-b950-8d5f5a9d57bb",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3028,7 +2974,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dee6235b-2f46-4139-b950-8d5f5a9d57bb",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3086,7 +3031,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0d390118-5cd4-454c-b1e8-be911e8b0fcf",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3144,7 +3088,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "07e3f84f-9e87-47fb-bfbd-51857229d48b",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3196,7 +3139,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e60b5994-d600-4406-b1a8-d7ff9e5dc974",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3254,7 +3196,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e60b5994-d600-4406-b1a8-d7ff9e5dc974",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3310,7 +3251,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "74aac176-9e0d-4734-a568-f483cd4433f9",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3364,7 +3304,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "607615ec-62f5-4fc4-aa14-b975a4bd296a",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3419,7 +3358,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0c6725d3-b931-4c6d-bd74-8559247fa298",
 								"exec": [
 									"pm.test(\"succesful GQL query request\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3468,15 +3406,13 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ccb5a94c-541a-4935-8311-6dfed59463c6",
 				"type": "text/javascript",
 				"exec": [
 					"//pm.request.headers.add({key: 'locale', value: 'pl' })"
@@ -3486,7 +3422,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "35f4d9ca-ca24-43ee-84a7-4bdb45fae091",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3496,15 +3431,12 @@
 	],
 	"variable": [
 		{
-			"id": "6f11d902-74b9-4f50-8b9e-6fc77dc6b507",
 			"key": "nodetours-host",
 			"value": "localhost:7777"
 		},
 		{
-			"id": "6290fef4-fed9-4e6d-aa6b-2cc4674830e8",
 			"key": "NodeToursBookingID",
-			"value": 4
+			"value": ""
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

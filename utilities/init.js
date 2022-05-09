@@ -49,6 +49,8 @@ initBookings = function(dbo) {
         if (err) throw err;
         logger.verbose(`Startup: Bookings empty : initializing : ${res.insertedCount} documents inserted`);
       });
+      let maxBookingIdElement = functions.getMax(JSON.parse(bookingsFile), 'bookingID');
+      globalThis.maxBookingID = maxBookingIdElement.bookingID;
     } else {
       logger.verbose(`Startup: found existing bookings collection - not touching it`);
       // get max booking id
@@ -84,7 +86,7 @@ setDBConnectionString = function(process) {
     if (!process.argv[2]) {
       // no params provided
       logger.verbose(`Startup: DB hostname not provided. Trying localhost`);
-      dbhost = 'localhost';
+      dbhost = '127.0.0.1';
       logger.verbose(`Startup: DB port not provided. Trying 27017`);
       dbport = '27017';
       logger.verbose(`Startup: Setting DB host:port to ${dbhost}:${dbport}`);
@@ -101,7 +103,7 @@ setDBConnectionString = function(process) {
           // only one param proviede and it is a number - assuming it's port
           dbport = process.argv[2];
           logger.verbose(`Startup: DB hostname not provided. Trying localhost`);
-          dbhost = 'localhost';
+          dbhost = '127.0.0.1';
           logger.verbose(`Startup: Setting DB host:port to: ${dbhost}:${dbport}`);
         }  
       } else {
