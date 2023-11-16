@@ -45,7 +45,8 @@ const Bookings = function() {
     }).then(res => {
       return res
     });
-    return JSON.parse(booking).ops[0];
+    return booking
+    //return JSON.parse(booking).ops[0];
   }
 
   this.gqlUpdateBooking = async function(root, args) {
